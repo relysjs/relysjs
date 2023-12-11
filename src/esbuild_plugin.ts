@@ -1,5 +1,6 @@
 import { staticPlugin } from '@elysiajs/static'
 import { Elysia } from 'elysia'
+import { type Plugin } from 'esbuild'
 import { join, resolve } from 'path'
 import { app_, app__set, cwd_, browser_path_, server_path_, port_ } from './app.js'
 import { browser__metafile__set } from './browser.js'
@@ -23,7 +24,7 @@ export function relysjs_esbuild_plugin_() {
 				}
 				if (result.metafile) {
 					const { outdir } = build.initialOptions
-					const resolve_outdir = resolve(outdir)
+					const resolve_outdir = resolve(outdir!)
 					if (resolve_outdir === server_path_(app_ctx)) {
 						server__metafile__set(app_ctx, result.metafile)
 					}
@@ -45,7 +46,7 @@ export function relysjs_esbuild_plugin_() {
 				app.listen(port_(app_ctx))
 			})
 		}
-	}
+	} as Plugin
 }
 export async function app__new() {
 	const server__metafile = server__metafile_(app_ctx)
@@ -65,7 +66,7 @@ export async function app__new() {
 			const output = server__output_(middleware_ctx)
 			if (output) {
 				const server__middleware =
-					await import(join(cwd_(app_ctx), server__output_path_(middleware_ctx)))
+					await import(join(cwd_(app_ctx), server__output_path_(middleware_ctx)!))
 						.then(mod=>mod.default)
 				app.use(server__middleware(middleware_ctx))
 				const cssBundle = server__cssBundle_(middleware_ctx)

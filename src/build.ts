@@ -1,9 +1,9 @@
 import { Glob } from 'bun'
 import { spawn } from 'child_process'
-import { BuildOptions, context, type Plugin } from 'esbuild'
+import { BuildOptions, context } from 'esbuild'
 import { link, mkdir } from 'fs/promises'
 import { dirname, join } from 'path'
-import { app_path_, browser_path_, server_path_, public_path_ } from './app.js'
+import { app_path_, browser_path_, public_path_, server_path_ } from './app.js'
 import { app_ctx } from './ctx.js'
 import { relysjs_esbuild_plugin_ } from './esbuild_plugin.js'
 export async function server__build(config:Partial<BuildOptions> = {}) {
@@ -16,13 +16,13 @@ export async function server__build(config:Partial<BuildOptions> = {}) {
 	const external = ['/assets/*', 'bun', 'node_modules/*', ...(config.external || [])]
 	const esbuild_ctx = await context({
 		entryPoints,
-		sourcemap: 'external',
-		outdir: server_path_(app_ctx),
 		bundle: true,
-		metafile: true,
+		...config,
+		sourcemap: 'external',
 		format: 'esm',
 		platform: 'node',
-		...config,
+		metafile: true,
+		outdir: server_path_(app_ctx),
 		plugins,
 		external,
 		entryNames: '[name]-[hash]',
@@ -53,18 +53,18 @@ export async function browser__build(config:Partial<BuildOptions> = {}) {
 	const plugins = [relysjs_esbuild_plugin_(), ...(config.plugins || [])]
 	const esbuild_ctx = await context({
 		entryPoints,
-		sourcemap: 'external',
-		outdir: browser_path_(app_ctx),
 		entryNames: '[name]-[hash]',
 		assetNames: '[name]-[hash]',
 		bundle: true,
 		external: [],
 		target: 'es2020',
+		treeShaking: true,
+		...config,
+		sourcemap: 'external',
 		format: 'esm',
 		platform: 'browser',
 		metafile: true,
-		treeShaking: true,
-		...config,
+		outdir: browser_path_(app_ctx),
 		plugins,
 	})
 	await esbuild_ctx.watch()

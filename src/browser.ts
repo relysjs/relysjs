@@ -43,4 +43,5 @@ export const [
 ] = be_memo_pair_(ctx=>
 	nullish__none_([browser__output_path_(ctx)],
 		browser__output_path=>
-			browser__output_path.replace('dist/dev-browser', '')))
+			browser__output_path.replace('dist/dev-browser', '')),
+	{ ...middleware_ctx__be_config, id: 'browser__script' })
