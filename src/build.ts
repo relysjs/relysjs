@@ -1,6 +1,6 @@
 import { Glob } from 'bun'
 import { spawn } from 'child_process'
-import { BuildOptions, context } from 'esbuild'
+import { type BuildOptions, context, type Plugin } from 'esbuild'
 import { link, mkdir } from 'fs/promises'
 import { dirname, join } from 'path'
 import { app_path_, browser_path_, public_path_, server_path_ } from './app.js'
@@ -12,7 +12,7 @@ export async function server__build(config:Partial<BuildOptions> = {}) {
 	for await (const path of glob.scan(app_path_(app_ctx))) {
 		entryPoints.push(join(app_path_(app_ctx), path))
 	}
-	const plugins = [relysjs_esbuild_plugin_(), ...(config.plugins || [])]
+	const plugins = [relysjs_esbuild_plugin_(), ...(config.plugins || [])] as Plugin[]
 	const external = ['/assets/*', 'bun', 'node_modules/*', ...(config.external || [])]
 	const esbuild_ctx = await context({
 		entryPoints,
@@ -50,7 +50,7 @@ export async function browser__build(config:Partial<BuildOptions> = {}) {
 	for await (const path of glob.scan(join(app_path_(app_ctx)))) {
 		entryPoints.push(join(app_path_(app_ctx), path))
 	}
-	const plugins = [relysjs_esbuild_plugin_(), ...(config.plugins || [])]
+	const plugins = [relysjs_esbuild_plugin_(), ...(config.plugins || [])] as Plugin[]
 	const esbuild_ctx = await context({
 		entryPoints,
 		entryNames: '[name]-[hash]',
