@@ -1,0 +1,64 @@
+{
+	"name": "relysjs",
+	"version": "0.0.0",
+	"description": "Reactive Web app server focusing on MPAs with a simple server route & browser build api...uses Bunjs, Elysia, ESBuild, rmemo, & ctx-core",
+	"keywords": [
+		"reactive",
+		"web app",
+		"web server",
+		"bunjs",
+		"elysia",
+		"elysiajs",
+		"esbuild",
+		"rmemo",
+		"ctx-core"
+	],
+	"homepage": "https://github.com/relysjs/relysjs#readme",
+	"bugs": {
+		"url": "https://github.com/relysjs/relysjs/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/relysjs/relysjs.git"
+	},
+	"license": "Apache-2.0",
+	"author": "Brian Takita",
+	"type": "module",
+	"files": [
+		"*.d.ts",
+		"*.js",
+		"*.json"
+	],
+	"exports": {
+		".": {
+			"module": "./index.ts",
+			"node": "./index.ts"
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": ":",
+		"clean": ":",
+		"exec": "$@",
+		"prepublishOnly": "pnpm clean && pnpm build && pnpm test",
+		"test": "pnpm test-unit && check-dts",
+		"test-unit": "tsx node_modules/uvu/bin.js ../ui-server/src/relysjs '\\\\.test\\\\.(ts|js)$'",
+		"test-unit-coverage": "c8 pnpm test-unit"
+	},
+	"dependencies": {
+		"ctx-core": "^4.14.1",
+		"elysia": "^0.7.30"
+	},
+	"devDependencies": {
+		"c8": "^8.0.1",
+		"check-dts": "^0.7.2",
+		"tsx": "^4.6.2",
+		"typescript": "next",
+		"uvu": "^0.5.6"
+	},
+	"publishConfig": {
+		"access": "public",
+		"cache": "~/.npm"
+	},
+	"sideEffects": false
+}
