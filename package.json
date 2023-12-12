@@ -1,6 +1,6 @@
 {
 	"name": "relysjs",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Reactive Web app server focusing on MPAs with a simple server route & browser build api...uses Bunjs, Elysia, ESBuild, rmemo, & ctx-core",
 	"keywords": [
 		"reactive",
@@ -41,7 +41,7 @@
 		"build": ":",
 		"clean": ":",
 		"exec": "$@",
-		"prepublishOnly": "bun clean && bun build && bun test",
+		"prepublishOnly": "bun clean && bun run build && bun test",
 		"test": "bun test-unit && bun -c check-dts",
 		"test-unit": "tsx node_modules/uvu/bin.js . '\\\\.test\\\\.(ts|js)$'",
 		"test-unit-coverage": "c8 bun -c test-unit"
@@ -49,7 +49,7 @@
 	"dependencies": {
 		"ctx-core": "^4.14.1",
 		"elysia": "^0.7.30",
-		"resbuild": "0.1.0"
+		"rebuildjs": "0.1.1"
 	},
 	"devDependencies": {
 		"c8": "^8.0.1",

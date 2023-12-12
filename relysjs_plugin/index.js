@@ -12,7 +12,7 @@ import {
 	server__metafile_,
 	server__output_,
 	server__output_path_
-} from 'resbuild'
+} from 'rebuildjs'
 import { app_, app__set } from '../app/index.js'
 /**
  * @returns {Plugin}

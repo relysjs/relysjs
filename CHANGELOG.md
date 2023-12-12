@@ -1,5 +1,12 @@
 # relysjs
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
@@ -10,7 +17,7 @@
       + production server
       + ctx-core/be
       + ctx-core/rmemo
-      + resbuild
+      + rebuildjs
       + app:
       	+ app$_
       	+ app_
@@ -31,4 +38,4 @@
 ### Patch Changes
 
 - Updated dependencies
-  - resbuild@0.1.0
+  - rebuildjs@0.1.0

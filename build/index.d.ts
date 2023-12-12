@@ -1,1 +1,1 @@
-export * from 'resbuild/build'
+export * from 'rebuildjs/build'

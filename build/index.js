@@ -1,4 +1,4 @@
-import { browser__build, server__build as _server__build } from 'resbuild/build'
+import { browser__build, server__build as _server__build } from 'rebuildjs/build'
 import { relysjs_plugin_ } from '../relysjs_plugin'
 export { browser__build }
 export function server__build(config = {}) {
