@@ -30,24 +30,26 @@
 		"*.json"
 	],
 	"exports": {
-		".": {
-			"module": "./index.ts",
-			"node": "./index.ts"
-		},
+		".": "./index.js",
+		"./app": "./app/index.js",
+		"./build": "./build/index.js",
+		"./elysia": "./elysia/index.js",
+		"./relysjs_plugin": "./relysjs_plugin/index.js",
 		"./package.json": "./package.json"
 	},
 	"scripts": {
 		"build": ":",
 		"clean": ":",
 		"exec": "$@",
-		"prepublishOnly": "pnpm clean && pnpm build && pnpm test",
-		"test": "pnpm test-unit && check-dts",
-		"test-unit": "tsx node_modules/uvu/bin.js ../ui-server/src/relysjs '\\\\.test\\\\.(ts|js)$'",
-		"test-unit-coverage": "c8 pnpm test-unit"
+		"prepublishOnly": "bun clean && bun build && bun test",
+		"test": "bun test-unit && bun -c check-dts",
+		"test-unit": "tsx node_modules/uvu/bin.js . '\\\\.test\\\\.(ts|js)$'",
+		"test-unit-coverage": "c8 bun -c test-unit"
 	},
 	"dependencies": {
 		"ctx-core": "^4.14.1",
-		"elysia": "^0.7.30"
+		"elysia": "^0.7.30",
+		"resbuild": "0.0.0"
 	},
 	"devDependencies": {
 		"c8": "^8.0.1",
