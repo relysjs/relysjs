@@ -18,9 +18,9 @@ import { app_, app__set } from '../app/index.js'
  * @returns {Plugin}
  * @private
  */
-export function relysjs_rebuild_() {
+export function relysjs_plugin_() {
 	return {
-		name: 'relysjs_rebuild',
+		name: 'relysjs_plugin',
 		setup(build) {
 			build.onEnd(async result=>{
 				if (result.errors.length) {
