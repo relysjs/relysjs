@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.1.3
+
+### Patch Changes
+
+- fix: package directories:
+
+      ./elysia→./elysiajs
+
 ## 0.1.2
 
 ### Patch Changes
