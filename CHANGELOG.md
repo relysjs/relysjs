@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.3.1
+
+### Patch Changes
+
+- merge ./relysjs_plugin into ./build
+
 ## 0.3.0
 
 ### Minor Changes
