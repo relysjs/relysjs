@@ -1,5 +1,17 @@
 # relysjs
 
+## 0.2.0
+
+### Minor Changes
+
+- relysjs*plugin*→relysjs*rebuild*
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.2.0
+
 ## 0.1.3
 
 ### Patch Changes

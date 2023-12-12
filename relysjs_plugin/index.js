@@ -18,7 +18,7 @@ import { app_, app__set } from '../app/index.js'
  * @returns {Plugin}
  * @private
  */
-export function relysjs_plugin_() {
+export function relysjs_rebuild_() {
 	return {
 		name: 'relysjs_rebuild',
 		setup(build) {
@@ -45,10 +45,7 @@ export async function app__new() {
 			prefix: '',
 		}))
 	if (server__metafile) {
-		const {
-			inputs,
-			outputs
-		} = server__metafile
+		const { inputs } = server__metafile
 		for (let input_path in inputs) {
 			const middleware_ctx = middleware_ctx_()
 			server__input_path__set(middleware_ctx, input_path)
