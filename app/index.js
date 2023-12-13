@@ -1,8 +1,9 @@
 import { file_exists_ } from '@ctx-core/fs'
 import { staticPlugin } from '@elysiajs/static'
+import { nullish__none_, tup } from 'ctx-core/all'
 import { be_memo_pair_, be_sig_triple_, rmemo__wait } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
-import { join } from 'path'
+import { dirname, join, relative } from 'path'
 import {
 	app_ctx,
 	app_ctx__be_config,
@@ -14,9 +15,11 @@ import {
 	port_,
 	server__input_path__set,
 	server__metafile$_,
+	server__metafile_,
 	server__metafile_path_,
 	server__output_,
-	server__output_path_, server_path_
+	server__output__relative_path_,
+	server_path_
 } from 'rebuildjs'
 export * from 'rebuildjs/app'
 export const [
@@ -32,6 +35,37 @@ export const [
 ] = be_memo_pair_(ctx=>
 	join(server_path_(ctx), 'index.js'),
 { ...app_ctx__be_config, id: 'server_entry_path' })
+export const [
+	server_entry__relative_path$_,
+	server_entry__relative_path_,
+] = be_memo_pair_(ctx=>
+	relative(cwd_(ctx), server_entry_path_(ctx)),
+{ ...app_ctx__be_config, id: 'server_entry__relative_path' })
+export const [
+	server_entry__output__relative_path$_,
+	server_entry__output__relative_path_,
+] = be_memo_pair_(ctx=>
+	nullish__none_(tup(server__metafile_(ctx), server_entry__relative_path_(ctx)),
+		(server__metafile, server_entry__relative_path)=>{
+			const { outputs } = server__metafile
+			for (const output_path in outputs) {
+				const output = outputs[output_path]
+				if (output.entryPoint === server_entry__relative_path) return output_path
+			}
+		}),
+{ ...app_ctx__be_config, id: 'server_entry__output__relative_path' })
+export const [
+	server_entry__output__path$_,
+	server_entry__output__path_,
+] = be_memo_pair_(ctx=>
+	join(cwd_(ctx), server_entry__output__relative_path_(ctx)),
+{ ...app_ctx__be_config, id: 'server_entry__output__path' })
+export const [
+	server_entry__output__link__path$_,
+	server_entry__output__link__path_,
+] = be_memo_pair_(ctx=>
+	join(dirname(server_entry__output__path_(ctx)), 'index.js'),
+{ ...app_ctx__be_config, id: 'server_entry__output__link__path' })
 export async function app__new() {
 	if (!await file_exists_(server__metafile_path_(app_ctx))) {
 		throw new Error(`${server__metafile_path_(app_ctx)} does not exist`)
@@ -56,7 +90,7 @@ export async function app__new() {
 		const output = server__output_(middleware_ctx)
 		if (output) {
 			const server__middleware =
-				await import(join(cwd_(app_ctx), server__output_path_(middleware_ctx)))
+				await import(join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx)))
 					.then(mod=>mod.default)
 			app.use(server__middleware(middleware_ctx))
 		}

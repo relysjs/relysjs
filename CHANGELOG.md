@@ -1,5 +1,44 @@
 # relysjs
 
+## 0.9.0
+
+### Minor Changes
+
+- minor:
+
+      browser__output_path→browser__output__relative_path:
+      	browser__output_path$_→browser__output__relative_path$_
+      	browser__output_path_→browser__output__relative_path_
+      server__output_path→server__output__relative_path:
+      	server__output_path$_→server__output__relative_path$_
+      	server__output_path_→server__output__relative_path_
+
+- minor:
+
+      +  server_entry__relative_path:
+      	+ server_entry__relative_path$_
+      	+ server_entry__relative_path_
+      + server_entry__output__relative_path:
+      	+ server_entry__output__relative_path$_
+      	+ server_entry__output__relative_path_
+      + server_entry__output__path:
+      	+ server_entry__output__path$_
+      	+ server_entry__output__path_
+      + server_entry__output__link__path:
+      	+ server_entry__output__link__path$_
+      	+ server_entry__output__link__path_
+
+### Patch Changes
+
+- relysjs*plugin*: fix: import server entry file
+- fix: type declarations: server_entry_path
+
+      server_entry_path$_
+      server_entry_path_
+
+- Updated dependencies
+  - rebuildjs@0.9.0
+
 ## 0.8.1
 
 ### Patch Changes

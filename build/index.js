@@ -1,9 +1,10 @@
 /// <reference types="esbuild" />
+import { link } from 'fs/promises'
 /// <reference types="./index.d.ts" />
 import { join } from 'path'
 import { app_ctx, app_path_ } from 'rebuildjs'
 import { browser__build, server__build as _server__build } from 'rebuildjs/build'
-import { server_entry_path_ } from '../app/index.js'
+import { server_entry__output__link__path_, server_entry__output__path_, server_entry_path_ } from '../app/index.js'
 export { browser__build }
 /**
  * @param {relysjs__server__build_config_T}[config]
@@ -37,8 +38,9 @@ export function relysjs_plugin_(config) {
 				if (result.errors.length) {
 					throw new Error(`Build errors: ${result.errors.length} errors`)
 				}
+				await link(server_entry__output__path_(app_ctx), server_entry__output__link__path_(app_ctx))
 				if (config?.app__start ?? true) {
-					const app__start = await import(server_entry_path_(app_ctx))
+					const app__start = await import(server_entry__output__link__path_(app_ctx))
 					await app__start()
 				}
 			})
