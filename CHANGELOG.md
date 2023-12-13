@@ -1,5 +1,15 @@
 # relysjs
 
+## 0.11.0
+
+### Minor Changes
+
+- patch:
+
+      adds opportunity to add middleware:
+      	app__start: takes an optional app:Elysia argument
+      	app__new→app__attach: tkes an optional app:Elysia argument
+
 ## 0.10.3
 
 ### Patch Changes

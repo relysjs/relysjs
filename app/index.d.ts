@@ -22,5 +22,5 @@ export const [
 	server_entry__output__link__path$_,
 	server_entry__output__link__path_,
 ]:be_memo_pair_T<string>
-export declare function app__new():Promise<Elysia>
-export declare function app__start():Promise<Elysia>
+export declare function app__attach(app?:Elysia):Promise<Elysia>
+export declare function app__start(app?:Elysia):Promise<Elysia>
