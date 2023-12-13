@@ -1,5 +1,15 @@
 # relysjs
 
+## 0.3.6
+
+### Patch Changes
+
+- fix: import app\_\_new
+- ∋ esbuild
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.3.3
+
 ## 0.3.5
 
 ### Patch Changes

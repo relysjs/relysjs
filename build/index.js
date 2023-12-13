@@ -1,7 +1,7 @@
 /// <reference types="esbuild" />
 import { app_ctx, port_ } from 'rebuildjs'
 import { browser__build, server__build as _server__build } from 'rebuildjs/build'
-import { app_, app__set } from '../app/index.js'
+import { app_, app__new, app__set } from '../app/index.js'
 export { browser__build }
 export function server__build(config = {}) {
 	const plugins = [relysjs_plugin_(), ...(config.plugins ?? [])]
