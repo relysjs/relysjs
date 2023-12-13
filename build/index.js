@@ -1,20 +1,26 @@
 /// <reference types="esbuild" />
-import { app_ctx, port_ } from 'rebuildjs'
+/// <reference types="./index.d.ts" />
 import { browser__build, server__build as _server__build } from 'rebuildjs/build'
-import { app_, app__new, app__set } from '../app/index.js'
+import { app__start } from '../app/index.js'
 export { browser__build }
-export function server__build(config = {}) {
-	const plugins = [relysjs_plugin_(), ...(config.plugins ?? [])]
+/**
+ * @param {relysjs__server__build_config_T}[config]
+ * @returns {Promise<void>}
+ */
+export function server__build(config) {
+	const { relysjs, ...rest } = config ?? {}
+	const plugins = [relysjs_plugin_(relysjs), ...(config?.plugins ?? [])]
 	return _server__build({
-		...config,
+		...rest,
 		plugins,
 	})
 }
 /**
+ * @param {relysjs_plugin_config_T}[config]
  * @returns {Plugin}
  * @private
  */
-export function relysjs_plugin_() {
+export function relysjs_plugin_(config) {
 	return {
 		name: 'relysjs_plugin',
 		setup(build) {
@@ -22,13 +28,9 @@ export function relysjs_plugin_() {
 				if (result.errors.length) {
 					throw new Error(`Build errors: ${result.errors.length} errors`)
 				}
-				let app = app_(app_ctx)
-				if (app) {
-					await app.stop()
+				if (config?.app__start ?? true) {
+					await app__start()
 				}
-				app = await app__new()
-				app__set(app_ctx, app)
-				app.listen(port_(app_ctx))
 			})
 		}
 	}

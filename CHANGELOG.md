@@ -1,5 +1,26 @@
 # relysjs
 
+## 0.5.0
+
+### Minor Changes
+
+- - app\_\_start
+- - relysjs**server**build_config_T
+- relysjs*plugin*: arguments: config?:relysjs_plugin_config_T
+- server**build: arguments: config?:relysjs**server\_\_build_config_T
+- lock*memosig*: \_=: sets .lock = 1 to prevent the memo_def from running
+- relysjs*plugin*: automatic app**start can be deactivated with app**start: false configuration
+- - relysjs_plugin_config_T
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.5.0
+  - ctx-core@4.17.0
+
 ## 0.4.1
 
 ### Patch Changes

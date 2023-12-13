@@ -1,6 +1,6 @@
+import { staticPlugin } from '@elysiajs/static'
 import { be_sig_triple_ } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
-import { staticPlugin } from '@elysiajs/static'
 import { join } from 'path'
 import {
 	app_ctx,
@@ -8,6 +8,7 @@ import {
 	browser_path_,
 	cwd_,
 	middleware_ctx_,
+	port_,
 	server__input_path__set,
 	server__metafile_,
 	server__output_,
@@ -42,5 +43,17 @@ export async function app__new() {
 			}
 		}
 	}
+	return app
+}
+export async function app__start() {
+	let app = app_(app_ctx)
+	if (app) {
+		await app.stop()
+	}
+	app = await app__new()
+	app__set(app_ctx, app)
+	const port = port_(app_ctx)
+	app.listen(port)
+	console.info(`server started on port ${port}`)
 	return app
 }
