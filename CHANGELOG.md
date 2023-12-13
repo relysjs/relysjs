@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.11.2
+
+### Patch Changes
+
+- app**attach: fix: double start server issue by guarding middleware against server_entry**relative*path*(app_ctx)
+
 ## 0.11.1
 
 ### Patch Changes
