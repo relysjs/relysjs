@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.9.4
+
+### Patch Changes
+
+- relysjs*plugin*: fix: get server entry module .default function
+
 ## 0.9.3
 
 ### Patch Changes

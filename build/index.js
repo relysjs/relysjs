@@ -47,7 +47,7 @@ export function relysjs_plugin_(config) {
 						`${server_entry__output__link__path_(app_ctx)}.map`)
 				}
 				if (config?.app__start ?? true) {
-					const app__start = await import(server_entry__output__link__path_(app_ctx))
+					const app__start = await import(server_entry__output__link__path_(app_ctx)).then(mod=>mod.default)
 					await app__start()
 				}
 			})
