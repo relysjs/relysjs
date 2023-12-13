@@ -77,6 +77,7 @@ export async function app__attach(app) {
 		neq_undefined)
 	await rmemo__wait(browser__metafile$_(app_ctx), neq_undefined)
 	app ??= new Elysia()
+	app._relysjs = 1
 	app.use(staticPlugin({
 		assets: browser_path_(app_ctx),
 		prefix: '',
@@ -100,7 +101,9 @@ export async function app__attach(app) {
  * @returns {Promise<Elysia>}
  */
 export async function app__start(app) {
-	app ??= await app__attach()
+	if (!app?._relysjs) {
+		app = await app__attach(app)
+	}
 	app__set(app_ctx, app)
 	const port = port_(app_ctx)
 	app.listen(port)

@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.11.1
+
+### Patch Changes
+
+- app**start: ensure that app**attach is called on optional app argument
+
 ## 0.11.0
 
 ### Minor Changes
