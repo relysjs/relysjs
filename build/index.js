@@ -4,24 +4,34 @@ import { link } from 'fs/promises'
 /// <reference types="./index.d.ts" />
 import { join } from 'path'
 import { app_ctx, app_path_ } from 'rebuildjs'
-import { browser__build, server__build as _server__build } from 'rebuildjs/build'
+import { browser__build as _browser__build, server__build as _server__build } from 'rebuildjs/build'
 import { server_entry__output__link__path_, server_entry__output__path_ } from '../app/index.js'
-export { browser__build }
 /**
- * @param {relysjs__server__build_config_T}[config]
+ * @param {relysjs__build_config_T}[config]
+ */
+export function browser__build(config) {
+	const {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		relysjs,
+	  ...rebuildjs__config
+	} = config ?? {}
+	return _browser__build(rebuildjs__config)
+}
+/**
+ * @param {relysjs__build_config_T}[config]
  * @returns {Promise<void>}
  */
 export function server__build(config) {
 	const {
 		relysjs,
-		...esbuild_config
+		...rebuildjs__config
 	} = config ?? {}
 	const plugins = [relysjs_plugin_(relysjs), ...(config?.plugins ?? [])]
 	const entryPoints = config?.entryPoints ?? []
 	const server_entry = relysjs?.server_entry ?? join(app_path_(app_ctx), 'index.ts')
 	entryPoints.push({ in: server_entry, out: 'index' })
 	return _server__build({
-		...esbuild_config,
+		...rebuildjs__config,
 		entryPoints,
 		plugins,
 	})

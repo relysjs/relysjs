@@ -1,5 +1,23 @@
 # relysjs
 
+## 0.10.2
+
+### Patch Changes
+
+- patch:
+
+      browser__build: fix: omits config.relysjs before calling browser__build in rebuildjs: config:relysjs__build_config_T
+      relysjs__server__build_config_T→relysjs__build_config_T
+
+- patch:
+
+      fix: watch config logic:
+      	browser__build
+      	server__build
+
+- Updated dependencies
+  - rebuildjs@0.10.2
+
 ## 0.10.1
 
 ### Patch Changes
