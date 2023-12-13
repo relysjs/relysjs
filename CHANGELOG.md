@@ -1,5 +1,26 @@
 # relysjs
 
+## 0.10.0
+
+### Minor Changes
+
+- minor:
+
+      + rebuildjs__build_config_T
+      + relysjs__plugin_config_T
+      arguments: config: &rebuildjs__build_config_T:
+      	browser__build
+      	server__build
+      rebuildjs_plugin_→rebuildjs__plugin_
+      rebuildjs__plugin_: arguments: config.rebuildjs: watch options:
+        defaults to true when is_prod
+        defaults to false when not is_prod
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.10.0
+
 ## 0.9.4
 
 ### Patch Changes
