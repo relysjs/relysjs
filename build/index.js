@@ -1,4 +1,5 @@
 /// <reference types="esbuild" />
+import { file_exists_ } from '@ctx-core/fs'
 import { link } from 'fs/promises'
 /// <reference types="./index.d.ts" />
 import { join } from 'path'
@@ -39,6 +40,12 @@ export function relysjs_plugin_(config) {
 					throw new Error(`Build errors: ${result.errors.length} errors`)
 				}
 				await link(server_entry__output__path_(app_ctx), server_entry__output__link__path_(app_ctx))
+				const server_entry__output__map_path = `${server_entry__output__path_(app_ctx)}.map`
+				if (await file_exists_(server_entry__output__map_path)) {
+					await link(
+						server_entry__output__map_path,
+						`${server_entry__output__link__path_(app_ctx)}.map`)
+				}
 				if (config?.app__start ?? true) {
 					const app__start = await import(server_entry__output__link__path_(app_ctx))
 					await app__start()
