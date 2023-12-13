@@ -6,3 +6,4 @@ export declare const [
 	app_,
 	app__set
 ]:be_sig_triple_T<Elysia|undefined>
+export declare function app__new():Promise<Elysia>

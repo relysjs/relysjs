@@ -1,5 +1,18 @@
 # relysjs
 
+## 0.3.5
+
+### Patch Changes
+
+- patch:
+
+      package.json:
+      	files: fix:
+      		./elysiajs
+      		- ./relysjs_plugin
+      	dependencies: ∋ @elysiajs/static
+      app__new: move from ./build to ./app
+
 ## 0.3.4
 
 ### Patch Changes
