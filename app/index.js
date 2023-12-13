@@ -5,8 +5,10 @@ import { be_memo_pair_, be_sig_triple_, rmemo__wait } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
 import { dirname, join, relative } from 'path'
 import {
+	app__relative_path_,
 	app_ctx,
 	app_ctx__be_config,
+	app_path_,
 	browser__metafile$_,
 	browser__metafile_path_,
 	browser_path_,
@@ -18,8 +20,7 @@ import {
 	server__metafile_,
 	server__metafile_path_,
 	server__output_,
-	server__output__relative_path_,
-	server_path_
+	server__output__relative_path_
 } from 'rebuildjs'
 export * from 'rebuildjs/app'
 export const [
@@ -30,16 +31,10 @@ export const [
 	undefined,
 { ...app_ctx__be_config, id: 'app' })
 export const [
-	server_entry_path$_,
-	server_entry_path_,
-] = be_memo_pair_(ctx=>
-	join(server_path_(ctx), 'index.js'),
-{ ...app_ctx__be_config, id: 'server_entry_path' })
-export const [
 	server_entry__relative_path$_,
 	server_entry__relative_path_,
 ] = be_memo_pair_(ctx=>
-	relative(cwd_(ctx), server_entry_path_(ctx)),
+	join(app__relative_path_(ctx), 'index.ts'),
 { ...app_ctx__be_config, id: 'server_entry__relative_path' })
 export const [
 	server_entry__output__relative_path$_,

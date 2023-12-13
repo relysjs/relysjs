@@ -4,7 +4,7 @@ import { link } from 'fs/promises'
 import { join } from 'path'
 import { app_ctx, app_path_ } from 'rebuildjs'
 import { browser__build, server__build as _server__build } from 'rebuildjs/build'
-import { server_entry__output__link__path_, server_entry__output__path_, server_entry_path_ } from '../app/index.js'
+import { server_entry__output__link__path_, server_entry__output__path_ } from '../app/index.js'
 export { browser__build }
 /**
  * @param {relysjs__server__build_config_T}[config]

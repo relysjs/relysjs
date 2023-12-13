@@ -1,5 +1,39 @@
 # relysjs
 
+## 0.9.1
+
+### Patch Changes
+
+- fix: rmemo id:
+
+      app_path
+      browser__relative_path
+
+- - server_entry_path:
+
+    - server*entry_path$*
+    - server*entry_path*
+
+- add rmemos:
+
+      + src__relative_path:
+      	+ src__relative_path$_
+      	+ src__relative_path_
+      + app__relative_path:
+      	+ app__relative_path$_
+      	+ app__relative_path_
+
+- server_entry\_\_relative_path: fix: value
+- fix: rmemo names:
+
+      browser_relative_path→browser__relative_path
+      server_relative_path→server__relative_path
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.9.1
+
 ## 0.9.0
 
 ### Minor Changes
