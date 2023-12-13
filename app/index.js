@@ -4,7 +4,8 @@ import { Elysia } from 'elysia'
 import { join } from 'path'
 import {
 	app_ctx,
-	app_ctx__be_config, browser__metafile$_,
+	app_ctx__be_config,
+	browser__metafile$_,
 	browser_path_,
 	cwd_,
 	middleware_ctx_,
@@ -23,8 +24,9 @@ export const [
 	undefined,
 app_ctx__be_config)
 export async function app__new() {
-	const server__metafile = await rmemo__wait(server__metafile$_(app_ctx))
-	const browser__metafile = await rmemo__wait(browser__metafile$_(app_ctx))
+	const neq_undefined = val=>val !== undefined
+	const server__metafile = await rmemo__wait(server__metafile$_(app_ctx), neq_undefined)
+	await rmemo__wait(browser__metafile$_(app_ctx), neq_undefined)
 	const app =
 		new Elysia().use(staticPlugin({
 			assets: browser_path_(app_ctx),
