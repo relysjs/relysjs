@@ -1,16 +1,16 @@
 import { staticPlugin } from '@elysiajs/static'
-import { be_sig_triple_ } from 'ctx-core/rmemo'
+import { be_sig_triple_, rmemo__wait } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
 import { join } from 'path'
 import {
 	app_ctx,
-	app_ctx__be_config,
+	app_ctx__be_config, browser__metafile$_,
 	browser_path_,
 	cwd_,
 	middleware_ctx_,
 	port_,
 	server__input_path__set,
-	server__metafile_,
+	server__metafile$_,
 	server__output_,
 	server__output_path_
 } from 'rebuildjs'
@@ -23,7 +23,8 @@ export const [
 	undefined,
 app_ctx__be_config)
 export async function app__new() {
-	const server__metafile = server__metafile_(app_ctx)
+	const server__metafile = await rmemo__wait(server__metafile$_(app_ctx))
+	const browser__metafile = await rmemo__wait(browser__metafile$_(app_ctx))
 	const app =
 		new Elysia().use(staticPlugin({
 			assets: browser_path_(app_ctx),

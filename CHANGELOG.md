@@ -1,5 +1,16 @@
 # relysjs
 
+## 0.6.0
+
+### Minor Changes
+
+- browser**metafile,server**metafile: initial load of metafile.json: if metafile.json does not exist: .\_ = null
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.6.0
+
 ## 0.5.1
 
 ### Patch Changes
