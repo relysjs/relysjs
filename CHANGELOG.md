@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.9.2
+
+### Patch Changes
+
+- app\_\_relative_path: fix: value
+- Updated dependencies
+  - rebuildjs@0.9.2
+
 ## 0.9.1
 
 ### Patch Changes
