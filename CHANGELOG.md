@@ -1,5 +1,35 @@
 # relysjs
 
+## 0.8.0
+
+### Minor Changes
+
+- - server_entry_path:
+
+    - server*entry_path$*
+    - server*entry_path*
+
+- relysjs*plugin*: imports server_entry_path & runs default function
+- - server\__external_
+
+### Patch Changes
+
+- entryPoints: fix: always include route files:
+
+      browser__build
+      server__build
+
+- fix: rmemo id: app
+- fix: load server & browser metafile.json
+- rmemo_T: fix: + |lock_memosig_T<val_T>
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.8.0
+  - ctx-core@4.18.0
+
 ## 0.7.0
 
 ### Minor Changes
