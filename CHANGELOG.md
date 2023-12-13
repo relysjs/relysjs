@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.3.2
+
+### Patch Changes
+
+- app**new: fix: + declare function app**new
+
 ## 0.3.1
 
 ### Patch Changes
