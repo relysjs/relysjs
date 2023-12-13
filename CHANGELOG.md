@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.10.3
+
+### Patch Changes
+
+- browser\_\_relative_path: !is_prod: fix: path
+- Updated dependencies
+  - rebuildjs@0.10.3
+
 ## 0.10.2
 
 ### Patch Changes
