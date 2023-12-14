@@ -1,5 +1,16 @@
 # relysjs
 
+## 0.15.0
+
+### Minor Changes
+
+- - cssjs*esbuild_plugin*
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.13.0
+
 ## 0.14.0
 
 ### Minor Changes
