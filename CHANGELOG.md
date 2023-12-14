@@ -1,5 +1,16 @@
 # relysjs
 
+## 0.18.0
+
+### Minor Changes
+
+- - asset*path_a*
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.15.0
+
 ## 0.17.0
 
 ### Minor Changes
