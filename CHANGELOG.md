@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.13.1
+
+### Patch Changes
+
+- app\_\_attach: fix: route middleware import conditional
+- Updated dependencies
+  - rebuildjs@0.11.1
+
 ## 0.13.0
 
 ### Minor Changes

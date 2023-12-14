@@ -87,7 +87,7 @@ export async function app__attach(app) {
 		const middleware_ctx = middleware_ctx_()
 		server__output__relative_path__set(middleware_ctx, server__output__relative_path)
 		const output = server__output_(middleware_ctx)
-		if (output && output.entryPoint !== server_entry__relative_path_(app_ctx)) {
+		if (output.entryPoint && output.entryPoint !== server_entry__relative_path_(app_ctx)) {
 			const server__middleware =
 				await import(join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx)))
 					.then(mod=>mod.default)
