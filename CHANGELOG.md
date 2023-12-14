@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.12.1
+
+### Patch Changes
+
+- rebuildjs\__plugin_: fix: link cssBundle map file
+- Updated dependencies
+  - rebuildjs@0.10.4
+
 ## 0.12.0
 
 ### Minor Changes
