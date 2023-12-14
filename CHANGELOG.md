@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.13.4
+
+### Patch Changes
+
+- server\_\_css: fix: path
+- Updated dependencies
+  - rebuildjs@0.11.3
+
 ## 0.13.3
 
 ### Patch Changes
