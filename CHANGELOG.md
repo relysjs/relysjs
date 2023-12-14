@@ -1,5 +1,20 @@
 # relysjs
 
+## 0.16.0
+
+### Minor Changes
+
+- minor:
+
+      + static_middleware_
+      app__attach: no longer automatically attaching staticPlugin: must use a static middleware such as the provided static_middleware_
+      - ∋ @elysiajs/static
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@4.19.0
+
 ## 0.15.0
 
 ### Minor Changes

@@ -1,5 +1,4 @@
 import { file_exists_ } from '@ctx-core/fs'
-import { staticPlugin } from '@elysiajs/static'
 import { nullish__none_, tup } from 'ctx-core/all'
 import { be_memo_pair_, be_sig_triple_, rmemo__wait } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
@@ -10,7 +9,6 @@ import {
 	app_ctx__be_config,
 	browser__metafile$_,
 	browser__metafile_path_,
-	browser_path_,
 	cwd_,
 	middleware_ctx_,
 	port_,
@@ -78,10 +76,6 @@ export async function app__attach(app) {
 	await rmemo__wait(browser__metafile$_(app_ctx), neq_undefined)
 	app ??= new Elysia()
 	app._relysjs = 1
-	app.use(staticPlugin({
-		assets: browser_path_(app_ctx),
-		prefix: '',
-	}))
 	const { outputs } = server__metafile
 	for (let server__output__relative_path in outputs) {
 		const middleware_ctx = middleware_ctx_()
