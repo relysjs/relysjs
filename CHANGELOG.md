@@ -1,5 +1,16 @@
 # relysjs
 
+## 0.17.0
+
+### Minor Changes
+
+- - metafile\_\_wait
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.14.0
+
 ## 0.16.2
 
 ### Patch Changes
