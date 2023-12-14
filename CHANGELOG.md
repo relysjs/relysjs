@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.20.1
+
+### Patch Changes
+
+- static*middleware\_\_config_T: headers*: optional
+
 ## 0.20.0
 
 ### Minor Changes
