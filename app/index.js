@@ -14,12 +14,12 @@ import {
 	cwd_,
 	middleware_ctx_,
 	port_,
-	server__input_path__set,
 	server__metafile$_,
 	server__metafile_,
 	server__metafile_path_,
 	server__output_,
-	server__output__relative_path_
+	server__output__relative_path_,
+	server__output__relative_path__set
 } from 'rebuildjs'
 export * from 'rebuildjs/app'
 export const [
@@ -82,10 +82,10 @@ export async function app__attach(app) {
 		assets: browser_path_(app_ctx),
 		prefix: '',
 	}))
-	const { inputs } = server__metafile
-	for (let input_path in inputs) {
+	const { outputs } = server__metafile
+	for (let server__output__relative_path in outputs) {
 		const middleware_ctx = middleware_ctx_()
-		server__input_path__set(middleware_ctx, input_path)
+		server__output__relative_path__set(middleware_ctx, server__output__relative_path)
 		const output = server__output_(middleware_ctx)
 		if (output && output.entryPoint !== server_entry__relative_path_(app_ctx)) {
 			const server__middleware =
