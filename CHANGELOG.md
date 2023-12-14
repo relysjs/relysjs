@@ -1,5 +1,16 @@
 # relysjs
 
+## 0.13.2
+
+### Patch Changes
+
+- browser**output**relative_path: fix: lookup:
+
+      fixes downstream browser__script
+
+- Updated dependencies
+  - rebuildjs@0.11.2
+
 ## 0.13.1
 
 ### Patch Changes
