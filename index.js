@@ -1,5 +1,6 @@
 export * from 'ctx-core/be'
 export * from 'ctx-core/rmemo'
+export * from 'rebuildjs/asset'
 export * from 'rebuildjs/browser'
 export * from 'rebuildjs/ctx'
 export * from 'rebuildjs/middleware'
