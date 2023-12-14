@@ -1,5 +1,16 @@
 # relysjs
 
+## 0.19.0
+
+### Minor Changes
+
+- - var**css**replace
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.16.0
+
 ## 0.18.1
 
 ### Patch Changes
