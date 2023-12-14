@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.12.0
+
+### Minor Changes
+
+- minor: add compression middleware:
+
+      + compression_middleware_
+      + compression_middleware_config_T
+
 ## 0.11.2
 
 ### Patch Changes
