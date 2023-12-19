@@ -6,7 +6,6 @@ import { dirname, join } from 'path'
 import {
 	app__relative_path_,
 	app_ctx,
-	app_ctx__be_config,
 	browser__metafile$_,
 	browser__metafile_path_,
 	cwd_,
@@ -26,13 +25,13 @@ export const [
 	app__set
 ] = be_sig_triple_(()=>
 	undefined,
-{ ...app_ctx__be_config, id: 'app' })
+{ ns: 'app', id: 'app' })
 export const [
 	server_entry__relative_path$_,
 	server_entry__relative_path_,
 ] = be_memo_pair_(ctx=>
 	join(app__relative_path_(ctx), 'index.ts'),
-{ ...app_ctx__be_config, id: 'server_entry__relative_path' })
+{ ns: 'app', id: 'server_entry__relative_path' })
 export const [
 	server_entry__output__relative_path$_,
 	server_entry__output__relative_path_,
@@ -45,19 +44,23 @@ export const [
 				if (output.entryPoint === server_entry__relative_path) return output_path
 			}
 		}),
-{ ...app_ctx__be_config, id: 'server_entry__output__relative_path' })
+{ ns: 'app', id: 'server_entry__output__relative_path' })
 export const [
 	server_entry__output__path$_,
 	server_entry__output__path_,
 ] = be_memo_pair_(ctx=>
-	join(cwd_(ctx), server_entry__output__relative_path_(ctx)),
-{ ...app_ctx__be_config, id: 'server_entry__output__path' })
+	nullish__none_(tup(cwd_(ctx), server_entry__output__relative_path_(ctx)),
+		(cwd, server_entry__output__relative_path)=>
+			join(cwd, server_entry__output__relative_path)),
+{ ns: 'app', id: 'server_entry__output__path' })
 export const [
 	server_entry__output__link__path$_,
 	server_entry__output__link__path_,
 ] = be_memo_pair_(ctx=>
-	join(dirname(server_entry__output__path_(ctx)), 'index.js'),
-{ ...app_ctx__be_config, id: 'server_entry__output__link__path' })
+	nullish__none_([server_entry__output__path_(ctx)],
+		server_entry__output__path=>
+			join(dirname(server_entry__output__path), 'index.js')),
+{ ns: 'app', id: 'server_entry__output__link__path' })
 /**
  * @param {Elysia}[app]
  * @returns {Promise<Elysia>}

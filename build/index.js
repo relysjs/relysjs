@@ -1,7 +1,7 @@
 /// <reference types="esbuild" />
+/// <reference types="./index.d.ts" />
 import { file_exists_ } from '@ctx-core/fs'
 import { link } from 'fs/promises'
-/// <reference types="./index.d.ts" />
 import { join } from 'path'
 import { app_ctx, app_path_ } from 'rebuildjs'
 import { browser__build as _browser__build, server__build as _server__build } from 'rebuildjs/build'
