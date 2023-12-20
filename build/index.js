@@ -1,6 +1,6 @@
 /// <reference types="esbuild" />
 /// <reference types="./index.d.ts" />
-import { file_exists_ } from '@ctx-core/fs'
+import { file_exists_ } from 'ctx-core/fs'
 import { link } from 'fs/promises'
 import { join } from 'path'
 import { app_ctx, app_path_ } from 'rebuildjs'
