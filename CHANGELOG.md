@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.23.5
+
+### Patch Changes
+
+- rmemo: fix: imports
+- Updated dependencies
+  - ctx-core@5.2.3
+  - rebuildjs@0.19.5
+
 ## 0.23.4
 
 ### Patch Changes
