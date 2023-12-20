@@ -1,5 +1,15 @@
 # relysjs
 
+## 0.23.3
+
+### Patch Changes
+
+- browser build: es2021
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.19.3
+  - ctx-core@5.2.2
+
 ## 0.23.2
 
 ### Patch Changes
