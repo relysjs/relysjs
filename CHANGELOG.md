@@ -1,5 +1,20 @@
 # relysjs
 
+## 0.23.0
+
+### Minor Changes
+
+- minor:
+
+      + ctx__clear
+      + ondelete_be_
+      + ondelete_be__val__new_T
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.19.0
+
 ## 0.22.6
 
 ### Patch Changes
