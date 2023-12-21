@@ -1,6 +1,67 @@
+import { app_ctx, ctx_, middleware_ctx_, route_ctx_ } from 'rebuildjs'
 import { test } from 'uvu'
-import { equal } from 'uvu/assert'
-test('elysia|loads', ()=>{
-	equal(1, 1)
+import { equal, throws } from 'uvu/assert'
+import {
+	elysia_context$_,
+	elysia_context_,
+	elysia_context__set,
+	type elysia_context_T,
+	request$_,
+	request_, store$_, store_
+} from './index.js'
+test.after.each(()=>{
+	app_ctx.s.app.clear()
+})
+test('elysia_context', ()=>{
+	const route_ctx = route_ctx_(middleware_ctx_())
+	equal(elysia_context$_(route_ctx)._, undefined)
+	equal(elysia_context_(route_ctx), undefined)
+	const elysia_context:elysia_context_T = {
+		request: new Request('http://localhost:3000'),
+		store: { ctx: route_ctx },
+	}
+	elysia_context__set(route_ctx, elysia_context)
+	equal(elysia_context$_(route_ctx)._, elysia_context)
+	equal(elysia_context_(route_ctx), elysia_context)
+	// @ts-expect-error TS2345
+	throws(()=>elysia_context$_(ctx_())._)
+	// @ts-expect-error TS2345
+	throws(()=>elysia_context_(ctx_()))
+	// @ts-expect-error TS2345
+	throws(()=>elysia_context__set(ctx_(), elysia_context))
+})
+test('request', ()=>{
+	const route_ctx = route_ctx_(middleware_ctx_())
+	equal(request$_(route_ctx)._, undefined)
+	equal(request_(route_ctx), undefined)
+	const request = new Request('http://localhost:3000')
+	const elysia_context:elysia_context_T = {
+		request,
+		store: { ctx: route_ctx },
+	}
+	elysia_context__set(route_ctx, elysia_context)
+	equal(request$_(route_ctx)._, request)
+	equal(request_(route_ctx), request)
+	// @ts-expect-error TS2345
+	throws(()=>request$_(ctx_())._)
+	// @ts-expect-error TS2345
+	throws(()=>request_(ctx_()))
+})
+test('store', ()=>{
+	const route_ctx = route_ctx_(middleware_ctx_())
+	equal(store$_(route_ctx)._, undefined)
+	equal(store_(route_ctx), undefined)
+	const store = { ctx: route_ctx }
+	const elysia_context:elysia_context_T = {
+		request: new Request('http://localhost:3000'),
+		store,
+	}
+	elysia_context__set(route_ctx, elysia_context)
+	equal(store$_(route_ctx)._, store)
+	equal(store_(route_ctx), store)
+	// @ts-expect-error TS2345
+	throws(()=>store$_(ctx_())._)
+	// @ts-expect-error TS2345
+	throws(()=>store_(ctx_()))
 })
 test.run()

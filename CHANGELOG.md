@@ -1,5 +1,28 @@
 # relysjs
 
+## 0.24.0
+
+### Minor Changes
+
+- minor:
+
+      elysia_context$_:
+      elysia_context_:
+      elysia_context__set:
+      request$_:
+      request_:
+      store$_:
+      store_:
+      	nx: route
+      elysia_context_T: .store: Ctx<''|'app'|'middleware'|'route'>
+
+- route_ctx,route_ctx_T: ns: + ''
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.20.0
+
 ## 0.23.8
 
 ### Patch Changes
