@@ -1,5 +1,18 @@
 # relysjs
 
+## 0.24.1
+
+### Patch Changes
+
+- metafile**wait:
+  server**metafile:
+  browser\_\_metafile:
+
+      wait for metafile to be written to disk: ∋ subscribe_wait
+
+- Updated dependencies
+  - rebuildjs@0.20.1
+
 ## 0.24.0
 
 ### Minor Changes
