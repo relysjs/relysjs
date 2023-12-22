@@ -7,7 +7,11 @@ import {
 	elysia_context__set,
 	type elysia_context_T,
 	request$_,
-	request_, store$_, store_
+	request_,
+	request_url$_,
+	request_url_,
+	store$_,
+	store_
 } from './index.js'
 test.after.each(()=>{
 	app_ctx.s.app.clear()
@@ -46,6 +50,25 @@ test('request', ()=>{
 	throws(()=>request$_(ctx_())._)
 	// @ts-expect-error TS2345
 	throws(()=>request_(ctx_()))
+})
+test('request_url', ()=>{
+	const route_ctx = route_ctx_(middleware_ctx_())
+	equal(request_url$_(route_ctx)._, undefined)
+	equal(request_url_(route_ctx), undefined)
+	const request = new Request('http://localhost:3000/foo/bar')
+	const elysia_context:elysia_context_T = {
+		request,
+		store: { ctx: route_ctx },
+	}
+	elysia_context__set(route_ctx, elysia_context)
+	equal(elysia_context_(route_ctx), elysia_context)
+	equal(request_(route_ctx), request)
+	equal(request_url$_(route_ctx)._, new URL('http://localhost:3000/foo/bar'))
+	equal(request_url_(route_ctx), new URL('http://localhost:3000/foo/bar'))
+	// @ts-expect-error TS2345
+	throws(()=>request_url$_(ctx_())._)
+	// @ts-expect-error TS2345
+	throws(()=>request_url_(ctx_()))
 })
 test('store', ()=>{
 	const route_ctx = route_ctx_(middleware_ctx_())

@@ -1,5 +1,15 @@
 # relysjs
 
+## 0.25.0
+
+### Minor Changes
+
+- minor:
+
+      + request_url:
+      	+ request_url$_
+      	+ request_url_
+
 ## 0.24.3
 
 ### Patch Changes
