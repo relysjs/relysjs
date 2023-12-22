@@ -1,5 +1,17 @@
 # relysjs
 
+## 0.25.4
+
+### Patch Changes
+
+- patch:
+
+      assets_T: required props: css_a,script_a
+      assets__new: arguments: (..._assets_a:(Partial<assets_T>|undefined)[])
+
+- Updated dependencies
+  - rebuildjs@0.20.5
+
 ## 0.25.3
 
 ### Patch Changes
