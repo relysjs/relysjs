@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.24.3
+
+### Patch Changes
+
+- rmemo\_\_wait: fix: prevent early GC of internal memo
+- Updated dependencies
+  - ctx-core@5.4.1
+  - rebuildjs@0.20.3
+
 ## 0.24.2
 
 ### Patch Changes
