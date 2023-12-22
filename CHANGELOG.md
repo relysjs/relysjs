@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.25.3
+
+### Patch Changes
+
+- assets\_\_new: arguments type: allow undefined
+- Updated dependencies
+  - rebuildjs@0.20.4
+
 ## 0.25.2
 
 ### Patch Changes
