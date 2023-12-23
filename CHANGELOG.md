@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.25.9
+
+### Patch Changes
+
+- import node:fs/promises instead of fs/promises
+- Updated dependencies
+  - rebuildjs@0.20.9
+
 ## 0.25.8
 
 ### Patch Changes
