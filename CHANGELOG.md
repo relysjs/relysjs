@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.25.8
+
+### Patch Changes
+
+- fix: ∋ writeFile from 'node:fs/promises': instead of @ctx-core/monorepo
+- Updated dependencies
+  - rebuildjs@0.20.8
+
 ## 0.25.7
 
 ### Patch Changes
