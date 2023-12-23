@@ -50,6 +50,7 @@ export function relysjs_plugin_(config) {
 				if (result.errors.length) {
 					throw new Error(`Build errors: ${result.errors.length} errors`)
 				}
+				await rm(server_entry__output__link__path_(app_ctx), { force: true })
 				await link(server_entry__output__path_(app_ctx), server_entry__output__link__path_(app_ctx))
 				const server_entry__output__map_path = `${server_entry__output__path_(app_ctx)}.map`
 				if (await file_exists_(server_entry__output__map_path)) {
