@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.25.10
+
+### Patch Changes
+
+- compression*middleware*: fix: return type
+
 ## 0.25.9
 
 ### Patch Changes
