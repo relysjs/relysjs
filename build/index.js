@@ -2,6 +2,7 @@
 /// <reference types="./index.d.ts" />
 import { file_exists_ } from 'ctx-core/fs'
 import { link } from 'fs/promises'
+import { rm } from 'node:fs/promises'
 import { join } from 'path'
 import { app_ctx, app_path_ } from 'rebuildjs'
 import { browser__build as _browser__build, server__build as _server__build } from 'rebuildjs/build'
@@ -52,6 +53,7 @@ export function relysjs_plugin_(config) {
 				await link(server_entry__output__path_(app_ctx), server_entry__output__link__path_(app_ctx))
 				const server_entry__output__map_path = `${server_entry__output__path_(app_ctx)}.map`
 				if (await file_exists_(server_entry__output__map_path)) {
+					await rm(`${server_entry__output__link__path_(app_ctx)}.map`, { force: true })
 					await link(
 						server_entry__output__map_path,
 						`${server_entry__output__link__path_(app_ctx)}.map`)

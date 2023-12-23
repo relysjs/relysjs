@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.25.12
+
+### Patch Changes
+
+- rebuildjs\_\_plugin: asset lins: fix: "File or folder exists" error: rm -f before link
+- relysjs_plugin: link dist/server/index.js.map: fix: "File or folder exists" error: rm -f before link
+- Updated dependencies
+  - rebuildjs@0.20.10
+
 ## 0.25.11
 
 ### Patch Changes
