@@ -1,5 +1,22 @@
 # relysjs
 
+## 0.26.0
+
+### Minor Changes
+
+- minor:
+
+      + rmemo__subscribe
+      + subscribe
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.5.0
+  - rebuildjs@0.21.0
+
 ## 0.25.15
 
 ### Patch Changes
