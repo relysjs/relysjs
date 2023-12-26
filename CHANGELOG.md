@@ -1,15 +1,23 @@
 # relysjs
 
+## 0.27.1
+
+### Patch Changes
+
+- fix: text & comment occurrences of esmcss
+- Updated dependencies
+  - rebuildjs@0.22.1
+
 ## 0.27.0
 
 ### Minor Changes
 
-- minor: extracted into cssesm package:
+- minor: extracted into esmcss package:
 
-      cssesm supports:
-      	cssesm_esbuild_plugin_
+      esmcss supports:
+      	esmcss_esbuild_plugin_
       	var__css__replace
-      - cssesm_ebuild_plugin_
+      - esmcss_ebuild_plugin_
       - var__css__replace
 
 ### Patch Changes
