@@ -1,5 +1,22 @@
 # relysjs
 
+## 0.27.0
+
+### Minor Changes
+
+- minor: extracted into cssesm package:
+
+      cssesm supports:
+      	cssesm_esbuild_plugin_
+      	var__css__replace
+      - cssesm_ebuild_plugin_
+      - var__css__replace
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.22.0
+
 ## 0.26.0
 
 ### Minor Changes
