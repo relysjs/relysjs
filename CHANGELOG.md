@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.27.2
+
+### Patch Changes
+
+- fix: export: - rebuildjs/css
+
 ## 0.27.1
 
 ### Patch Changes
