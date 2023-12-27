@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.27.3
+
+### Patch Changes
+
+- elysia: ^0.8.3 -> ^0.8.5
+- Updated dependencies
+  - rebuildjs@0.22.2
+
 ## 0.27.2
 
 ### Patch Changes
