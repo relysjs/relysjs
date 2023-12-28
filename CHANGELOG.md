@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.29.1
+
+### Patch Changes
+
+- html*route*: arguments: page\_: return value: { toString():string }|ReadableStream<string>
+
 ## 0.29.0
 
 ### Minor Changes

@@ -7,7 +7,7 @@ import { route_ctx_ } from 'rebuildjs'
 import { elysia_context__set } from '../elysiajs/index.js'
 /**
  * @param {middleware_ctx_T}middleware_ctx
- * @param {($p:{ ctx:route_ctx_T })=>(string|ReadableStream<string>)}page_
+ * @param {($p:{ ctx:route_ctx_T })=>(string|ReadableStream<string|Uint8Array>)}page_
  * @returns {(context:elysia_context_T)=>Promise<Response>}
  * @private
  */
