@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.29.0
+
+### Minor Changes
+
+- - html*route*
+
 ## 0.28.0
 
 ### Minor Changes
