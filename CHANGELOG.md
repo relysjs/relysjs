@@ -1,5 +1,17 @@
 # relysjs
 
+## 0.30.1
+
+### Patch Changes
+
+- elysia: ^0.8.5 -> ^0.8.6
+- esbuild: ^0.19.10 -> ^0.19.11
+- @sinclair/typebox: ^0.32.3 -> ^0.32.4
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.24.1
+  - ctx-core@5.6.1
+
 ## 0.30.0
 
 ### Minor Changes
