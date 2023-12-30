@@ -1,4 +1,3 @@
-import { file_exists_ } from 'ctx-core/fs'
 import { nullish__none_, tup } from 'ctx-core/function'
 import { be_memo_pair_, be_sig_triple_, rmemo__wait } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
@@ -7,16 +6,16 @@ import {
 	app__relative_path_,
 	app_ctx,
 	browser__metafile$_,
-	browser__metafile_path_,
 	cwd_,
+	metafile__wait,
 	middleware_ctx_,
 	port_,
 	server__metafile$_,
 	server__metafile_,
-	server__metafile_path_,
 	server__output_,
 	server__output__relative_path_,
-	server__output__relative_path__set, server__output__relative_path_M_middleware_ctx_
+	server__output__relative_path__set,
+	server__output__relative_path_M_middleware_ctx_
 } from 'rebuildjs'
 export * from 'rebuildjs/app'
 export const [
@@ -66,12 +65,7 @@ export const [
  * @returns {Promise<Elysia>}
  */
 export async function app__attach(app) {
-	if (!await file_exists_(server__metafile_path_(app_ctx))) {
-		throw new Error(`${server__metafile_path_(app_ctx)} does not exist`)
-	}
-	if (!await file_exists_(browser__metafile_path_(app_ctx))) {
-		throw new Error(`${browser__metafile_path_(app_ctx)} does not exist`)
-	}
+	await metafile__wait(app_ctx)
 	const neq_undefined = val=>val !== undefined
 	const server__metafile = await rmemo__wait(
 		server__metafile$_(app_ctx),

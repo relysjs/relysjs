@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.30.4
+
+### Patch Changes
+
+- app**attach: fix: wait for metafiles to sync: ∋ metafile**wait
+
 ## 0.30.3
 
 ### Patch Changes
