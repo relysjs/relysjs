@@ -4,7 +4,7 @@ import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
 import { nullish__none_, run } from 'ctx-core/function'
 import { link, rm } from 'node:fs/promises'
 import { join } from 'path'
-import { app_ctx, app_path_, be, memo_ } from 'rebuildjs'
+import { app_ctx, app_path_, be, memo_, RebuildjsInterrupt } from 'rebuildjs'
 import { browser__build as rebuildjs__browser__build, server__build as rebuildjs__server__build } from 'rebuildjs/build'
 import { app_, server_entry__output__link__path_, server_entry__output__path_ } from '../app/index.js'
 /**
@@ -71,37 +71,42 @@ export function relysjs_plugin_(config) {
 							server_entry__output__link__path,
 						)=>{
 							run(async ()=>{
-								await rm(server_entry__output__link__path, { force: true })
-								if (cancel_()) return
-								await file_exists__waitfor(server_entry__output__path)
-								if (cancel_()) return
-								await link(server_entry__output__path, server_entry__output__link__path)
-								if (cancel_()) return
+								await cmd(()=>
+									rm(server_entry__output__link__path, { force: true }))
+								await cmd(()=>
+									file_exists__waitfor(server_entry__output__path))
+								await cmd(()=>
+									link(server_entry__output__path, server_entry__output__link__path))
 								const server_entry__output__map_path = `${server_entry__output__path}.map`
-								if (await file_exists_(server_entry__output__map_path)) {
-									if (cancel_()) return
-									await rm(`${server_entry__output__link__path}.map`, { force: true })
-									if (cancel_()) return
-									await file_exists__waitfor(server_entry__output__map_path)
-									if (cancel_()) return
-									await link(
-										server_entry__output__map_path,
-										`${server_entry__output__link__path}.map`)
-									if (cancel_()) return
+								if (await cmd(()=>
+									file_exists_(server_entry__output__map_path))
+								) {
+									await cmd(()=>
+										rm(`${server_entry__output__link__path}.map`, { force: true }))
+									await cmd(()=>
+										file_exists__waitfor(server_entry__output__map_path))
+									await cmd(()=>
+										link(
+											server_entry__output__map_path,
+											`${server_entry__output__link__path}.map`))
 								}
 								if (config?.app__start ?? true) {
-									await file_exists__waitfor(server_entry__output__link__path)
-									if (cancel_()) return
-									const app__start =
-										await import(server_entry__output__link__path)
-											.then(mod=>mod.default)
-									if (cancel_()) return
+									await cmd(()=>
+										file_exists__waitfor(server_entry__output__link__path))
+									const app__start = await cmd(()=>
+										import(server_entry__output__link__path)
+											.then(mod=>mod.default))
 									let app = app_(ctx)
 									if (app) await app.stop()
-									if (cancel_()) return
-									await app__start()
+									await cmd(app__start)
 								}
 							})
+							async function cmd(fn) {
+							  if (cancel_()) throw new RebuildjsInterrupt()
+								const ret = await fn()
+							  if (cancel_()) throw new RebuildjsInterrupt()
+								return ret
+							}
 							function cancel_() {
 								return (
 									server_entry__output__path_(ctx) !== server_entry__output__path

@@ -1,5 +1,24 @@
 # relysjs
 
+## 0.30.6
+
+### Patch Changes
+
+- minor: + RebuildjsInterrupt
+
+  patch: rebuildjs**assets**link$: strengthen interrupt logic
+
+- patch:
+
+      browser__metafile__persist:
+      server__metafile__persist:
+      	+ mkdir recursive: true before writeFile
+
+- patch: relysjs\_\_link$: strengthen interrupt logic
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.24.3
+
 ## 0.30.5
 
 ### Patch Changes
