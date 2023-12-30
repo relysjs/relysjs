@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.32.1
+
+### Patch Changes
+
+- RebuildjsInterrupt: fix: export type
+- Updated dependencies
+  - rebuildjs@0.26.1
+
 ## 0.32.0
 
 ### Minor Changes
