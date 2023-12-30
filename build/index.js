@@ -4,9 +4,47 @@ import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
 import { nullish__none_, run } from 'ctx-core/function'
 import { link, rm } from 'node:fs/promises'
 import { join } from 'path'
-import { app_ctx, app_path_, be, memo_, RebuildjsInterrupt } from 'rebuildjs'
+import {
+	app_ctx,
+	app_path_,
+	be,
+	be_memo_pair_,
+	be_sig_triple_,
+	build_id_,
+	memo_,
+	metafile__build_id_,
+	rebuildjs__ready_,
+	RebuildjsInterrupt,
+	rmemo__wait
+} from 'rebuildjs'
 import { browser__build as rebuildjs__browser__build, server__build as rebuildjs__server__build } from 'rebuildjs/build'
 import { app_, server_entry__output__link__path_, server_entry__output__path_ } from '../app/index.js'
+export const [
+	relysjs__build_id$_,
+	relysjs__build_id_,
+	relysjs__build_id__set,
+] = be_sig_triple_(()=>undefined,
+	{ id: 'relysjs_plugin__build_id', ns: 'app' })
+export const [
+	relysjs__ready$_,
+	relysjs__ready_,
+] = be_memo_pair_(ctx=>
+	!!(
+		build_id_(ctx)
+			&& rebuildjs__ready_(ctx)
+			&& build_id_(ctx) === metafile__build_id_(ctx)
+			&& build_id_(ctx) === relysjs__build_id_(ctx)),
+{ id: 'relysjs__ready', ns: 'app' })
+/**
+ * @param {number}[timeout]
+ * @returns {Promise<void>}}
+ */
+export function relysjs__ready__wait(timeout) {
+	return rmemo__wait(
+		relysjs__ready$_(app_ctx),
+		ready=>ready,
+		timeout ?? 5000)
+}
 /**
  * @param {relysjs__build_config_T}[config]
  */
@@ -64,58 +102,67 @@ export function relysjs_plugin_(config) {
 					return relysjs__link$
 					function r() {
 						nullish__none_([
+							build_id_(ctx),
 							server_entry__output__path_(ctx),
 							server_entry__output__link__path_(ctx),
 						], (
+							build_id,
 							server_entry__output__path,
 							server_entry__output__link__path,
 						)=>{
 							run(async ()=>{
-								await cmd(()=>
-									rm(server_entry__output__link__path, { force: true }))
-								await cmd(()=>
-									file_exists__waitfor(server_entry__output__path))
-								await cmd(()=>
-									link(server_entry__output__path, server_entry__output__link__path))
-								const server_entry__output__map_path = `${server_entry__output__path}.map`
-								if (await cmd(()=>
-									file_exists_(server_entry__output__map_path))
-								) {
+								try {
 									await cmd(()=>
-										rm(`${server_entry__output__link__path}.map`, { force: true }))
+										rm(server_entry__output__link__path, { force: true }))
 									await cmd(()=>
-										file_exists__waitfor(server_entry__output__map_path))
+										file_exists__waitfor(server_entry__output__path))
 									await cmd(()=>
-										link(
-											server_entry__output__map_path,
-											`${server_entry__output__link__path}.map`))
-								}
-								if (config?.app__start ?? true) {
-									await cmd(()=>
-										file_exists__waitfor(server_entry__output__link__path))
-									const app__start = await cmd(()=>
-										import(server_entry__output__link__path)
-											.then(mod=>mod.default))
-									let app = app_(ctx)
-									if (app) await app.stop()
-									await cmd(app__start)
+										link(server_entry__output__path, server_entry__output__link__path))
+									const server_entry__output__map_path = `${server_entry__output__path}.map`
+									if (await cmd(()=>
+										file_exists_(server_entry__output__map_path))
+									) {
+										await cmd(()=>
+											rm(`${server_entry__output__link__path}.map`, { force: true }))
+										await cmd(()=>
+											file_exists__waitfor(server_entry__output__map_path))
+										await cmd(()=>
+											link(
+												server_entry__output__map_path,
+												`${server_entry__output__link__path}.map`))
+									}
+									relysjs__build_id__set(ctx, build_id)
+									if (config?.app__start ?? true) {
+										await cmd(()=>
+											file_exists__waitfor(server_entry__output__link__path))
+										const app__start = await cmd(()=>
+											import(server_entry__output__link__path)
+												.then(mod=>mod.default))
+										let app = app_(ctx)
+										if (app) await app.stop()
+										await cmd(relysjs__ready__wait)
+										await cmd(app__start)
+									}
+								} catch (err) {
+									if (err instanceof RebuildjsInterrupt) return
+									throw err
 								}
 							})
 							async function cmd(fn) {
-							  if (cancel_()) throw new RebuildjsInterrupt()
+								if (cancel_()) throw new RebuildjsInterrupt()
 								const ret = await fn()
-							  if (cancel_()) throw new RebuildjsInterrupt()
+								if (cancel_()) throw new RebuildjsInterrupt()
 								return ret
 							}
 							function cancel_() {
 								return (
-									server_entry__output__path_(ctx) !== server_entry__output__path
-									|| server_entry__output__link__path_(ctx) !== server_entry__output__link__path
+									build_id_(ctx) !== build_id
+										|| server_entry__output__path_(ctx) !== server_entry__output__path
+										|| server_entry__output__link__path_(ctx) !== server_entry__output__link__path
 								)
 							}
 						})
 					}
-					return relysjs__link$
 				})),
 			{ id: 'relysjs__link$', ns: 'app' })()
 		}

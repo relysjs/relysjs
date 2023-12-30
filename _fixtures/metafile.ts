@@ -1,5 +1,5 @@
 import { type rebuildjs_metafile_T } from 'rebuildjs'
-export const browser_metafile0 = Object.freeze({
+export const browser__metafile0 = Object.freeze({
 	inputs: {
 		'../input/path0': {
 			'bytes': 224,
@@ -29,7 +29,7 @@ export const browser_metafile0 = Object.freeze({
 	"build_id": "1703841142372-Vl85Mji6Shymq77xc+DZnA",
 	"rebuildjs_target": "browser",
 }) as rebuildjs_metafile_T
-export const server_metafile0 = Object.freeze({
+export const server__metafile0 = Object.freeze({
 	inputs: {
 		'../input/path0': {
 			'bytes': 224,
@@ -80,7 +80,7 @@ export const server_metafile0 = Object.freeze({
 	"build_id": "1703841142372-Vl85Mji6Shymq77xc+DZnA",
 	"rebuildjs_target": "server",
 }) as rebuildjs_metafile_T
-export const browser_metafile1 = Object.freeze({
+export const browser__metafile1 = Object.freeze({
 	inputs: {
 		'../input/path0': {
 			'bytes': 224,
@@ -118,7 +118,7 @@ export const browser_metafile1 = Object.freeze({
 	"build_id": "1703841346765-xNph8Y1XQ7+8uH+WdxguYg",
 	"rebuildjs_target": "browser"
 }) as rebuildjs_metafile_T
-export const server_metafile1 = Object.freeze({
+export const server__metafile1 = Object.freeze({
 	inputs: {
 		'../input/path0': {
 			'bytes': 224,
@@ -157,7 +157,7 @@ export const server_metafile1 = Object.freeze({
 	"build_id": "1703841346765-xNph8Y1XQ7+8uH+WdxguYg",
 	"rebuildjs_target": "server"
 }) as rebuildjs_metafile_T
-export const browser_metafile2 = Object.freeze({
+export const browser__metafile2 = Object.freeze({
 	inputs: {
 		'../input/path0': {
 			'bytes': 224,
@@ -203,7 +203,7 @@ export const browser_metafile2 = Object.freeze({
 	"build_id": "1703841451522-YQ2uhl/DRnaZG30UnE+9Yg",
 	"rebuildjs_target": "browser"
 }) as rebuildjs_metafile_T
-export const server_metafile2 = Object.freeze({
+export const server__metafile2 = Object.freeze({
 	inputs: {
 		'../input/path0': {
 			'bytes': 224,

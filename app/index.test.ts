@@ -2,7 +2,7 @@ import { Elysia } from 'elysia'
 import { app_ctx, app_path__set, ctx_, cwd__set, server__metafile__set } from 'rebuildjs'
 import { test } from 'uvu'
 import { equal, throws } from 'uvu/assert'
-import { server_metafile0 } from '../_fixtures/metafile.js'
+import { server__metafile0 } from '../_fixtures/metafile.js'
 import {
 	app$_,
 	app_,
@@ -49,8 +49,8 @@ test('server_entry__output__relative_path', ()=>{
 	equal(server_entry__output__relative_path$_(app_ctx)._, undefined)
 	equal(server_entry__output__relative_path_(app_ctx), undefined)
 	equal(server_entry__relative_path_(app_ctx), 'src/app/index.ts')
-	server__metafile__set(app_ctx, server_metafile0)
-	equal(server_metafile0.outputs['dist/dev-server/index-OUBLL3JD.js'].entryPoint, 'src/app/index.ts')
+	server__metafile__set(app_ctx, server__metafile0)
+	equal(server__metafile0.outputs['dist/dev-server/index-OUBLL3JD.js'].entryPoint, 'src/app/index.ts')
 	equal(server_entry__output__relative_path$_(app_ctx)._, 'dist/dev-server/index-OUBLL3JD.js')
 	equal(server_entry__output__relative_path_(app_ctx), 'dist/dev-server/index-OUBLL3JD.js')
 	// @ts-expect-error TS2345
@@ -62,9 +62,9 @@ test('server_entry__output__path', ()=>{
 	equal(server_entry__output__path$_(app_ctx)._, undefined)
 	equal(server_entry__output__path_(app_ctx), undefined)
 	cwd__set(app_ctx, '/cwd')
-	server__metafile__set(app_ctx, server_metafile0)
+	server__metafile__set(app_ctx, server__metafile0)
 	equal(server_entry__relative_path_(app_ctx), 'src/app/index.ts')
-	equal(server_metafile0.outputs['dist/dev-server/index-OUBLL3JD.js'].entryPoint, 'src/app/index.ts')
+	equal(server__metafile0.outputs['dist/dev-server/index-OUBLL3JD.js'].entryPoint, 'src/app/index.ts')
 	equal(server_entry__output__path$_(app_ctx)._, '/cwd/dist/dev-server/index-OUBLL3JD.js')
 	equal(server_entry__output__path_(app_ctx), '/cwd/dist/dev-server/index-OUBLL3JD.js')
 	// @ts-expect-error TS2345
@@ -76,7 +76,7 @@ test('server_entry__output__link__path', ()=>{
 	equal(server_entry__output__link__path$_(app_ctx)._, undefined)
 	equal(server_entry__output__link__path_(app_ctx), undefined)
 	cwd__set(app_ctx, '/cwd')
-	server__metafile__set(app_ctx, server_metafile0)
+	server__metafile__set(app_ctx, server__metafile0)
 	equal(server_entry__relative_path_(app_ctx), 'src/app/index.ts')
 	equal(server_entry__output__link__path$_(app_ctx)._, '/cwd/dist/dev-server/index.js')
 	equal(server_entry__output__link__path_(app_ctx), '/cwd/dist/dev-server/index.js')

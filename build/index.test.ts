@@ -1,24 +1,108 @@
 import { gunzipSync } from 'bun'
 import { file_exists_ } from 'ctx-core/fs'
 import { sleep } from 'ctx-core/function'
-import { rmemo__wait } from 'ctx-core/rmemo'
+import { ctx_, rmemo__wait } from 'ctx-core/rmemo'
 import { BuildContext } from 'esbuild'
 import { rm } from 'node:fs/promises'
 import { dirname, join } from 'path'
 import {
 	app_ctx,
-	browser__metafile_, browser__script_,
-	cwd__set,
-	metafile__wait, server__css_,
+	browser__metafile_,
+	browser__metafile__set,
+	browser__script_,
+	build_id_,
+	build_id__refresh,
+	build_id__set,
+	cwd__set, rebuildjs__build_id__set,
+	server__css_,
 	server__metafile_,
+	server__metafile__set,
 	server__output__relative_path_M_middleware_ctx_
 } from 'rebuildjs'
 import { test } from 'uvu'
-import { equal } from 'uvu/assert'
+import { equal, throws } from 'uvu/assert'
+import { browser__metafile0, server__metafile0 } from '../_fixtures/metafile.js'
 import { app$_, app_ } from '../app/index.js'
-import { browser__build, server__build } from './index.js'
+import {
+	browser__build,
+	relysjs__build_id$_,
+	relysjs__build_id_,
+	relysjs__build_id__set,
+	relysjs__ready$_,
+	relysjs__ready_,
+	relysjs__ready__wait,
+	server__build
+} from './index.js'
 test.after.each(()=>{
 	app_ctx.s.app.clear()
+})
+test('relysjs__build_id', ()=>{
+	equal(relysjs__build_id$_(app_ctx)(), undefined)
+	equal(relysjs__build_id_(app_ctx), undefined)
+	build_id__refresh()
+	equal(typeof build_id_(app_ctx), 'string')
+	relysjs__build_id__set(app_ctx, build_id_(app_ctx)!)
+	equal(relysjs__build_id$_(app_ctx)(), build_id_(app_ctx)!)
+	equal(relysjs__build_id_(app_ctx), build_id_(app_ctx)!)
+	// @ts-expect-error TS2345
+	throws(()=>relysjs__build_id$_(ctx_()))
+	// @ts-expect-error TS2345
+	throws(()=>relysjs__build_id_(ctx_()))
+})
+test('relysjs__ready', ()=>{
+	equal(relysjs__ready$_(app_ctx)(), false)
+	equal(relysjs__ready_(app_ctx), false)
+	const build_id = server__metafile0.build_id!
+	build_id__set(app_ctx, build_id)
+	equal(relysjs__ready$_(app_ctx)(), false)
+	equal(relysjs__ready_(app_ctx), false)
+	server__metafile__set(app_ctx, server__metafile0)
+	equal(relysjs__ready$_(app_ctx)(), false)
+	equal(relysjs__ready_(app_ctx), false)
+	browser__metafile__set(app_ctx, browser__metafile0)
+	equal(relysjs__ready$_(app_ctx)(), false)
+	equal(relysjs__ready_(app_ctx), false)
+	rebuildjs__build_id__set(app_ctx, build_id)
+	equal(relysjs__ready$_(app_ctx)(), false)
+	equal(relysjs__ready_(app_ctx), false)
+	relysjs__build_id__set(app_ctx, build_id)
+	equal(relysjs__ready$_(app_ctx)(), true)
+	equal(relysjs__ready_(app_ctx), true)
+	// @ts-expect-error TS2345
+	throws(()=>relysjs__ready$_(ctx_()))
+	// @ts-expect-error TS2345
+	throws(()=>relysjs__ready_(ctx_()))
+})
+test('relysjs__ready__wait', async ()=>{
+	let done = false
+	relysjs__ready__wait()
+		.then(()=>done = true)
+	equal(done, false)
+	const build_id = server__metafile0.build_id!
+	build_id__set(app_ctx, build_id)
+	await sleep(0)
+	equal(done, false)
+	server__metafile__set(app_ctx, server__metafile0)
+	await sleep(0)
+	equal(done, false)
+	browser__metafile__set(app_ctx, browser__metafile0)
+	await sleep(0)
+	equal(done, false)
+	rebuildjs__build_id__set(app_ctx, build_id)
+	await sleep(0)
+	equal(done, false)
+	relysjs__build_id__set(app_ctx, build_id)
+	await sleep(0)
+	equal(done, true)
+})
+test('relysjs__ready__wait|timeout', async ()=>{
+	let err:Error|undefined = undefined
+	try {
+		await relysjs__ready__wait(0)
+	} catch (_err) {
+		err = _err as Error
+	}
+	equal(err!.message, 'Timeout 0ms')
 })
 test('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
 	const test_dir = dirname(new URL(import.meta.url).pathname)
@@ -31,14 +115,15 @@ test('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
 		equal(app_(app_ctx), undefined)
 		server__build_context = await server__build()
 		browser__build_context = await browser__build()
-		await metafile__wait()
+		await relysjs__ready__wait()
 		equal(await file_exists_(join(cwd, 'dist')), true)
 		equal(await file_exists_(join(cwd, 'dist', 'browser--dev')), true)
 		equal(await file_exists_(join(cwd, 'dist', 'server--dev')), true)
 		const app = (await rmemo__wait(
 			app$_(app_ctx),
 			app=>app,
-			1000))!
+			1000,
+			Error('test|rmemo__wait|app')))!
 		equal(typeof app, 'object')
 		const server__metafile = server__metafile_(app_ctx)!
 		equal(server__metafile.rebuildjs_target, 'server')
