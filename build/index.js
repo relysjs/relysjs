@@ -1,6 +1,6 @@
 /// <reference types="esbuild" />
 /// <reference types="./index.d.ts" />
-import { file_exists_ } from 'ctx-core/fs'
+import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
 import { nullish__none_, run } from 'ctx-core/function'
 import { link, rm } from 'node:fs/promises'
 import { join } from 'path'
@@ -73,12 +73,16 @@ export function relysjs_plugin_(config) {
 							run(async ()=>{
 								await rm(server_entry__output__link__path, { force: true })
 								if (cancel_()) return
+								await file_exists__waitfor(server_entry__output__path)
+								if (cancel_()) return
 								await link(server_entry__output__path, server_entry__output__link__path)
 								if (cancel_()) return
 								const server_entry__output__map_path = `${server_entry__output__path}.map`
 								if (await file_exists_(server_entry__output__map_path)) {
 									if (cancel_()) return
 									await rm(`${server_entry__output__link__path}.map`, { force: true })
+									if (cancel_()) return
+									await file_exists__waitfor(server_entry__output__map_path)
 									if (cancel_()) return
 									await link(
 										server_entry__output__map_path,

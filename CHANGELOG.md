@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.30.3
+
+### Patch Changes
+
+- relysjs_plugin: fix: file_exists\_\_waitfor before link
+
 ## 0.30.2
 
 ### Patch Changes
