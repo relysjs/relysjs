@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.30.2
+
+### Patch Changes
+
+- rebuildjs_plugin: assets**link$: fix: + file_exists**waitfor before link
+- Updated dependencies
+  - rebuildjs@0.24.2
+
 ## 0.30.1
 
 ### Patch Changes
