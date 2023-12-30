@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.30.5
+
+### Patch Changes
+
+- relysjs_plugin: fix: + file_exists**waitfor(server_entry**output**link**path) before import
+
 ## 0.30.4
 
 ### Patch Changes

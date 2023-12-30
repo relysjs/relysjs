@@ -90,6 +90,8 @@ export function relysjs_plugin_(config) {
 									if (cancel_()) return
 								}
 								if (config?.app__start ?? true) {
+									await file_exists__waitfor(server_entry__output__link__path)
+									if (cancel_()) return
 									const app__start =
 										await import(server_entry__output__link__path)
 											.then(mod=>mod.default)
