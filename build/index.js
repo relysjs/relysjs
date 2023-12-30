@@ -13,6 +13,7 @@ import {
 	build_id_,
 	memo_,
 	metafile__build_id_,
+	off,
 	rebuildjs__ready_,
 	RebuildjsInterrupt,
 	rmemo__wait
@@ -150,7 +151,15 @@ export function relysjs_plugin_(config) {
 							})
 							async function cmd(fn) {
 								if (cancel_()) throw new RebuildjsInterrupt()
-								const ret = await fn()
+								const promise = fn()
+								promise.relysjs_cancel$ = run(memo_(relysjs_cancel$=>{
+									if (cancel_()) {
+										promise.cancel?.()
+										off(relysjs_cancel$)
+									}
+									return relysjs_cancel$
+								}))
+								const ret = await promise
 								if (cancel_()) throw new RebuildjsInterrupt()
 								return ret
 							}
