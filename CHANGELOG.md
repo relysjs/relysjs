@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.32.2
+
+### Patch Changes
+
+- app\_\_attach: fix: remove old logic that was meant to be replaced
+
 ## 0.32.1
 
 ### Patch Changes
