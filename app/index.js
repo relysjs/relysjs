@@ -16,7 +16,7 @@ import {
 	server__metafile_path_,
 	server__output_,
 	server__output__relative_path_,
-	server__output__relative_path__set
+	server__output__relative_path__set, server__output__relative_path_M_middleware_ctx_
 } from 'rebuildjs'
 export * from 'rebuildjs/app'
 export const [
@@ -79,6 +79,17 @@ export async function app__attach(app) {
 	await rmemo__wait(browser__metafile$_(app_ctx), neq_undefined)
 	app ??= new Elysia()
 	app._relysjs = 1
+	for (
+		const middleware_ctx of server__output__relative_path_M_middleware_ctx_(app_ctx).values()
+	) {
+		const output = server__output_(middleware_ctx)
+		if (output.entryPoint !== server_entry__relative_path_(app_ctx)) {
+			const server__middleware =
+				await import(join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx)))
+					.then(mod=>mod.default)
+			app.use(server__middleware(middleware_ctx))
+		}
+	}
 	const { outputs } = server__metafile
 	for (let server__output__relative_path in outputs) {
 		const middleware_ctx = middleware_ctx_()

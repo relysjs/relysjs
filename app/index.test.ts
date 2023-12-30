@@ -2,7 +2,7 @@ import { Elysia } from 'elysia'
 import { app_ctx, app_path__set, ctx_, cwd__set, server__metafile__set } from 'rebuildjs'
 import { test } from 'uvu'
 import { equal, throws } from 'uvu/assert'
-import { server_metafile0 } from '../_fixtures/index.js'
+import { server_metafile0 } from '../_fixtures/metafile.js'
 import {
 	app$_,
 	app_,
