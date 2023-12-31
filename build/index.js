@@ -1,7 +1,7 @@
 /// <reference types="esbuild" />
 /// <reference types="./index.d.ts" />
 import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
-import { nullish__none_, run } from 'ctx-core/function'
+import { Cancel, nullish__none_, run } from 'ctx-core/function'
 import { link, rm } from 'node:fs/promises'
 import { join } from 'path'
 import {
@@ -15,7 +15,6 @@ import {
 	metafile__build_id_,
 	off,
 	rebuildjs__ready_,
-	RebuildjsInterrupt,
 	rmemo__wait
 } from 'rebuildjs'
 import { browser__build as rebuildjs__browser__build, server__build as rebuildjs__server__build } from 'rebuildjs/build'
@@ -102,6 +101,7 @@ export function relysjs_plugin_(config) {
 					r()
 					return relysjs__link$
 					function r() {
+						if (!rebuildjs__ready_(ctx)) return
 						nullish__none_([
 							build_id_(ctx),
 							server_entry__output__path_(ctx),
@@ -113,45 +113,44 @@ export function relysjs_plugin_(config) {
 						)=>{
 							run(async ()=>{
 								try {
-									await cmd(()=>
+									await cmd(
 										rm(server_entry__output__link__path, { force: true }))
 									await cmd(()=>
 										file_exists__waitfor(server_entry__output__path))
-									await cmd(()=>
+									await cmd(
 										link(server_entry__output__path, server_entry__output__link__path))
 									const server_entry__output__map_path = `${server_entry__output__path}.map`
-									if (await cmd(()=>
+									if (await cmd(
 										file_exists_(server_entry__output__map_path))
 									) {
-										await cmd(()=>
+										await cmd(
 											rm(`${server_entry__output__link__path}.map`, { force: true }))
-										await cmd(()=>
+										await cmd(
 											file_exists__waitfor(server_entry__output__map_path))
-										await cmd(()=>
+										await cmd(
 											link(
 												server_entry__output__map_path,
 												`${server_entry__output__link__path}.map`))
 									}
 									relysjs__build_id__set(ctx, build_id)
 									if (config?.app__start ?? true) {
-										await cmd(()=>
+										await cmd(
 											file_exists__waitfor(server_entry__output__link__path))
-										const app__start = await cmd(()=>
+										const app__start = await cmd(
 											import(server_entry__output__link__path)
 												.then(mod=>mod.default))
 										let app = app_(ctx)
 										if (app) await app.stop()
-										await cmd(relysjs__ready__wait)
-										await cmd(app__start)
+										await cmd(relysjs__ready__wait())
+										await cmd(app__start())
 									}
 								} catch (err) {
-									if (err instanceof RebuildjsInterrupt) return
+									if (err instanceof Cancel) return
 									throw err
 								}
 							})
-							async function cmd(fn) {
-								if (cancel_()) throw new RebuildjsInterrupt()
-								const promise = fn()
+							async function cmd(promise) {
+								if (cancel_()) throw new Cancel()
 								promise.relysjs_cancel$ = run(memo_(relysjs_cancel$=>{
 									if (cancel_()) {
 										promise.cancel?.()
@@ -160,7 +159,7 @@ export function relysjs_plugin_(config) {
 									return relysjs_cancel$
 								}))
 								const ret = await promise
-								if (cancel_()) throw new RebuildjsInterrupt()
+								if (cancel_()) throw new Cancel()
 								return ret
 							}
 							function cancel_() {
