@@ -1,5 +1,28 @@
 # relysjs
 
+## 0.33.3
+
+### Patch Changes
+
+- fix: build exports:
+
+      build_id$_
+      build_id_
+      build_id__set
+      build_id__refresh
+      persist__metafile__build_id$_
+      persist__metafile__build_id_
+      persist__metafile__ready$_
+      persist__metafile__ready_
+      rebuildjs__build_id$_
+      rebuildjs__build_id_
+      rebuildjs__build_id__set
+      rebuildjs__ready$_
+      rebuildjs__ready_
+      rebuildjs__ready__wait
+      server__external_
+      rebuildjs_plugin_
+
 ## 0.33.2
 
 ### Patch Changes

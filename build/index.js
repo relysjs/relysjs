@@ -10,15 +10,34 @@ import {
 	be,
 	be_memo_pair_,
 	be_sig_triple_,
+	browser__build as rebuildjs__browser__build,
 	build_id_,
 	memo_,
 	metafile__build_id_,
 	off,
 	rebuildjs__ready_,
-	rmemo__wait
+	rmemo__wait,
+	server__build as rebuildjs__server__build
 } from 'rebuildjs'
-import { browser__build as rebuildjs__browser__build, server__build as rebuildjs__server__build } from 'rebuildjs/build'
 import { app_, server_entry__output__link__path_, server_entry__output__path_ } from '../app/index.js'
+export {
+	build_id$_,
+	build_id_,
+	build_id__set,
+	build_id__refresh,
+	persist__metafile__build_id$_,
+	persist__metafile__build_id_,
+	persist__metafile__ready$_,
+	persist__metafile__ready_,
+	rebuildjs__build_id$_,
+	rebuildjs__build_id_,
+	rebuildjs__build_id__set,
+	rebuildjs__ready$_,
+	rebuildjs__ready_,
+	rebuildjs__ready__wait,
+	server__external_,
+	rebuildjs_plugin_,
+} from 'rebuildjs/build'
 export const [
 	relysjs__build_id$_,
 	relysjs__build_id_,
