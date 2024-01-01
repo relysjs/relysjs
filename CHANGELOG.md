@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.33.2
+
+### Patch Changes
+
+- rebuildjs build: esbuild_cssBundle: fix: cp .map file
+- Updated dependencies
+  - rebuildjs@0.27.2
+
 ## 0.33.1
 
 ### Patch Changes
