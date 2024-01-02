@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.35.3
+
+### Patch Changes
+
+- assets\_\_assign: fix: implementation
+- Updated dependencies
+  - rebuildjs@0.29.2
+
 ## 0.35.2
 
 ### Patch Changes
