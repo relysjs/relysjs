@@ -8,10 +8,11 @@ import { elysia_context__set } from '../elysiajs/index.js'
 /**
  * @param {middleware_ctx_T}middleware_ctx
  * @param {($p:{ ctx:route_ctx_T })=>(string|ReadableStream<string|Uint8Array>)}page_
+ * @param {ResponseInit}[response_init]
  * @returns {(context:elysia_context_T)=>Promise<Response>}
  * @private
  */
-export function html_route_(middleware_ctx, page_) {
+export function html_route_(middleware_ctx, page_, response_init) {
 	return context=>{
 		const ctx = route_ctx_(middleware_ctx)
 		context.store.ctx = ctx
@@ -40,8 +41,10 @@ export function html_route_(middleware_ctx, page_) {
 				}
 			}),
 			{
+				...(response_init ?? {}),
 				headers: {
 					'Content-Type': 'text/html;charset=UTF-8',
+					...(response_init?.headers ?? {})
 				}
 			}
 		)

@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.36.0
+
+### Minor Changes
+
+- html*route*: arguments: + response_init?:ResponseInit
+
 ## 0.35.4
 
 ### Patch Changes
