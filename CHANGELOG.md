@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.35.4
+
+### Patch Changes
+
+- assets\_\_assign: arguments: ...\_assets_a:Partial<assets_T>[]
+- Updated dependencies
+  - rebuildjs@0.29.3
+
 ## 0.35.3
 
 ### Patch Changes
