@@ -141,7 +141,9 @@ test('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
 			server__metafile.outputs[server__output__relative_path]
 		equal(server__entryPoint__output != null, true, 'server__entryPoint__output != null')
 		equal(server__entryPoint__output.cssBundle != null, true, 'server__entryPoint__output.cssBundle != null')
-		equal(server__entryPoint__output.esbuild_cssBundle, server__entryPoint__output.cssBundle,
+		equal(server__entryPoint__output.cssBundle, server__entryPoint__output.cssBundle,
+			'server__entryPoint__output.cssBundle')
+		equal(server__entryPoint__output.esbuild_cssBundle, server__entryPoint__output.esbuild_cssBundle,
 			'server__entryPoint__output.esbuild_cssBundle')
 		const browser__output__relative_path =
 			Object.keys(browser__metafile.outputs)
@@ -152,7 +154,10 @@ test('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
 			browser__metafile.outputs[browser__output__relative_path]
 		equal(browser__entryPoint__output != null, true)
 		equal(browser__entryPoint__output.cssBundle != null, true)
-		equal(browser__entryPoint__output.esbuild_cssBundle, browser__entryPoint__output.cssBundle)
+		equal(browser__entryPoint__output.cssBundle, browser__entryPoint__output.cssBundle,
+			'browser__entryPoint__output.cssBundle')
+		equal(browser__entryPoint__output.esbuild_cssBundle, browser__entryPoint__output.esbuild_cssBundle,
+			'browser__entryPoint__output.esbuild_cssBundle')
 		equal(server__entryPoint__output.cssBundle_content, [
 			server__output__relative_path,
 			browser__output__relative_path
