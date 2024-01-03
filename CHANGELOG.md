@@ -1,5 +1,21 @@
 # relysjs
 
+## 0.37.0
+
+### Minor Changes
+
+- minor:
+
+      + rmemo__on: aliased by on
+      + rmemo__off: aliased by off
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.30.0
+  - ctx-core@5.11.0
+
 ## 0.36.0
 
 ### Minor Changes
