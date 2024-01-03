@@ -1,7 +1,7 @@
 /// <reference types="esbuild" />
 /// <reference types="./index.d.ts" />
 import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
-import { Cancel, nullish__none_, run } from 'ctx-core/function'
+import { Cancel, nullish__none_, run } from 'ctx-core/rmemo'
 import { link, rm } from 'node:fs/promises'
 import { join } from 'path'
 import {
