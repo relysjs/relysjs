@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.38.1
+
+### Patch Changes
+
+- @sinclair/typebox: ^0.32.4 -> ^0.32.5
+- Updated dependencies
+  - rebuildjs@0.31.1
+
 ## 0.38.0
 
 ### Minor Changes
