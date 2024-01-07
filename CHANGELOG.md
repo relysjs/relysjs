@@ -1,5 +1,23 @@
 # relysjs
 
+## 0.40.0
+
+### Minor Changes
+
+- minor:
+
+      subscribers: + strong reference to return value: prevent GC
+      memo_T:
+      sig_T:
+      	+ b?:[unknown, memo_T<unknown>][]
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.33.0
+  - ctx-core@5.15.0
+
 ## 0.39.0
 
 ### Minor Changes
