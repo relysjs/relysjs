@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.41.3
+
+### Patch Changes
+
+- rebuildjs*plugin*: rebuildjs*plugin\_\_postprocess$*: memo: void
+- relysjs*plugin*: relysjs\__link$_: memo: void
+- Updated dependencies
+  - rebuildjs@0.34.3
+
 ## 0.41.2
 
 ### Patch Changes

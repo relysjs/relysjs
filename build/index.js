@@ -116,80 +116,76 @@ export function relysjs_plugin_(config) {
 		return setup
 		function relysjs__link$_() {
 			return be(app_ctx, ctx=>
-				run(memo_(relysjs__link$=>{
-					r()
-					return relysjs__link$
-					function r() {
-						if (!rebuildjs__ready_(ctx)) return
-						nullish__none_([
-							build_id_(ctx),
-							server_entry__output__path_(ctx),
-							server_entry__output__link__path_(ctx),
-						], (
-							build_id,
-							server_entry__output__path,
-							server_entry__output__link__path,
-						)=>{
-							run(async ()=>{
-								try {
+				run(memo_(()=>{
+					if (!rebuildjs__ready_(ctx)) return
+					nullish__none_([
+						build_id_(ctx),
+						server_entry__output__path_(ctx),
+						server_entry__output__link__path_(ctx),
+					], (
+						build_id,
+						server_entry__output__path,
+						server_entry__output__link__path,
+					)=>{
+						run(async ()=>{
+							try {
+								await cmd(
+									rm(server_entry__output__link__path, { force: true }))
+								await cmd(()=>
+									file_exists__waitfor(server_entry__output__path))
+								await cmd(
+									link(server_entry__output__path, server_entry__output__link__path))
+								const server_entry__output__map_path = `${server_entry__output__path}.map`
+								if (await cmd(
+									file_exists_(server_entry__output__map_path))
+								) {
 									await cmd(
-										rm(server_entry__output__link__path, { force: true }))
-									await cmd(()=>
-										file_exists__waitfor(server_entry__output__path))
+										rm(`${server_entry__output__link__path}.map`, { force: true }))
 									await cmd(
-										link(server_entry__output__path, server_entry__output__link__path))
-									const server_entry__output__map_path = `${server_entry__output__path}.map`
-									if (await cmd(
-										file_exists_(server_entry__output__map_path))
-									) {
-										await cmd(
-											rm(`${server_entry__output__link__path}.map`, { force: true }))
-										await cmd(
-											file_exists__waitfor(server_entry__output__map_path))
-										await cmd(
-											link(
-												server_entry__output__map_path,
-												`${server_entry__output__link__path}.map`))
-									}
-									relysjs__build_id__set(ctx, build_id)
-									if (config?.app__start ?? true) {
-										await cmd(
-											file_exists__waitfor(server_entry__output__link__path))
-										const app__start = await cmd(
-											import(server_entry__output__link__path)
-												.then(mod=>mod.default))
-										let app = app_(ctx)
-										if (app) await app.stop()
-										await cmd(relysjs__ready__wait())
-										await cmd(app__start())
-									}
-								} catch (err) {
-									if (err instanceof Cancel) return
-									throw err
+										file_exists__waitfor(server_entry__output__map_path))
+									await cmd(
+										link(
+											server_entry__output__map_path,
+											`${server_entry__output__link__path}.map`))
 								}
-							})
-							async function cmd(promise) {
-								if (cancel_()) throw new Cancel()
-								promise.relysjs_cancel$ = run(memo_(relysjs_cancel$=>{
-									if (cancel_()) {
-										promise.cancel?.()
-										off(relysjs_cancel$)
-									}
-									return relysjs_cancel$
-								}))
-								const ret = await promise
-								if (cancel_()) throw new Cancel()
-								return ret
-							}
-							function cancel_() {
-								return (
-									build_id_(ctx) !== build_id
-										|| server_entry__output__path_(ctx) !== server_entry__output__path
-										|| server_entry__output__link__path_(ctx) !== server_entry__output__link__path
-								)
+								relysjs__build_id__set(ctx, build_id)
+								if (config?.app__start ?? true) {
+									await cmd(
+										file_exists__waitfor(server_entry__output__link__path))
+									const app__start = await cmd(
+										import(server_entry__output__link__path)
+											.then(mod=>mod.default))
+									let app = app_(ctx)
+									if (app) await app.stop()
+									await cmd(relysjs__ready__wait())
+									await cmd(app__start())
+								}
+							} catch (err) {
+								if (err instanceof Cancel) return
+								throw err
 							}
 						})
-					}
+						async function cmd(promise) {
+							if (cancel_()) throw new Cancel()
+							promise.relysjs_cancel$ = run(memo_(relysjs_cancel$=>{
+								if (cancel_()) {
+									promise.cancel?.()
+									off(relysjs_cancel$)
+								}
+								return relysjs_cancel$
+							}))
+							const ret = await promise
+							if (cancel_()) throw new Cancel()
+							return ret
+						}
+						function cancel_() {
+							return (
+								build_id_(ctx) !== build_id
+								|| server_entry__output__path_(ctx) !== server_entry__output__path
+								|| server_entry__output__link__path_(ctx) !== server_entry__output__link__path
+							)
+						}
+					})
 				})),
 			{ id: 'relysjs__link$', ns: 'app' })()
 		}
