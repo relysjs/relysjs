@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.41.6
+
+### Patch Changes
+
+- rmemo\_\_add: fix: arguments match the .add method
+- Updated dependencies
+  - ctx-core@5.16.2
+  - rebuildjs@0.34.5
+
 ## 0.41.5
 
 ### Patch Changes
