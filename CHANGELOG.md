@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.42.1
+
+### Patch Changes
+
+- memo\_: add: fix: error when return value is nullish
+- ctx-core: ^5.17.0 -> ^5.17.1
+- Updated dependencies
+  - rebuildjs@0.35.1
+
 ## 0.42.0
 
 ### Minor Changes
