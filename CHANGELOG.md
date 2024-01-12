@@ -1,5 +1,20 @@
 # relysjs
 
+## 0.43.0
+
+### Minor Changes
+
+- minor:
+
+      + memo__bind:
+      	+ _
+      	+ bind
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.18.0
+
 ## 0.42.1
 
 ### Patch Changes
