@@ -1,5 +1,20 @@
 # relysjs
 
+## 0.44.0
+
+### Minor Changes
+
+- - route_ctx\_\_ensure
+- minor:
+
+      middleware_ctx_→middleware_ctx__new
+      route_ctx_→route_ctx__new
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.37.0
+
 ## 0.43.4
 
 ### Patch Changes

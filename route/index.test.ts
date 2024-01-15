@@ -1,12 +1,13 @@
-import { app_ctx, middleware_ctx_ } from 'rebuildjs'
+import { app_ctx, middleware_ctx__new } from 'rebuildjs'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { html_route_ } from './index.js'
+import { elysia_context_ } from '../elysiajs/index.js'
+import { html_route_, route_ctx__ensure } from './index.js'
 test.after.each(()=>{
 	app_ctx.s.app.clear()
 })
 test('html_route_|string', async ()=>{
-	const middlelware_ctx = middleware_ctx_()
+	const middlelware_ctx = middleware_ctx__new()
 	const html = `<!DOCTYPE html><html><head></head><body><div>Test</div></body></html>`
 	const html_route = html_route_(middlelware_ctx, ()=>
 		html)
@@ -15,7 +16,7 @@ test('html_route_|string', async ()=>{
 	equal(await response.text(), html)
 })
 test('html_route_|toString', async ()=>{
-	const middlelware_ctx = middleware_ctx_()
+	const middlelware_ctx = middleware_ctx__new()
 	const html = `<!DOCTYPE html><html><head></head><body><div>Test</div></body></html>`
 	const html_route = html_route_(middlelware_ctx, ()=>(
 		{ toString: ()=>html }))
@@ -24,7 +25,7 @@ test('html_route_|toString', async ()=>{
 	equal(await response.text(), html)
 })
 test('html_route_|ReadableStream|string', async ()=>{
-	const middlelware_ctx = middleware_ctx_()
+	const middlelware_ctx = middleware_ctx__new()
 	const html = `<!DOCTYPE html><html><head></head><body><div>Test</div></body></html>`
 	const html_route = html_route_(middlelware_ctx, ()=>
 		new ReadableStream({
@@ -43,7 +44,7 @@ test('html_route_|ReadableStream|string', async ()=>{
 	equal(await response.text(), html)
 })
 test('html_route_|response_init|all', async ()=>{
-	const middlelware_ctx = middleware_ctx_()
+	const middlelware_ctx = middleware_ctx__new()
 	const html = `<!DOCTYPE html><html><head></head><body><div>Test</div></body></html>`
 	const html_route = html_route_(middlelware_ctx, ()=>html, {
 		status: 403,
@@ -61,7 +62,7 @@ test('html_route_|response_init|all', async ()=>{
 	equal(response.headers.get('FOO'), 'BAR')
 })
 test('html_route_|response_init|addional headers', async ()=>{
-	const middlelware_ctx = middleware_ctx_()
+	const middlelware_ctx = middleware_ctx__new()
 	const html = `<!DOCTYPE html><html><head></head><body><div>Test</div></body></html>`
 	const html_route = html_route_(middlelware_ctx, ()=>html, {
 		headers: {
@@ -74,5 +75,16 @@ test('html_route_|response_init|addional headers', async ()=>{
 	equal(response.statusText, '')
 	equal(response.headers.get('Content-Type'), 'text/html;charset=UTF-8')
 	equal(response.headers.get('FOO'), 'BAR')
+})
+test('route_ctx__ensure', ()=>{
+	const middlelware_ctx = middleware_ctx__new()
+	const request = new Request('http://localhost:3000')
+	const elysia_context = { request, store: {} }
+	const route_ctx =
+		route_ctx__ensure(
+			elysia_context,
+			middlelware_ctx)
+	equal(elysia_context.store.route_ctx, route_ctx)
+	equal(elysia_context_(route_ctx), elysia_context)
 })
 test.run()

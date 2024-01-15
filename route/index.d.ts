@@ -8,3 +8,10 @@ export declare function html_route_(
 	request:Request
 	store:{ [x:string]:unknown }
 })=>Promise<Response>
+export declare function route_ctx__ensure(
+	context:{
+		request:Request
+		store:{ [x:string]:unknown }
+	},
+	middleware_ctx:middleware_ctx_T
+):route_ctx_T

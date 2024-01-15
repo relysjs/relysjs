@@ -1,4 +1,4 @@
-import { app_ctx, ctx_, middleware_ctx_, route_ctx_ } from 'rebuildjs'
+import { app_ctx, ctx_, middleware_ctx__new, route_ctx__new } from 'rebuildjs'
 import { test } from 'uvu'
 import { equal, throws } from 'uvu/assert'
 import {
@@ -17,7 +17,7 @@ test.after.each(()=>{
 	app_ctx.s.app.clear()
 })
 test('elysia_context', ()=>{
-	const route_ctx = route_ctx_(middleware_ctx_())
+	const route_ctx = route_ctx__new(middleware_ctx__new())
 	equal(elysia_context$_(route_ctx)._, undefined)
 	equal(elysia_context_(route_ctx), undefined)
 	const elysia_context:elysia_context_T = {
@@ -35,7 +35,7 @@ test('elysia_context', ()=>{
 	throws(()=>elysia_context__set(ctx_(), elysia_context))
 })
 test('request', ()=>{
-	const route_ctx = route_ctx_(middleware_ctx_())
+	const route_ctx = route_ctx__new(middleware_ctx__new())
 	equal(request$_(route_ctx)._, undefined)
 	equal(request_(route_ctx), undefined)
 	const request = new Request('http://localhost:3000')
@@ -52,7 +52,7 @@ test('request', ()=>{
 	throws(()=>request_(ctx_()))
 })
 test('request_url', ()=>{
-	const route_ctx = route_ctx_(middleware_ctx_())
+	const route_ctx = route_ctx__new(middleware_ctx__new())
 	equal(request_url$_(route_ctx)._, undefined)
 	equal(request_url_(route_ctx), undefined)
 	const request = new Request('http://localhost:3000/foo/bar')
@@ -71,7 +71,7 @@ test('request_url', ()=>{
 	throws(()=>request_url_(ctx_()))
 })
 test('store', ()=>{
-	const route_ctx = route_ctx_(middleware_ctx_())
+	const route_ctx = route_ctx__new(middleware_ctx__new())
 	equal(store$_(route_ctx)._, undefined)
 	equal(store_(route_ctx), undefined)
 	const store = { ctx: route_ctx }

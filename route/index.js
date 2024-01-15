@@ -3,7 +3,7 @@
 // See https://github.com/oven-sh/bun/issues/5648
 // See https://github.com/oven-sh/bun/issues/159
 import { TextEncoderStream } from "@stardazed/streams-text-encoding"
-import { route_ctx_ } from 'rebuildjs'
+import { route_ctx__new } from 'rebuildjs'
 import { elysia_context__set } from '../elysiajs/index.js'
 /**
  * @param {middleware_ctx_T}middleware_ctx
@@ -14,13 +14,11 @@ import { elysia_context__set } from '../elysiajs/index.js'
  */
 export function html_route_(middleware_ctx, page_, response_init) {
 	return context=>{
-		const ctx = route_ctx_(middleware_ctx)
-		context.store.ctx = ctx
-		elysia_context__set(ctx, context)
+		const route_ctx = route_ctx__ensure(context, middleware_ctx)
 		return new Response(
 			new ReadableStream({
 				start(controller) {
-					const page = page_({ ctx })
+					const page = page_({ ctx: route_ctx })
 					if (page.pipeTo) {
 						page.pipeThrough(new TextEncoderStream()).pipeTo(new WritableStream({
 							write(chunk) {
@@ -49,4 +47,13 @@ export function html_route_(middleware_ctx, page_, response_init) {
 			}
 		)
 	}
+}
+/**
+ * @param {elysia_context_T}context
+ * @param {middleware_ctx_T}middleware_ctx
+ */
+export function route_ctx__ensure(context, middleware_ctx) {
+	const route_ctx = context.store.route_ctx ??= route_ctx__new(middleware_ctx)
+	elysia_context__set(route_ctx, context)
+	return route_ctx
 }
