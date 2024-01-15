@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.44.1
+
+### Patch Changes
+
+- elysia_context_T: .store: .ctx→.route_ctx
+
 ## 0.44.0
 
 ### Minor Changes

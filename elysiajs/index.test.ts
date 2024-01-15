@@ -22,7 +22,7 @@ test('elysia_context', ()=>{
 	equal(elysia_context_(route_ctx), undefined)
 	const elysia_context:elysia_context_T = {
 		request: new Request('http://localhost:3000'),
-		store: { ctx: route_ctx },
+		store: { route_ctx },
 	}
 	elysia_context__set(route_ctx, elysia_context)
 	equal(elysia_context$_(route_ctx)._, elysia_context)
@@ -41,7 +41,7 @@ test('request', ()=>{
 	const request = new Request('http://localhost:3000')
 	const elysia_context:elysia_context_T = {
 		request,
-		store: { ctx: route_ctx },
+		store: { route_ctx },
 	}
 	elysia_context__set(route_ctx, elysia_context)
 	equal(request$_(route_ctx)._, request)
@@ -58,7 +58,7 @@ test('request_url', ()=>{
 	const request = new Request('http://localhost:3000/foo/bar')
 	const elysia_context:elysia_context_T = {
 		request,
-		store: { ctx: route_ctx },
+		store: { route_ctx },
 	}
 	elysia_context__set(route_ctx, elysia_context)
 	equal(elysia_context_(route_ctx), elysia_context)
@@ -74,7 +74,7 @@ test('store', ()=>{
 	const route_ctx = route_ctx__new(middleware_ctx__new())
 	equal(store$_(route_ctx)._, undefined)
 	equal(store_(route_ctx), undefined)
-	const store = { ctx: route_ctx }
+	const store = { route_ctx }
 	const elysia_context:elysia_context_T = {
 		request: new Request('http://localhost:3000'),
 		store,

@@ -1,7 +1,7 @@
 import { app_ctx, middleware_ctx__new } from 'rebuildjs'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { elysia_context_ } from '../elysiajs/index.js'
+import { elysia_context_, elysia_context_T } from '../elysiajs/index.js'
 import { html_route_, route_ctx__ensure } from './index.js'
 test.after.each(()=>{
 	app_ctx.s.app.clear()
@@ -79,7 +79,7 @@ test('html_route_|response_init|addional headers', async ()=>{
 test('route_ctx__ensure', ()=>{
 	const middlelware_ctx = middleware_ctx__new()
 	const request = new Request('http://localhost:3000')
-	const elysia_context = { request, store: {} }
+	const elysia_context = { request, store: {} } as elysia_context_T
 	const route_ctx =
 		route_ctx__ensure(
 			elysia_context,
