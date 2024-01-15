@@ -4,7 +4,7 @@ import { sleep } from 'ctx-core/function'
 import { ctx_, rmemo__wait } from 'ctx-core/rmemo'
 import { BuildContext } from 'esbuild'
 import { rm } from 'node:fs/promises'
-import { dirname, join } from 'path'
+import { dirname, join } from 'node:path'
 import {
 	app_ctx,
 	browser__metafile_,

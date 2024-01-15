@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.44.7
+
+### Patch Changes
+
+- import nodejs core modules using node: prefix
+- Updated dependencies
+  - ctx-core@5.18.8
+  - rebuildjs@0.37.6
+
 ## 0.44.6
 
 ### Patch Changes

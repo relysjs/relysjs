@@ -3,7 +3,7 @@
 import { file, Glob } from 'bun'
 import { ext_R_mime } from 'ctx-core/http'
 import { Elysia } from 'elysia'
-import { extname, join } from 'path'
+import { extname, join } from 'node:path'
 import { app_ctx, browser_path_ } from 'rebuildjs'
 /**
  * @param {static_middleware__config_T}[config]

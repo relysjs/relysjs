@@ -1,6 +1,6 @@
 import { be_memo_pair_, be_sig_triple_, nullish__none_, rmemo__wait, tup } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
-import { dirname, join } from 'path'
+import { dirname, join } from 'node:path'
 import {
 	app__relative_path_,
 	app_ctx,
