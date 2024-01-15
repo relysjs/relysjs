@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.44.5
+
+### Patch Changes
+
+- ./types: fix: <reference lib="dom" />
+- Updated dependencies
+  - rebuildjs@0.37.4
+
 ## 0.44.4
 
 ### Patch Changes
