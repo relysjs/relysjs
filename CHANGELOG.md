@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.45.0
+
+### Minor Changes
+
+- - html*response*
+
 ## 0.44.11
 
 ### Patch Changes
