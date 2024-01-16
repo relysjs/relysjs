@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.44.10
+
+### Patch Changes
+
+- browser**build,server**build: fix: dist directory is external to esbuild
+- Updated dependencies
+  - rebuildjs@0.37.9
+
 ## 0.44.9
 
 ### Patch Changes
