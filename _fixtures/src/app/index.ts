@@ -17,7 +17,8 @@ export default async ()=>{
 			))
 			.use(compression_middleware_())
 			.onError(({ error, request })=>{
-				console.error(request.url, error)
+				console.error(request.url)
+				console.error(error)
 			})
 	return app__start(app)
 }
