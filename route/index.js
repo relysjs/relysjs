@@ -18,7 +18,7 @@ export function html_route_(
 	response_init
 ) {
 	return context=>
-		html_response_(
+		html_response__new(
 			page_({
 				ctx: route_ctx__ensure(context, middleware_ctx)
 			}),
@@ -30,7 +30,7 @@ export function html_route_(
  * @returns {Response}
  * @private
  */
-export function html_response_(
+export function html_response__new(
 	html_OR_stream,
 	response_init
 ) {
