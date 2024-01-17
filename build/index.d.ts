@@ -20,11 +20,11 @@ export {
 	server__external_,
 	rebuildjs_plugin_,
 } from 'rebuildjs/build'
-export declare const relysjs__build_id$_:ctx__be_T<has_app_T, sig_T<string>, 'app'>
-export declare const relysjs__build_id_:ctx__get_T<has_app_T, string>
-export declare const relysjs__build_id__set:ctx__set_T<has_app_T, string>
-export declare const relysjs__ready$_:ctx__be_T<has_app_T, sig_T<boolean>, 'app'>
-export declare const relysjs__ready_:ctx__get_T<has_app_T, boolean>
+export declare const relysjs__build_id$_:ctx__be_T<sig_T<string>, 'app'>
+export declare const relysjs__build_id_:ctx__get_T<string, 'app'>
+export declare const relysjs__build_id__set:ctx__set_T<string, 'app'>
+export declare const relysjs__ready$_:ctx__be_T<sig_T<boolean>, 'app'>
+export declare const relysjs__ready_:ctx__get_T<boolean, 'app'>
 export declare function relysjs__ready__wait(timeout?:number):Promise<void>
 export declare function browser__build(
 	config?:relysjs__build_config_T
