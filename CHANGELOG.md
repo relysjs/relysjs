@@ -1,5 +1,16 @@
 # relysjs
 
+## 0.50.0
+
+### Minor Changes
+
+- browser\_\_build: target: es2022
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.42.0
+
 ## 0.49.4
 
 ### Patch Changes
