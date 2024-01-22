@@ -1,5 +1,17 @@
 # relysjs
 
+## 0.52.0
+
+### Minor Changes
+
+- import from 'relysjs': alias to import from 'relysjs/any'
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.44.0
+
 ## 0.51.1
 
 ### Patch Changes
