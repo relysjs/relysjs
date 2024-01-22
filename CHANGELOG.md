@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.51.1
+
+### Patch Changes
+
+- relysjs/server: types: fix: import
+
 ## 0.51.0
 
 ### Minor Changes

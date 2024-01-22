@@ -1,6 +1,6 @@
 import type { ctx__be_T, ctx__get_T, ctx__set_T, sig_T } from 'ctx-core/rmemo'
 import type { BuildContext, Plugin } from 'esbuild'
-import type { rebuildjs_build_config_T } from 'rebuildjs/server/build/index.js'
+import type { rebuildjs_build_config_T } from 'rebuildjs/server'
 export declare const relysjs__build_id$_:ctx__be_T<sig_T<string>, 'app'>
 export declare const relysjs__build_id_:ctx__get_T<string, 'app'>
 export declare const relysjs__build_id__set:ctx__set_T<string, 'app'>
