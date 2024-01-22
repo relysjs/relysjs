@@ -1,5 +1,17 @@
 # relysjs
 
+## 0.55.0
+
+### Minor Changes
+
+- minor: route_ctx\_\_ensure: arguments:
+
+      middleware_ctx:middleware_ctx_T
+      context:{
+      	request:Request
+      	store:{ [x:string]:unknown }
+      }
+
 ## 0.54.0
 
 ### Minor Changes

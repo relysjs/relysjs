@@ -20,7 +20,7 @@ export function html_route_(
 	return context=>
 		html_response__new(
 			page_({
-				ctx: route_ctx__ensure(context, middleware_ctx)
+				ctx: route_ctx__ensure(middleware_ctx, context)
 			}),
 			response_init)
 }
@@ -70,8 +70,8 @@ export function html_response__new(
  * @param {middleware_ctx_T}middleware_ctx
  */
 export function route_ctx__ensure(
+	middleware_ctx,
 	context,
-	middleware_ctx
 ) {
 	const route_ctx = context.store.route_ctx ??= route_ctx__new(middleware_ctx)
 	elysia_context__set(route_ctx, context)

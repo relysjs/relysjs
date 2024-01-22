@@ -81,9 +81,7 @@ test('route_ctx__ensure', ()=>{
 	const request = new Request('http://localhost:3000')
 	const elysia_context = { request, store: {} } as elysia_context_T
 	const route_ctx =
-		route_ctx__ensure(
-			elysia_context,
-			middlelware_ctx)
+		route_ctx__ensure(middlelware_ctx, elysia_context)
 	equal(elysia_context.store.route_ctx, route_ctx)
 	equal(elysia_context_(route_ctx), elysia_context)
 })
