@@ -1,5 +1,22 @@
 # relysjs
 
+## 0.53.0
+
+### Minor Changes
+
+- minor:
+
+      ./server:
+      	+ default_loader
+      	rebuildjs_browser__build: loader: default_loader
+      	rebuildjs_server__build: loader: default_loader
+      + ./browser: export ./any
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.45.0
+
 ## 0.52.2
 
 ### Patch Changes
