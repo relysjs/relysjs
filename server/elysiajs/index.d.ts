@@ -1,6 +1,5 @@
-import type { ctx__be_T, ctx__get_T, ctx__set_T } from 'ctx-core/be'
-import type { sig_T } from 'ctx-core/rmemo'
-import type { has_route_T, route_ctx_T } from 'rebuildjs'
+import type { ctx__be_T, ctx__get_T, ctx__set_T, sig_T } from 'ctx-core/rmemo'
+import type { route_ctx_T } from 'rebuildjs/server'
 export declare const elysia_context$_:ctx__be_T<sig_T<elysia_context_T>, 'route'>
 export declare const elysia_context_:ctx__get_T<elysia_context_T, 'route'>
 export declare const elysia_context__set:ctx__set_T<elysia_context_T, 'route'>

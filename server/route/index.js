@@ -3,7 +3,7 @@
 // See https://github.com/oven-sh/bun/issues/5648
 // See https://github.com/oven-sh/bun/issues/159
 import { TextEncoderStream } from '@stardazed/streams-text-encoding'
-import { route_ctx__new } from 'rebuildjs'
+import { route_ctx__new } from 'rebuildjs/server'
 import { elysia_context__set } from '../elysiajs/index.js'
 /**
  * @param {middleware_ctx_T}middleware_ctx
@@ -69,7 +69,10 @@ export function html_response__new(
  * @param {elysia_context_T}context
  * @param {middleware_ctx_T}middleware_ctx
  */
-export function route_ctx__ensure(context, middleware_ctx) {
+export function route_ctx__ensure(
+	context,
+	middleware_ctx
+) {
 	const route_ctx = context.store.route_ctx ??= route_ctx__new(middleware_ctx)
 	elysia_context__set(route_ctx, context)
 	return route_ctx

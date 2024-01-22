@@ -1,5 +1,28 @@
 # relysjs
 
+## 0.51.0
+
+### Minor Changes
+
+- minor:
+
+      browser__build→relysjs_browser__build
+      server__build→relysjs_server__build
+
+- minor:
+
+      exports: environment specific modules:
+        any
+        server
+        types
+      browser__build→rebuild_browser__build
+      server__build→rebuild_server__build
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.43.0
+
 ## 0.50.0
 
 ### Minor Changes

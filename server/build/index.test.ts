@@ -18,20 +18,20 @@ import {
 	server__metafile_,
 	server__metafile__set,
 	server__output__relative_path_M_middleware_ctx_
-} from 'rebuildjs'
+} from 'rebuildjs/server'
 import { test } from 'uvu'
 import { equal, throws } from 'uvu/assert'
-import { browser__metafile0, server__metafile0 } from '../_fixtures/metafile.js'
+import { browser__metafile0, server__metafile0 } from '../../_fixtures/metafile.js'
 import { app$_, app_ } from '../app/index.js'
 import {
-	browser__build,
+	relysjs_browser__build,
 	relysjs__build_id$_,
 	relysjs__build_id_,
 	relysjs__build_id__set,
 	relysjs__ready$_,
 	relysjs__ready_,
 	relysjs__ready__wait,
-	server__build
+	relysjs_server__build
 } from './index.js'
 test.after.each(()=>{
 	app_ctx.s.app.clear()
@@ -106,15 +106,15 @@ test('relysjs__ready__wait|timeout', async ()=>{
 })
 test('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
 	const test_dir = dirname(new URL(import.meta.url).pathname)
-	const cwd = join(test_dir, '../_fixtures')
+	const cwd = join(test_dir, '../../_fixtures')
 	cwd__set(app_ctx, cwd)
 	await rm(join(cwd, 'dist'), { recursive: true, force: true })
 	let server__build_context:BuildContext|undefined = undefined
 	let browser__build_context:BuildContext|undefined = undefined
 	try {
 		equal(app_(app_ctx), undefined)
-		server__build_context = await server__build()
-		browser__build_context = await browser__build()
+		server__build_context = await relysjs_server__build()
+		browser__build_context = await relysjs_browser__build()
 		await relysjs__ready__wait()
 		equal(await file_exists_(join(cwd, 'dist')), true)
 		equal(await file_exists_(join(cwd, 'dist', 'browser--dev')), true)

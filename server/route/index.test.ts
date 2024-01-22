@@ -1,7 +1,7 @@
-import { app_ctx, middleware_ctx__new } from 'rebuildjs'
+import { app_ctx, middleware_ctx__new } from 'rebuildjs/server'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { elysia_context_, elysia_context_T } from '../elysiajs/index.js'
+import { elysia_context_, type elysia_context_T } from '../elysiajs/index.js'
 import { html_route_, route_ctx__ensure } from './index.js'
 test.after.each(()=>{
 	app_ctx.s.app.clear()

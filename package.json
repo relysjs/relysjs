@@ -1,6 +1,6 @@
 {
 	"name": "relysjs",
-	"version": "0.50.0",
+	"version": "0.51.0",
 	"description": "Reactive Web app server focusing on MPAs with a simple server route & browser build api...uses Bunjs, Elysia, ESBuild, rmemo, & ctx-core",
 	"keywords": [
 		"reactive",
@@ -29,20 +29,31 @@
 		"*.js",
 		"*.json",
 		"_fixtures",
-		"app",
-		"build",
-		"compression",
-		"elysiajs",
-		"route",
-		"static"
+		"any",
+		"file_types",
+		"server"
 	],
 	"exports": {
-		".": "./index.js",
-		"./app": "./app/index.js",
-		"./build": "./build/index.js",
-		"./route": "./route/index.js",
-		"./elysia": "./elysia/index.js",
-		"./static": "./static/index.js",
+		".": {
+			"default": "./index.js",
+			"module": "./index.js",
+			"types": "./index.d.ts"
+		},
+		"./any": {
+			"default": "./any/index.js",
+			"module": "./any/index.js",
+			"types": "./any/index.d.ts"
+		},
+		"./file_types": {
+			"default": "./file_types/index.js",
+			"module": "./file_types/index.js",
+			"types": "./file_types/index.d.ts"
+		},
+		"./server": {
+			"default": "./server/index.js",
+			"module": "./server/index.js",
+			"types": "./server/index.d.ts"
+		},
 		"./package.json": "./package.json"
 	},
 	"scripts": {
@@ -60,7 +71,7 @@
 		"ctx-core": "^5.25.3",
 		"elysia": "^0.8.9",
 		"esbuild": "^0.19.11",
-		"rebuildjs": "0.42.0"
+		"rebuildjs": "0.43.0"
 	},
 	"devDependencies": {
 		"@sinclair/typebox": "^0.32.12",

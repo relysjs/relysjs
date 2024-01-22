@@ -12,8 +12,7 @@ import {
 	server__output_,
 	server__output__relative_path_,
 	server__output__relative_path_M_middleware_ctx_
-} from 'rebuildjs'
-export * from 'rebuildjs/app'
+} from 'rebuildjs/server'
 export const [
 	app$_,
 	app_,

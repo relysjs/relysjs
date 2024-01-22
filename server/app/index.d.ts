@@ -1,7 +1,5 @@
 import type { ctx__be_T, ctx__get_T, ctx__set_T, sig_T } from 'ctx-core/rmemo'
 import type { Elysia } from 'elysia'
-import type { has_app_T } from 'rebuildjs'
-export * from 'rebuildjs/app'
 export declare const app$_:ctx__be_T<sig_T<Elysia|undefined>, 'app'>
 export declare const app_:ctx__get_T<Elysia|undefined, 'app'>
 export declare const app__set:ctx__set_T<Elysia|undefined, 'app'>

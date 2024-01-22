@@ -10,34 +10,16 @@ import {
 	be,
 	be_memo_pair_,
 	be_sig_triple_,
-	browser__build as rebuildjs__browser__build,
 	build_id_,
 	memo_,
 	metafile__build_id_,
 	off,
 	rebuildjs__ready_,
-	rmemo__wait,
-	server__build as rebuildjs__server__build
-} from 'rebuildjs'
+	rebuildjs_browser__build,
+	rebuildjs_server__build,
+	rmemo__wait
+} from 'rebuildjs/server'
 import { app_, server_entry__output__link__path_, server_entry__output__path_ } from '../app/index.js'
-export {
-	build_id$_,
-	build_id_,
-	build_id__set,
-	build_id__refresh,
-	persist__metafile__build_id$_,
-	persist__metafile__build_id_,
-	persist__metafile__ready$_,
-	persist__metafile__ready_,
-	rebuildjs__build_id$_,
-	rebuildjs__build_id_,
-	rebuildjs__build_id__set,
-	rebuildjs__ready$_,
-	rebuildjs__ready_,
-	rebuildjs__ready__wait,
-	server__external_,
-	rebuildjs_plugin_,
-} from 'rebuildjs/build'
 export const [
 	relysjs__build_id$_,
 	relysjs__build_id_,
@@ -67,19 +49,19 @@ export function relysjs__ready__wait(timeout) {
 /**
  * @param {relysjs__build_config_T}[config]
  */
-export async function browser__build(config) {
+export async function relysjs_browser__build(config) {
 	const {
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		relysjs,
 		...rebuildjs__config
 	} = config ?? {}
-	return await rebuildjs__browser__build(rebuildjs__config)
+	return await rebuildjs_browser__build(rebuildjs__config)
 }
 /**
  * @param {relysjs__build_config_T}[config]
  * @returns {Promise<void>}
  */
-export async function server__build(config) {
+export async function relysjs_server__build(config) {
 	const {
 		relysjs,
 		...rebuildjs__config
@@ -88,7 +70,7 @@ export async function server__build(config) {
 	const entryPoints = config?.entryPoints ?? []
 	const server_entry = relysjs?.server_entry ?? join(app_path_(app_ctx), 'index.ts')
 	entryPoints.push({ in: server_entry, out: 'index' })
-	return await rebuildjs__server__build({
+	return await rebuildjs_server__build({
 		...rebuildjs__config,
 		entryPoints,
 		plugins,

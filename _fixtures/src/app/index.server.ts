@@ -1,6 +1,6 @@
 import './index.server.css'
 import { Elysia } from 'elysia'
-import { assets_, type middleware_ctx_T, route_ctx__new } from 'rebuildjs'
+import { assets_, type middleware_ctx_T, route_ctx__new } from 'rebuildjs/server'
 export default (middleware_ctx:middleware_ctx_T)=>{
 	return new Elysia()
 		.get('/', ({ request })=>{

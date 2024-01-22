@@ -1,4 +1,4 @@
-import { app_ctx, ctx_, middleware_ctx__new, route_ctx__new } from 'rebuildjs'
+import { app_ctx, ctx_, middleware_ctx__new, route_ctx__new } from 'rebuildjs/server'
 import { test } from 'uvu'
 import { equal, throws } from 'uvu/assert'
 import {

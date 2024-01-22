@@ -1,8 +1,6 @@
 import { Elysia } from 'elysia'
-import { app_ctx, is_prod_ } from 'rebuildjs'
-import { app__start } from '../../../app/index.js'
-import { compression_middleware_ } from '../../../compression/index.js'
-import { static_middleware_ } from '../../../static/index.js'
+import { app_ctx, is_prod_ } from 'rebuildjs/server'
+import { app__start, compression_middleware_, static_middleware_ } from '../../../server/index.js'
 export default async ()=>{
 	const app =
 		new Elysia()

@@ -1,4 +1,4 @@
-import { app_ctx } from 'rebuildjs'
+import { app_ctx } from 'rebuildjs/server'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
 import './index.js'
