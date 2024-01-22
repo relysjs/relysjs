@@ -1,5 +1,16 @@
 # relysjs
 
+## 0.54.0
+
+### Minor Changes
+
+- ./file_types→./types
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.46.0
+
 ## 0.53.0
 
 ### Minor Changes
