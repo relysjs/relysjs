@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.55.1
+
+### Patch Changes
+
+- {compression*middleware*: fix: use http status code of the originating response
+
 ## 0.55.0
 
 ### Minor Changes

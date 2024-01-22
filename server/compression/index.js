@@ -5,7 +5,7 @@ import compressible from 'compressible'
 import { Elysia, mapResponse } from 'elysia'
 import { createDeflate, createDeflateRaw, createGzip } from 'node:zlib'
 /**
-* @param {compression_middleware_config_T}[config]
+ * @param {compression_middleware_config_T}[config]
  * @returns {Elysia<"", {request:{}, store:{}}, {type:{}, error:{}}, {}, {}, false>}
  */
 export function compression_middleware_(config) {
@@ -22,7 +22,6 @@ export function compression_middleware_(config) {
 	app.onAfterHandle(context=>{
 		context.set.headers['Content-Encoding'] = type
 		const res = mapResponse(context.response, {
-			status: 200,
 			headers: {},
 		})
 		if (!res.headers.get('Content-Type')) {
@@ -40,6 +39,7 @@ export function compression_middleware_(config) {
 					? gzipSync(toBuffer(context.response, encoding), zlib_compression_options)
 					: deflateSync(toBuffer(context.response, encoding), zlib_compression_options)
 		context.response = new Response(compressedBody, {
+			status: res.status,
 			headers: res.headers,
 		})
 	})
