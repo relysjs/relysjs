@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.52.1
+
+### Patch Changes
+
+- ./file_types: declarations only: not a module
+- Updated dependencies
+  - rebuildjs@0.44.1
+
 ## 0.52.0
 
 ### Minor Changes

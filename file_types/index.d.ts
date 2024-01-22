@@ -1,1 +1,1 @@
-export * from 'rebuildjs/file_types'
+import 'rebuildjs/file_types'
