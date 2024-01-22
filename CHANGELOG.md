@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.52.2
+
+### Patch Changes
+
+- ./server export: fix: export ./any
+- Updated dependencies
+  - rebuildjs@0.44.2
+
 ## 0.52.1
 
 ### Patch Changes
