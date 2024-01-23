@@ -1,5 +1,18 @@
 # relysjs
 
+## 0.56.0
+
+### Minor Changes
+
+- - run*or_val*
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.28.0
+  - rebuildjs@0.47.0
+
 ## 0.55.7
 
 ### Patch Changes
