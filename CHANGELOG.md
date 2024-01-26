@@ -1,5 +1,18 @@
 # relysjs
 
+## 0.58.0
+
+### Minor Changes
+
+- rmemo\_\_unset: delete rmemo.val
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.49.0
+  - ctx-core@5.31.0
+
 ## 0.57.2
 
 ### Patch Changes
