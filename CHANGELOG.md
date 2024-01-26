@@ -1,5 +1,14 @@
 # relysjs
 
+## 0.58.1
+
+### Patch Changes
+
+- be\_: argument type: ...config→...config_arg_a
+- Updated dependencies
+  - ctx-core@5.31.1
+  - rebuildjs@0.49.1
+
 ## 0.58.0
 
 ### Minor Changes
