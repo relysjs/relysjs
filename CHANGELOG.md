@@ -1,5 +1,23 @@
 # relysjs
 
+## 0.59.0
+
+### Minor Changes
+
+- minor:
+
+      request_ctx__ensure: fix: fresh request_ctx for each request
+      ns:'route'→'request'
+      route_ctx→request_ctx
+      route_ctx__new→request_ctx__new
+      route_ctx__ensure→request_ctx__ensure
+      has_route_T→has_request_T
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.50.0
+
 ## 0.58.1
 
 ### Patch Changes
@@ -144,7 +162,7 @@
 
 ### Minor Changes
 
-- minor: route_ctx\_\_ensure: arguments:
+- minor: request_ctx\_\_ensure: arguments:
 
       middleware_ctx:middleware_ctx_T
       context:{
@@ -562,17 +580,17 @@
 
 ### Patch Changes
 
-- elysia_context_T: .store: .ctx→.route_ctx
+- elysia_context_T: .store: .ctx→.request_ctx
 
 ## 0.44.0
 
 ### Minor Changes
 
-- - route_ctx\_\_ensure
+- - request_ctx\_\_ensure
 - minor:
 
       middleware_ctx_→middleware_ctx__new
-      route_ctx_→route_ctx__new
+      request_ctx_→request_ctx__new
 
 ### Patch Changes
 
@@ -1426,7 +1444,7 @@
       	nx: route
       elysia_context_T: .store: Ctx<''|'app'|'middleware'|'route'>
 
-- route_ctx,route_ctx_T: ns: + ''
+- request_ctx,request_ctx_T: ns: + ''
 
 ### Patch Changes
 

@@ -2,7 +2,7 @@ import { app_ctx, middleware_ctx__new } from 'rebuildjs/server'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
 import { elysia_context_, type elysia_context_T } from '../elysiajs/index.js'
-import { html_route_, route_ctx__ensure } from './index.js'
+import { html_route_, request_ctx__ensure } from './index.js'
 test.after.each(()=>{
 	app_ctx.s.app.clear()
 })
@@ -76,13 +76,13 @@ test('html_route_|response_init|addional headers', async ()=>{
 	equal(response.headers.get('Content-Type'), 'text/html;charset=UTF-8')
 	equal(response.headers.get('FOO'), 'BAR')
 })
-test('route_ctx__ensure', ()=>{
+test('request_ctx__ensure', ()=>{
 	const middlelware_ctx = middleware_ctx__new()
 	const request = new Request('http://localhost:3000')
 	const elysia_context = { request, store: {} } as elysia_context_T
-	const route_ctx =
-		route_ctx__ensure(middlelware_ctx, elysia_context)
-	equal(elysia_context.store.route_ctx, route_ctx)
-	equal(elysia_context_(route_ctx), elysia_context)
+	const request_ctx =
+		request_ctx__ensure(middlelware_ctx, elysia_context)
+	equal(elysia_context.request_ctx, request_ctx)
+	equal(elysia_context_(request_ctx), elysia_context)
 })
 test.run()

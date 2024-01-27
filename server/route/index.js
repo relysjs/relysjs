@@ -3,11 +3,11 @@
 // See https://github.com/oven-sh/bun/issues/5648
 // See https://github.com/oven-sh/bun/issues/159
 import { TextEncoderStream } from '@stardazed/streams-text-encoding'
-import { route_ctx__new } from 'rebuildjs/server'
+import { request_ctx__new } from 'rebuildjs/server'
 import { elysia_context__set } from '../elysiajs/index.js'
 /**
  * @param {middleware_ctx_T}middleware_ctx
- * @param {($p:{ ctx:route_ctx_T })=>(string|ReadableStream<string|Uint8Array>)}page_
+ * @param {($p:{ ctx:request_ctx_T })=>(string|ReadableStream<string|Uint8Array>)}page_
  * @param {ResponseInit}[response_init]
  * @returns {(context:elysia_context_T)=>Promise<Response>}
  * @private
@@ -20,7 +20,7 @@ export function html_route_(
 	return context=>
 		html_response__new(
 			page_({
-				ctx: route_ctx__ensure(middleware_ctx, context)
+				ctx: request_ctx__ensure(middleware_ctx, context)
 			}),
 			response_init)
 }
@@ -66,14 +66,14 @@ export function html_response__new(
 	)
 }
 /**
- * @param {elysia_context_T}context
  * @param {middleware_ctx_T}middleware_ctx
+ * @param {elysia_context_T}context
  */
-export function route_ctx__ensure(
+export function request_ctx__ensure(
 	middleware_ctx,
 	context,
 ) {
-	const route_ctx = context.store.route_ctx ??= route_ctx__new(middleware_ctx)
-	elysia_context__set(route_ctx, context)
-	return route_ctx
+	const request_ctx = context.request_ctx ??= request_ctx__new(middleware_ctx)
+	elysia_context__set(request_ctx, context)
+	return request_ctx
 }
