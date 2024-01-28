@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.61.1
+
+### Patch Changes
+
+- relysjs\_\_ready: fix: implementation
+
 ## 0.61.0
 
 ### Minor Changes

@@ -5,6 +5,7 @@
 		"moduleResolution": "nodenext",
 		"target": "ESNext",
 		"strict": true,
+		"types": ["bun-types"],
 		"skipLibCheck": true
 	},
 	"include": ["_fixtures/**/*"],

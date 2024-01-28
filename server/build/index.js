@@ -42,7 +42,7 @@ export const [
  */
 export function relysjs__ready(timeout) {
 	return rmemo__wait(
-		relysjs__ready$_,
+		relysjs__ready$_(app_ctx),
 	  ready=>ready,
 	  timeout ?? 10_000)
 }

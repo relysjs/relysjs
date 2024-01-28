@@ -1,10 +1,10 @@
-import { gunzipSync } from 'bun'
 import { file_exists_ } from 'ctx-core/fs'
 import { sleep } from 'ctx-core/function'
 import { ctx_, rmemo__wait } from 'ctx-core/rmemo'
 import { BuildContext } from 'esbuild'
 import { rm } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
+import { gunzipSync } from 'node:zlib'
 import {
 	app_ctx,
 	browser__metafile_,
@@ -13,7 +13,8 @@ import {
 	build_id_,
 	build_id__refresh,
 	build_id__set,
-	cwd__set, rebuildjs__build_id__set,
+	cwd__set,
+	rebuildjs__build_id__set,
 	server__css_,
 	server__metafile_,
 	server__metafile__set,
@@ -24,13 +25,13 @@ import { equal, throws } from 'uvu/assert'
 import { browser__metafile0, server__metafile0 } from '../../_fixtures/metafile.js'
 import { app$_, app_ } from '../app/index.js'
 import {
-	relysjs_browser__build,
 	relysjs__build_id$_,
 	relysjs__build_id_,
-	relysjs__build_id__set,
+	relysjs__build_id__set, relysjs__ready,
 	relysjs__ready$_,
 	relysjs__ready_,
 	relysjs__ready__wait,
+	relysjs_browser__build,
 	relysjs_server__build
 } from './index.js'
 test.after.each(()=>{
@@ -49,7 +50,7 @@ test('relysjs__build_id', ()=>{
 	// @ts-expect-error TS2345
 	throws(()=>relysjs__build_id_(ctx_()))
 })
-test('relysjs__ready', ()=>{
+test('relysjs__ready', async ()=>{
 	equal(relysjs__ready$_(app_ctx)(), false)
 	equal(relysjs__ready_(app_ctx), false)
 	const build_id = server__metafile0.build_id!
@@ -66,6 +67,7 @@ test('relysjs__ready', ()=>{
 	equal(relysjs__ready$_(app_ctx)(), false)
 	equal(relysjs__ready_(app_ctx), false)
 	relysjs__build_id__set(app_ctx, build_id)
+	equal(await relysjs__ready(), true)
 	equal(relysjs__ready$_(app_ctx)(), true)
 	equal(relysjs__ready_(app_ctx), true)
 	// @ts-expect-error TS2345
