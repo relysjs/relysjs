@@ -38,6 +38,16 @@ export const [
 { id: 'relysjs__ready', ns: 'app' })
 /**
  * @param {number}[timeout]
+ * @returns {Promise<boolean>}
+ */
+export function relysjs__ready(timeout) {
+	return rmemo__wait(
+		relysjs__ready$_,
+	  ready=>ready,
+	  timeout ?? 10_000)
+}
+/**
+ * @param {number}[timeout]
  * @returns {Promise<void>}}
  */
 export function relysjs__ready__wait(timeout) {
@@ -114,26 +124,26 @@ export function relysjs_plugin_(config) {
 						)=>{
 							run(async ()=>{
 								try {
-									await file_exists__waitfor(async ()=>{
-										await cmd(
-											rm(server_entry__output__link__path, { force: true }))
-										await cmd(
-											link(server_entry__output__path, server_entry__output__link__path))
-										return true
-									})
-									if (await cmd(
-										file_exists_(server_entry__output__path + '.map'))
-									) {
-										await file_exists__waitfor(async ()=>{
+									await Promise.all([
+										file_exists__waitfor(async ()=>{
 											await cmd(
-												rm(server_entry__output__link__path + '.map', { force: true }))
+												rm(server_entry__output__link__path, { force: true }))
+											await cmd(
+												link(server_entry__output__path, server_entry__output__link__path))
+											return true
+										}),
+										file_exists__waitfor(async ()=>{
+											await cmd(
+												rm(
+													server_entry__output__link__path + '.map',
+													{ force: true }))
 											await cmd(
 												link(
 													server_entry__output__path + '.map',
 													server_entry__output__link__path + '.map'))
 											return true
 										})
-									}
+									])
 									relysjs__build_id__set(ctx, build_id)
 									if (config?.app__start ?? true) {
 										await cmd(

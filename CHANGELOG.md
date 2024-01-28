@@ -1,5 +1,11 @@
 # relysjs
 
+## 0.61.0
+
+### Minor Changes
+
+- - relysjs\_\_ready
+
 ## 0.60.0
 
 ### Minor Changes
