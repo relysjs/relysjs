@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.59.2
+
+### Patch Changes
+
+- ctx-core: ^5.31.2 -> ^5.32.0
+- Updated dependencies
+  - rebuildjs@0.50.2
+
 ## 0.59.1
 
 ### Patch Changes
