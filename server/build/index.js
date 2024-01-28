@@ -1,7 +1,7 @@
 /// <reference types="esbuild" />
 /// <reference types="./index.d.ts" />
 import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
-import { Cancel, nullish__none_, run } from 'ctx-core/rmemo'
+import { Cancel, nullish__none_, promise__cancel, promise__cancel__throw, run } from 'ctx-core/rmemo'
 import { link, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import {
@@ -49,19 +49,19 @@ export function relysjs__ready__wait(timeout) {
 /**
  * @param {relysjs__build_config_T}[config]
  */
-export async function relysjs_browser__build(config) {
+export function relysjs_browser__build(config) {
 	const {
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		relysjs,
 		...rebuildjs__config
 	} = config ?? {}
-	return await rebuildjs_browser__build(rebuildjs__config)
+	return rebuildjs_browser__build(rebuildjs__config)
 }
 /**
  * @param {relysjs__build_config_T}[config]
  * @returns {Promise<void>}
  */
-export async function relysjs_server__build(config) {
+export function relysjs_server__build(config) {
 	const {
 		relysjs,
 		...rebuildjs__config
@@ -70,7 +70,7 @@ export async function relysjs_server__build(config) {
 	const entryPoints = config?.entryPoints ?? []
 	const server_entry = relysjs?.server_entry ?? join(app_path_(app_ctx), 'index.ts')
 	entryPoints.push({ in: server_entry, out: 'index' })
-	return await rebuildjs_server__build({
+	return rebuildjs_server__build({
 		...rebuildjs__config,
 		entryPoints,
 		plugins,
@@ -114,24 +114,25 @@ export function relysjs_plugin_(config) {
 						)=>{
 							run(async ()=>{
 								try {
-									await cmd(
-										rm(server_entry__output__link__path, { force: true }))
-									await cmd(()=>
-										file_exists__waitfor(server_entry__output__path))
-									await cmd(
-										link(server_entry__output__path, server_entry__output__link__path))
-									const server_entry__output__map_path = `${server_entry__output__path}.map`
+									await file_exists__waitfor(async ()=>{
+										await cmd(
+											rm(server_entry__output__link__path, { force: true }))
+										await cmd(
+											link(server_entry__output__path, server_entry__output__link__path))
+										return true
+									})
 									if (await cmd(
-										file_exists_(server_entry__output__map_path))
+										file_exists_(server_entry__output__path + '.map'))
 									) {
-										await cmd(
-											rm(`${server_entry__output__link__path}.map`, { force: true }))
-										await cmd(
-											file_exists__waitfor(server_entry__output__map_path))
-										await cmd(
-											link(
-												server_entry__output__map_path,
-												`${server_entry__output__link__path}.map`))
+										await file_exists__waitfor(async ()=>{
+											await cmd(
+												rm(server_entry__output__link__path + '.map', { force: true }))
+											await cmd(
+												link(
+													server_entry__output__path + '.map',
+													server_entry__output__link__path + '.map'))
+											return true
+										})
 									}
 									relysjs__build_id__set(ctx, build_id)
 									if (config?.app__start ?? true) {
@@ -151,16 +152,16 @@ export function relysjs_plugin_(config) {
 								}
 							})
 							async function cmd(promise) {
-								if (cancel_()) throw new Cancel()
+								if (cancel_()) promise__cancel__throw(promise)
 								promise.relysjs_cancel$ = run(memo_(relysjs_cancel$=>{
 									if (cancel_()) {
-										promise.cancel?.()
+										promise__cancel(promise)
 										off(relysjs_cancel$)
 									}
 									return relysjs_cancel$
 								}))
 								const ret = await promise
-								if (cancel_()) throw new Cancel()
+								if (cancel_()) promise__cancel__throw(promise)
 								return ret
 							}
 							function cancel_() {

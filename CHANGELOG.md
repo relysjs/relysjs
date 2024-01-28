@@ -1,5 +1,22 @@
 # relysjs
 
+## 0.60.0
+
+### Minor Changes
+
+- Cancel: name: 'Cancel'
+- - promise\_\_cancel
+
+### Patch Changes
+
+- fix: intermittent unhandled ENOENT error
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.33.0
+  - rebuildjs@0.51.0
+
 ## 0.59.3
 
 ### Patch Changes
