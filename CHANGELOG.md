@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.0.0
+
+### Major Changes
+
+- html_response\_\_new: fix: utf-8 text
+
 ## 0.62.6
 
 ### Patch Changes

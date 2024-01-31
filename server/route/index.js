@@ -2,7 +2,7 @@
 // TODO: use built-in TextEncoderStream when bunjs implements TextEncoderStream
 // See https://github.com/oven-sh/bun/issues/5648
 // See https://github.com/oven-sh/bun/issues/159
-import { TextEncoderStream } from '@stardazed/streams-text-encoding'
+import { TextEncoderStream } from 'ctx-core/stream'
 import { request_ctx__new } from 'rebuildjs/server'
 import { elysia_context__set } from '../elysiajs/index.js'
 /**
@@ -47,11 +47,7 @@ export function html_response__new(
 						}
 					}))
 				} else {
-					controller.enqueue(
-						Uint8Array.from(
-							('' + html_OR_stream)
-								.split('')
-								.map(x=>x.charCodeAt())))
+					controller.enqueue(html_OR_stream)
 					controller.close()
 				}
 			}
