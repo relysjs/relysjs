@@ -35,23 +35,14 @@ export function html_response__new(
 	response_init
 ) {
 	return new Response(
-		new ReadableStream({
-			start(controller) {
-				if (html_OR_stream.pipeTo) {
-					html_OR_stream.pipeThrough(new TextEncoderStream()).pipeTo(new WritableStream({
-						write(chunk) {
-							controller.enqueue(chunk)
-						},
-						close() {
-							controller.close()
-						}
-					}))
-				} else {
-					controller.enqueue(html_OR_stream)
+		html_OR_stream.pipeTo
+			? html_OR_stream.pipeThrough(new TextEncoderStream())
+			: new ReadableStream({
+				start(controller) {
+					controller.enqueue('' + html_OR_stream)
 					controller.close()
 				}
-			}
-		}),
+			}),
 		{
 			...(response_init ?? {}),
 			headers: {

@@ -13,7 +13,7 @@ test('html_route_|string', async ()=>{
 		html)
 	const request = new Request('http://localhost:3000')
 	const response = await html_route({ request, store: {} })
-	equal(await response.text(), html)
+	equal(html, await response.text())
 })
 test('html_route_|toString', async ()=>{
 	const middlelware_ctx = middleware_ctx__new()
@@ -34,7 +34,7 @@ test('html_route_|ReadableStream|string', async ()=>{
 				for (const chunk of html.split('>')) {
 					if (!first) controller.enqueue('>')
 					first = false
-					controller.enqueue(chunk)
+					if (chunk != null) controller.enqueue(chunk)
 				}
 				controller.close()
 			}
