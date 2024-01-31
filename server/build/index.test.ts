@@ -27,7 +27,8 @@ import { app$_, app_ } from '../app/index.js'
 import {
 	relysjs__build_id$_,
 	relysjs__build_id_,
-	relysjs__build_id__set, relysjs__ready,
+	relysjs__build_id__set,
+	relysjs__ready,
 	relysjs__ready$_,
 	relysjs__ready_,
 	relysjs__ready__wait,

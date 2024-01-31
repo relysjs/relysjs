@@ -1,5 +1,13 @@
 # relysjs
 
+## 0.62.5
+
+### Patch Changes
+
+- format + optimize imports
+- Updated dependencies
+  - rebuildjs@0.52.5
+
 ## 0.62.4
 
 ### Patch Changes
