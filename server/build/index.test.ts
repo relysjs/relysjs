@@ -1,6 +1,6 @@
 import { file_exists_ } from 'ctx-core/fs'
 import { sleep } from 'ctx-core/function'
-import { ctx_, rmemo__wait } from 'ctx-core/rmemo'
+import { ctx_, ns_be_sig_triple_, rmemo__wait } from 'ctx-core/rmemo'
 import { BuildContext } from 'esbuild'
 import { rm } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
@@ -15,6 +15,7 @@ import {
 	build_id__set,
 	cwd__set,
 	rebuildjs__build_id__set,
+	rebuildjs__ready__add,
 	server__css_,
 	server__metafile_,
 	server__metafile__set,
@@ -50,6 +51,14 @@ test('relysjs__build_id', ()=>{
 })
 test('relysjs__ready__wait', async ()=>{
 	let done = false
+	const [
+		,
+		plugin__ready_,
+		plugin__ready__set
+	] = ns_be_sig_triple_(
+		'app',
+		()=>false)
+	rebuildjs__ready__add(plugin__ready_)
 	relysjs__ready__wait()
 		.then(()=>done = true)
 	equal(done, false)
@@ -67,6 +76,9 @@ test('relysjs__ready__wait', async ()=>{
 	await sleep(0)
 	equal(done, false)
 	relysjs__build_id__set(app_ctx, build_id)
+	await sleep(0)
+	equal(done, false)
+	plugin__ready__set(app_ctx, true)
 	await sleep(0)
 	equal(done, true)
 })

@@ -16,6 +16,7 @@ import {
 	off,
 	rebuildjs__ready_,
 	rebuildjs_browser__build,
+	rebuildjs_core__ready_,
 	rebuildjs_server__build,
 	rmemo__wait
 } from 'rebuildjs/server'
@@ -102,7 +103,7 @@ export function relysjs_plugin_(config) {
 					r()
 					return relysjs__link$
 					function r() {
-						if (!rebuildjs__ready_(ctx)) return
+						if (!rebuildjs_core__ready_(ctx)) return
 						nullish__none_([
 							build_id_(ctx),
 							server_entry__output__path_(ctx),
