@@ -6,7 +6,6 @@ export declare const relysjs__build_id_:ctx__get_T<string, 'app'>
 export declare const relysjs__build_id__set:ctx__set_T<string, 'app'>
 export declare const relysjs__ready$_:ctx__be_T<sig_T<boolean>, 'app'>
 export declare const relysjs__ready_:ctx__get_T<boolean, 'app'>
-export declare function relysjs__ready(timeout?:number):Promise<boolean>
 export declare function relysjs__ready__wait(timeout?:number):Promise<void>
 export declare function relysjs_browser__build(
 	config?:relysjs__build_config_T

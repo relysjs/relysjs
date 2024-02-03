@@ -1,5 +1,13 @@
 # relysjs
 
+## 1.2.0
+
+### Minor Changes
+
+- minor:
+
+      - relysjs__ready: use relysjs__ready__wait
+
 ## 1.1.0
 
 ### Minor Changes

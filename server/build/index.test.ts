@@ -28,9 +28,6 @@ import {
 	relysjs__build_id$_,
 	relysjs__build_id_,
 	relysjs__build_id__set,
-	relysjs__ready,
-	relysjs__ready$_,
-	relysjs__ready_,
 	relysjs__ready__wait,
 	relysjs_browser__build,
 	relysjs_server__build
@@ -50,31 +47,6 @@ test('relysjs__build_id', ()=>{
 	throws(()=>relysjs__build_id$_(ctx_()))
 	// @ts-expect-error TS2345
 	throws(()=>relysjs__build_id_(ctx_()))
-})
-test('relysjs__ready', async ()=>{
-	equal(relysjs__ready$_(app_ctx)(), false)
-	equal(relysjs__ready_(app_ctx), false)
-	const build_id = server__metafile0.build_id!
-	build_id__set(app_ctx, build_id)
-	equal(relysjs__ready$_(app_ctx)(), false)
-	equal(relysjs__ready_(app_ctx), false)
-	server__metafile__set(app_ctx, server__metafile0)
-	equal(relysjs__ready$_(app_ctx)(), false)
-	equal(relysjs__ready_(app_ctx), false)
-	browser__metafile__set(app_ctx, browser__metafile0)
-	equal(relysjs__ready$_(app_ctx)(), false)
-	equal(relysjs__ready_(app_ctx), false)
-	rebuildjs__build_id__set(app_ctx, build_id)
-	equal(relysjs__ready$_(app_ctx)(), false)
-	equal(relysjs__ready_(app_ctx), false)
-	relysjs__build_id__set(app_ctx, build_id)
-	equal(await relysjs__ready(), true)
-	equal(relysjs__ready$_(app_ctx)(), true)
-	equal(relysjs__ready_(app_ctx), true)
-	// @ts-expect-error TS2345
-	throws(()=>relysjs__ready$_(ctx_()))
-	// @ts-expect-error TS2345
-	throws(()=>relysjs__ready_(ctx_()))
 })
 test('relysjs__ready__wait', async ()=>{
 	let done = false

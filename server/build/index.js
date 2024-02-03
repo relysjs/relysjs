@@ -38,16 +38,6 @@ export const [
 { id: 'relysjs__ready', ns: 'app' })
 /**
  * @param {number}[timeout]
- * @returns {Promise<boolean>}
- */
-export function relysjs__ready(timeout) {
-	return rmemo__wait(
-		relysjs__ready$_(app_ctx),
-	  ready=>ready,
-	  timeout ?? 10_000)
-}
-/**
- * @param {number}[timeout]
  * @returns {Promise<void>}}
  */
 export function relysjs__ready__wait(timeout) {
