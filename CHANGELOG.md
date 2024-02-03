@@ -1,5 +1,18 @@
 # relysjs
 
+## 1.3.1
+
+### Patch Changes
+
+- rebuildjs*plugin*: rebuildjs*plugin\_\_postprocess$*: rebuildjs**assets**link:
+
+      link asset *.map files into browser directory:
+      	not *.js.map & *.mjs.map
+      wait for linked files to exist on the file system
+
+- Updated dependencies
+  - rebuildjs@0.54.1
+
 ## 1.3.0
 
 ### Minor Changes
