@@ -1,5 +1,17 @@
 # relysjs
 
+## 1.4.0
+
+### Minor Changes
+
+- - calling: calls & returns argument function
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.38.0
+  - rebuildjs@0.55.0
+
 ## 1.3.1
 
 ### Patch Changes
