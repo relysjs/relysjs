@@ -159,13 +159,16 @@ export function relysjs_plugin_(config) {
 												return app.handle(request)
 											})
 										stall_app.listen(port_(app_ctx))
-										await cmd(relysjs__ready__wait())
-										app.use(
-											await cmd(import(server_entry__output__link__path))
-												.then(mod=>mod.default()))
-										await cmd(app__start(app))
-										stall_resolve()
-										await stall_app.stop()
+										try {
+											await cmd(relysjs__ready__wait())
+											app.use(
+												await cmd(import(server_entry__output__link__path))
+													.then(mod=>mod.default()))
+											await cmd(app__start(app))
+											stall_resolve()
+										} finally {
+											await stall_app.stop()
+										}
 									}
 								} catch (err) {
 									if (err instanceof Cancel) return

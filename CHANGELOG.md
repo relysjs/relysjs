@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.6.1
+
+### Patch Changes
+
+- ./server: relysjs*plugin*: relysjs\__link$_: stall_app is stopped in a finally block
+
 ## 1.6.0
 
 ### Minor Changes
