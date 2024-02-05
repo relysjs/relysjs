@@ -1,5 +1,16 @@
 # relysjs
 
+## 1.6.0
+
+### Minor Changes
+
+- relysjs*plugin*: relysjs\__link$_: - prebuild hook: + stall_app:
+
+      fix: response glitches during rebuild:
+      + stall_app: handle requests that originate before the app is started
+
+  previous release should have been a minor release
+
 ## 1.5.3
 
 ### Patch Changes
