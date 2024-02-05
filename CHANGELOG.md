@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.6.2
+
+### Patch Changes
+
+- ./server: relysjs*plugin*: relysjs**link$\_: app**start: fix: start the stall_app before stopping the previous app
+
 ## 1.6.1
 
 ### Patch Changes

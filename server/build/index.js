@@ -144,28 +144,24 @@ export function relysjs_plugin_(config) {
 									])
 									relysjs__build_id__set(ctx, build_id)
 									if (config?.app__start ?? true) {
-										await cmd(
-											file_exists__waitfor(server_entry__output__link__path))
-										if (app_(ctx)) await app_(ctx).stop()
-										await cmd(
-											file_exists__waitfor(server_entry__output__link__path))
-										if (app_(ctx)) app_(ctx).stop().then()
-										let stall_resolve
-										let stall = new Promise(resolve=>stall_resolve = resolve)
+										let stall__resolve
+										let stall = new Promise(resolve=>stall__resolve = resolve)
 										let app = new Elysia()
 										let stall_app = new Elysia()
 											.onRequest(async ({ request })=>{
 												await stall
 												return app.handle(request)
 											})
-										stall_app.listen(port_(app_ctx))
+										await stall_app.listen(port_(app_ctx))
+										if (app_(ctx)) app_(ctx).stop().then()
 										try {
 											await cmd(relysjs__ready__wait())
+											await cmd(file_exists__waitfor(server_entry__output__link__path))
 											app.use(
 												await cmd(import(server_entry__output__link__path))
 													.then(mod=>mod.default()))
 											await cmd(app__start(app))
-											stall_resolve()
+											stall__resolve()
 										} finally {
 											await stall_app.stop()
 										}
