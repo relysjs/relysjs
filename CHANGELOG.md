@@ -1,5 +1,20 @@
 # relysjs
 
+## 1.5.0
+
+### Minor Changes
+
+- minor: dev environments: on rebuild: immediately start server & hang request until build is complete:
+
+      app entry file api updates: src/app/index.ts:
+      	+ prebuild
+      	default: returns Elysia middleware
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.38.1
+
 ## 1.4.0
 
 ### Minor Changes

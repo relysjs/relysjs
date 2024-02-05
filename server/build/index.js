@@ -2,6 +2,7 @@
 /// <reference types="./index.d.ts" />
 import { file_exists__waitfor } from 'ctx-core/fs'
 import { Cancel, nullish__none_, promise__cancel, promise__cancel__throw, run } from 'ctx-core/rmemo'
+import { Elysia } from 'elysia'
 import { link, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import {
@@ -20,7 +21,13 @@ import {
 	rebuildjs_server__build,
 	rmemo__wait
 } from 'rebuildjs/server'
-import { app_, server_entry__output__link__path_, server_entry__output__path_ } from '../app/index.js'
+import {
+	app_,
+	app__set,
+	app__start,
+	server_entry__output__link__path_,
+	server_entry__output__path_
+} from '../app/index.js'
 export const [
 	relysjs__build_id$_,
 	relysjs__build_id_,
@@ -139,13 +146,31 @@ export function relysjs_plugin_(config) {
 									if (config?.app__start ?? true) {
 										await cmd(
 											file_exists__waitfor(server_entry__output__link__path))
-										const app__start = await cmd(
-											import(server_entry__output__link__path)
-												.then(mod=>mod.default))
 										let app = app_(ctx)
 										if (app) await app.stop()
+										let building = true
+										app = new Elysia()
+											.onRequest(async ()=>{
+												if (building) await relysjs__ready__wait()
+											})
+										const prebuild = await cmd(
+											import(join(app_path_(app_ctx), 'index.ts'))
+												.then(mod=>mod.prebuild))
+										const prebuild_promise = prebuild?.()
+										if (prebuild_promise) {
+											const prebuild_middleware =
+													prebuild_promise
+													&& await cmd(prebuild_promise)
+											if (prebuild_middleware) {
+												app.use(prebuild_middleware)
+											}
+										}
 										await cmd(relysjs__ready__wait())
-										await cmd(app__start())
+										app.use(
+											await cmd(import(server_entry__output__link__path))
+												.then(mod=>mod.default))
+										await cmd(app__start(app))
+										building = false
 									}
 								} catch (err) {
 									if (err instanceof Cancel) return
