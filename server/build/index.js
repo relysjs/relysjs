@@ -14,7 +14,7 @@ import {
 	build_id_,
 	memo_,
 	metafile__build_id_,
-	off,
+	off, port_,
 	rebuildjs__ready_,
 	rebuildjs_browser__build,
 	rebuildjs_core__ready_,
@@ -146,31 +146,26 @@ export function relysjs_plugin_(config) {
 									if (config?.app__start ?? true) {
 										await cmd(
 											file_exists__waitfor(server_entry__output__link__path))
-										let app = app_(ctx)
-										if (app) await app.stop()
-										let building = true
-										app = new Elysia()
-											.onRequest(async ()=>{
-												if (building) await relysjs__ready__wait()
+										if (app_(ctx)) await app_(ctx).stop()
+										await cmd(
+											file_exists__waitfor(server_entry__output__link__path))
+										if (app_(ctx)) app_(ctx).stop().then()
+										let stall_resolve
+										let stall = new Promise(resolve=>stall_resolve = resolve)
+										let app = new Elysia()
+										let stall_app = new Elysia()
+											.onRequest(async ({ request })=>{
+												await stall
+												return app.handle(request)
 											})
-										const prebuild = await cmd(
-											import(join(app_path_(app_ctx), 'index.ts'))
-												.then(mod=>mod.prebuild))
-										const prebuild_promise = prebuild?.()
-										if (prebuild_promise) {
-											const prebuild_middleware =
-													prebuild_promise
-													&& await cmd(prebuild_promise)
-											if (prebuild_middleware) {
-												app.use(prebuild_middleware)
-											}
-										}
+										stall_app.listen(port_(app_ctx))
 										await cmd(relysjs__ready__wait())
 										app.use(
 											await cmd(import(server_entry__output__link__path))
-												.then(mod=>mod.default))
+												.then(mod=>mod.default()))
 										await cmd(app__start(app))
-										building = false
+										stall_resolve()
+										await stall_app.stop()
 									}
 								} catch (err) {
 									if (err instanceof Cancel) return
@@ -179,6 +174,7 @@ export function relysjs_plugin_(config) {
 							})
 							async function cmd(promise) {
 								if (cancel_()) promise__cancel__throw(promise)
+								if (!promise) return promise
 								promise.relysjs_cancel$ = run(memo_(relysjs_cancel$=>{
 									if (cancel_()) {
 										promise__cancel(promise)
