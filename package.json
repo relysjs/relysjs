@@ -31,8 +31,8 @@
 		"_fixtures",
 		"any",
 		"browser",
-		"types",
-		"server"
+		"server",
+		"types"
 	],
 	"exports": {
 		".": {
