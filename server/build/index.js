@@ -14,20 +14,15 @@ import {
 	build_id_,
 	memo_,
 	metafile__build_id_,
-	off, port_,
+	off,
+	port_,
 	rebuildjs__ready_,
 	rebuildjs_browser__build,
 	rebuildjs_core__ready_,
 	rebuildjs_server__build,
 	rmemo__wait
 } from 'rebuildjs/server'
-import {
-	app_,
-	app__set,
-	app__start,
-	server_entry__output__link__path_,
-	server_entry__output__path_
-} from '../app/index.js'
+import { app_, app__start, server_entry__output__link__path_, server_entry__output__path_ } from '../app/index.js'
 export const [
 	relysjs__build_id$_,
 	relysjs__build_id_,

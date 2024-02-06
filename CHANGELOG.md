@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.6.3
+
+### Patch Changes
+
+- optimize imports
+
 ## 1.6.2
 
 ### Patch Changes
