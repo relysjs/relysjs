@@ -15,6 +15,7 @@ import {
 	build_id__set,
 	cwd__set,
 	rebuildjs__build_id__set,
+	rebuildjs__esbuild__build_id__set,
 	rebuildjs__ready__add,
 	server__css_,
 	server__metafile_,
@@ -52,15 +53,14 @@ test('relysjs__build_id', ()=>{
 test('relysjs__ready__wait', async ()=>{
 	let done = false
 	const [
+		plugin__ready$_,
 		,
-		plugin__ready_,
 		plugin__ready__set
 	] = ns_be_sig_triple_(
 		'app',
 		()=>false)
-	rebuildjs__ready__add(plugin__ready_)
-	relysjs__ready__wait()
-		.then(()=>done = true)
+	rebuildjs__ready__add(plugin__ready$_)
+	relysjs__ready__wait().then(()=>done = true)
 	equal(done, false)
 	const build_id = server__metafile0.build_id!
 	build_id__set(app_ctx, build_id)
@@ -72,13 +72,16 @@ test('relysjs__ready__wait', async ()=>{
 	browser__metafile__set(app_ctx, browser__metafile0)
 	await sleep(0)
 	equal(done, false)
-	rebuildjs__build_id__set(app_ctx, build_id)
+	rebuildjs__esbuild__build_id__set(app_ctx, build_id)
 	await sleep(0)
 	equal(done, false)
 	relysjs__build_id__set(app_ctx, build_id)
 	await sleep(0)
 	equal(done, false)
 	plugin__ready__set(app_ctx, true)
+	await sleep(0)
+	equal(done, false)
+	rebuildjs__build_id__set(app_ctx, build_id)
 	await sleep(0)
 	equal(done, true)
 })

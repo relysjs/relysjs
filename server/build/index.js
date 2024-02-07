@@ -18,7 +18,7 @@ import {
 	port_,
 	rebuildjs__ready_,
 	rebuildjs_browser__build,
-	rebuildjs_core__ready_,
+	rebuildjs__esbuild__done_,
 	rebuildjs_server__build,
 	rmemo__wait
 } from 'rebuildjs/server'
@@ -105,7 +105,7 @@ export function relysjs_plugin_(config) {
 					r()
 					return relysjs__link$
 					function r() {
-						if (!rebuildjs_core__ready_(ctx)) return
+						if (!rebuildjs__esbuild__done_(ctx)) return
 						nullish__none_([
 							build_id_(ctx),
 							server_entry__output__path_(ctx),
