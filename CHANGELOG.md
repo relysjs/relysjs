@@ -1,5 +1,23 @@
 # relysjs
 
+## 1.8.0
+
+### Minor Changes
+
+- type rename:
+
+      Ctx→ctx_T
+      Ctx_wide_T→wide_ctx_T
+      Ctx_s_T→ctx_s_T
+      Ctx_s_wide_T→wide_ctx_s_T
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.57.0
+  - ctx-core@6.0.0
+
 ## 1.7.3
 
 ### Patch Changes
