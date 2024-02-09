@@ -1,5 +1,20 @@
 # relysjs
 
+## 1.9.0
+
+### Minor Changes
+
+- minor:
+
+      app_ctx_wide_T→app_wide_ctx_T
+      middleware_ctx_wide_T→middleware_wide_ctx_T
+      request_ctx_wide_T→request_wide_ctx_T
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.58.0
+
 ## 1.8.0
 
 ### Minor Changes
