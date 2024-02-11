@@ -1,5 +1,16 @@
 # relysjs
 
+## 1.11.4
+
+### Patch Changes
+
+- ./server: rebuildjs*plugin*: rebuildjs*plugin\_\_postprocess$*: rebuildjs**assets**link:
+
+      file_exists__waitfor: Infinity timeout
+
+- Updated dependencies
+  - rebuildjs@0.60.3
+
 ## 1.11.3
 
 ### Patch Changes
