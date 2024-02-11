@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.11.5
+
+### Patch Changes
+
+- ./server: rebuildjs*plugin*: rebuildjs*plugin\_\_postprocess$*: rebuildjs**assets**link: fix: long timeout
+
 ## 1.11.4
 
 ### Patch Changes
