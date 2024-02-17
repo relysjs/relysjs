@@ -1,5 +1,24 @@
 # relysjs
 
+## 1.14.0
+
+### Minor Changes
+
+- - ./any: use esbuild config publicPath instead:
+
+    - asset*path*
+    - asset*path_a*
+
+  ./server: default config: + publicPath: /: overridable:
+
+      rebuildjs_browser__build
+      rebuildjs_server__build
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.63.0
+
 ## 1.13.2
 
 ### Patch Changes
