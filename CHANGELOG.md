@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.14.2
+
+### Patch Changes
+
+- ./: fix: export error
+
 ## 1.14.1
 
 ### Patch Changes
