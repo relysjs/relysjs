@@ -1,5 +1,14 @@
 # relysjs
 
+## 1.14.4
+
+### Patch Changes
+
+- esbuild: ^0.20.0 -> ^0.20.1
+- Updated dependencies
+  - ctx-core@6.4.3
+  - rebuildjs@0.63.1
+
 ## 1.14.3
 
 ### Patch Changes
