@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.14.12
+
+### Patch Changes
+
+- html_response\_\_new: fix: perserve passed in Header instance entries
+
 ## 1.14.11
 
 ### Patch Changes

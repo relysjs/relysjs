@@ -34,6 +34,8 @@ export function html_response__new(
 	html_OR_stream,
 	response_init
 ) {
+	const headers = new Headers(response_init?.headers)
+	headers.set('Content-Type', 'text/html;charset=UTF-8')
 	return new Response(
 		html_OR_stream.pipeTo
 			? html_OR_stream.pipeThrough(new TextEncoderStream())
@@ -45,10 +47,7 @@ export function html_response__new(
 			}),
 		{
 			...(response_init ?? {}),
-			headers: {
-				'Content-Type': 'text/html;charset=UTF-8',
-				...(response_init?.headers ?? {})
-			}
+			headers
 		}
 	)
 }
