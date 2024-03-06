@@ -1,5 +1,20 @@
 # relysjs
 
+## 1.15.0
+
+### Minor Changes
+
+- ./server: default_loader:
+
+  - .htm: file
+  - .html: file
+  - .xml: file
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.64.0
+
 ## 1.14.20
 
 ### Patch Changes
