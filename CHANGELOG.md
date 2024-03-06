@@ -1,5 +1,13 @@
 # relysjs
 
+## 1.14.19
+
+### Patch Changes
+
+- ./server: fix: export declare const default_loader: Record<string, string>
+- Updated dependencies
+  - rebuildjs@0.63.12
+
 ## 1.14.18
 
 ### Patch Changes
