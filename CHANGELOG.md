@@ -1,5 +1,13 @@
 # relysjs
 
+## 1.14.20
+
+### Patch Changes
+
+- default_loader: fix type: { [ext:string]:Loader }
+- Updated dependencies
+  - rebuildjs@0.63.13
+
 ## 1.14.19
 
 ### Patch Changes
