@@ -1,5 +1,19 @@
 # relysjs
 
+## 1.16.0
+
+### Minor Changes
+
+- minor:
+
+      ./server: + browser__output__relative_path__set
+      fix: type declaration defaultLoader→default_loader
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.65.0
+
 ## 1.15.0
 
 ### Minor Changes
