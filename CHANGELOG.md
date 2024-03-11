@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.16.2
+
+### Patch Changes
+
+- static*middleware*: fix: empty static file crashes the server
+
 ## 1.16.1
 
 ### Patch Changes

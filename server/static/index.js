@@ -22,7 +22,8 @@ export async function static_middleware_(config) {
 			content_type,
 			path)
 		app.get(url_path, ()=>{
-			return new Response(file(path).stream(), {
+			const file_ref = file(path)
+			return new Response(file_ref.size ? file_ref.stream() : '', {
 				headers: {
 					'Content-Type': content_type,
 					...headers,
