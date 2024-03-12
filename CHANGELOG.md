@@ -1,5 +1,18 @@
 # relysjs
 
+## 1.16.4
+
+### Patch Changes
+
+- rebuildjs*plugin*: rebuildjs*plugin\_\_postprocess$*:
+
+      rebuildjs__ready__add__ready$__a1_: increase timeout: 30s
+      run: + .catch(err=>console.error(err))
+
+- relysjs*plugin*: relysjs**ready**wait(30_000): increase timeout
+- Updated dependencies
+  - rebuildjs@0.65.3
+
 ## 1.16.3
 
 ### Patch Changes

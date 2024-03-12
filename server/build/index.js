@@ -150,7 +150,7 @@ export function relysjs_plugin_(config) {
 										await stall_app.listen(port_(app_ctx))
 										if (app_(ctx)) app_(ctx).stop().then()
 										try {
-											await cmd(relysjs__ready__wait())
+											await cmd(relysjs__ready__wait(30_000))
 											await cmd(file_exists__waitfor(server_entry__output__link__path))
 											app.use(
 												await cmd(import(server_entry__output__link__path))
