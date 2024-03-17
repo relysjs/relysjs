@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.16.10
+
+### Patch Changes
+
+- relysjs*plugin*: check app.server before calling app.stop(): address Elysia isn't running error
+
 ## 1.16.9
 
 ### Patch Changes

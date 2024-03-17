@@ -148,7 +148,12 @@ export function relysjs_plugin_(config) {
 												return app.handle(request)
 											})
 										await stall_app.listen(port_(app_ctx))
-										if (app_(ctx)) app_(ctx).stop().then()
+										const _app = app_(ctx)
+										if (_app) {
+											if (_app.server) {
+												_app.stop().then()
+											}
+										}
 										try {
 											await cmd(relysjs__ready__wait(30_000))
 											await cmd(file_exists__waitfor(server_entry__output__link__path))
@@ -158,7 +163,9 @@ export function relysjs_plugin_(config) {
 											await cmd(app__start(app))
 											stall__resolve()
 										} finally {
-											await stall_app.stop()
+											if (stall_app.server) {
+												await stall_app.stop()
+											}
 										}
 									}
 								} catch (err) {
