@@ -4,7 +4,6 @@ import { ctx_, ns_be_sig_triple_, rmemo__wait } from 'ctx-core/rmemo'
 import { BuildContext } from 'esbuild'
 import { rm } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
-import { gunzipSync } from 'node:zlib'
 import {
 	app_ctx,
 	browser__metafile_,
