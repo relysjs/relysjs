@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.16.11
+
+### Patch Changes
+
+- fix: tests
+
 ## 1.16.10
 
 ### Patch Changes
