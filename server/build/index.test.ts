@@ -159,9 +159,7 @@ test('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
 		const root_response =
 			await app.handle(new Request('http://localhost:3000/'))
 		// fixture uses gzip compression
-		const root_html =
-			String.fromCharCode(...gunzipSync(
-				Buffer.from(await root_response.arrayBuffer())))
+		const root_html = await root_response.text()
 		const middleware_ctx =
 			server__output__relative_path_M_middleware_ctx_(app_ctx)
 				.get(server__output__relative_path)!
@@ -179,7 +177,9 @@ test('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
 		await sleep(100)
 		server__build_context?.dispose?.()
 		browser__build_context?.dispose?.()
-		await app_(app_ctx)?.stop?.()
+		if (app_(app_ctx)?.server) {
+			await app_(app_ctx)?.stop?.()
+		}
 	}
 })
 test.run()

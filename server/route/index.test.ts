@@ -58,7 +58,7 @@ test('html_route_|response_init|all', async ()=>{
 	const response = await html_route({ request, store: {} })
 	equal(response.status, 403)
 	equal(response.statusText, 'Forbidden')
-	equal(response.headers.get('Content-Type'), 'application/json')
+	equal(response.headers.get('Content-Type'), 'text/html;charset=UTF-8')
 	equal(response.headers.get('FOO'), 'BAR')
 })
 test('html_route_|response_init|addional headers', async ()=>{
