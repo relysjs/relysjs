@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.16.14
+
+### Patch Changes
+
+- bun-types: ^1.0.32 -> ^1.0.33
+
 ## 1.16.13
 
 ### Patch Changes
