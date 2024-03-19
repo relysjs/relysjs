@@ -1,5 +1,17 @@
 # relysjs
 
+## 1.17.0
+
+### Minor Changes
+
+- wide_ctx_T: widen type: fix incorrect type errors: - ctx_T&
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@6.6.0
+  - rebuildjs@0.66.0
+
 ## 1.16.16
 
 ### Patch Changes
