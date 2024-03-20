@@ -1,5 +1,14 @@
 # relysjs
 
+## 1.17.1
+
+### Patch Changes
+
+- package.json: author: url,email
+- Updated dependencies
+  - ctx-core@6.6.1
+  - rebuildjs@0.66.1
+
 ## 1.17.0
 
 ### Minor Changes
