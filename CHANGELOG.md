@@ -1,5 +1,14 @@
 # relysjs
 
+## 1.17.9
+
+### Patch Changes
+
+- elysia: ^1.0.7 -> ^1.0.9
+- @sinclair/typebox: ^0.32.19 -> ^0.32.20
+- Updated dependencies
+  - rebuildjs@0.67.1
+
 ## 1.17.8
 
 ### Patch Changes
