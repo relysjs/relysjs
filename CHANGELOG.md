@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.18.0
+
+### Minor Changes
+
+- globalThis.**rmemo** stores global rmemo state: fix: name collision with globalThis.rmemo: was used as a dom Element id
+
 ## 1.17.9
 
 ### Patch Changes
