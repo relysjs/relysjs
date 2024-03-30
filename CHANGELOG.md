@@ -1,5 +1,13 @@
 # relysjs
 
+## 1.18.4
+
+### Patch Changes
+
+- server**metafile: ∋ file_exists**waitfor: increase timeout from 1000ms to 5000ms
+- Updated dependencies
+  - rebuildjs@0.67.4
+
 ## 1.18.3
 
 ### Patch Changes
