@@ -1,5 +1,14 @@
 # relysjs
 
+## 1.18.9
+
+### Patch Changes
+
+- memo_T,sig_T: fix: internal state types
+- Updated dependencies
+  - ctx-core@6.8.3
+  - rebuildjs@0.67.9
+
 ## 1.18.8
 
 ### Patch Changes
