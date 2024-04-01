@@ -1,5 +1,14 @@
 # relysjs
 
+## 1.19.3
+
+### Patch Changes
+
+- rmemo**off**add: fix: argument type
+- Updated dependencies
+  - ctx-core@7.0.1
+  - rebuildjs@0.68.2
+
 ## 1.19.2
 
 ### Patch Changes
