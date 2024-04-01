@@ -1,7 +1,15 @@
 /// <reference types="esbuild" />
 /// <reference types="./index.d.ts" />
 import { file_exists__waitfor } from 'ctx-core/fs'
-import { Cancel, nullish__none_, promise__cancel, promise__cancel__throw, run } from 'ctx-core/rmemo'
+import {
+	Cancel,
+	ns_id_be_memo_pair_,
+	ns_id_be_sig_triple_,
+	nullish__none_,
+	promise__cancel,
+	promise__cancel__throw,
+	run
+} from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
 import { link, rm } from 'node:fs/promises'
 import { join } from 'node:path'
@@ -9,16 +17,14 @@ import {
 	app_ctx,
 	app_path_,
 	be,
-	be_memo_pair_,
-	be_sig_triple_,
 	build_id_,
 	memo_,
 	metafile__build_id_,
 	off,
 	port_,
+	rebuildjs__esbuild__done_,
 	rebuildjs__ready_,
 	rebuildjs_browser__build,
-	rebuildjs__esbuild__done_,
 	rebuildjs_server__build,
 	rmemo__wait
 } from 'rebuildjs/server'
@@ -27,18 +33,22 @@ export const [
 	relysjs__build_id$_,
 	relysjs__build_id_,
 	relysjs__build_id__set,
-] = be_sig_triple_(()=>undefined,
-	{ id: 'relysjs_plugin__build_id', ns: 'app' })
+] = ns_id_be_sig_triple_(
+	'app',
+	'relysjs_plugin__build_id',
+	()=>undefined)
 export const [
 	relysjs__ready$_,
 	relysjs__ready_,
-] = be_memo_pair_(ctx=>
-	!!(
-		build_id_(ctx)
+] = ns_id_be_memo_pair_(
+	'app',
+	'relysjs__ready',
+	ctx=>
+		!!(
+			build_id_(ctx)
 			&& rebuildjs__ready_(ctx)
 			&& build_id_(ctx) === metafile__build_id_(ctx)
-			&& build_id_(ctx) === relysjs__build_id_(ctx)),
-{ id: 'relysjs__ready', ns: 'app' })
+			&& build_id_(ctx) === relysjs__build_id_(ctx)))
 /**
  * @param {number}[timeout]
  * @returns {Promise<void>}}
