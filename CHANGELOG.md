@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.19.1
+
+### Patch Changes
+
+- bun-types: ^1.0.36 -> ^1.1.0
+
 ## 1.19.0
 
 ### Minor Changes
