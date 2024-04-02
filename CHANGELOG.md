@@ -1,5 +1,25 @@
 # relysjs
 
+## 1.20.2
+
+### Patch Changes
+
+- README: fill out documentation:
+
+      links to dependencies
+      + ctx-core/be & rmemo
+      + How it works
+      + build.ts
+      + start.ts
+      + app directory
+      + app/index.ts
+      + app/**/index.server.ts
+      + app/**/index.browser.ts
+      + ctx namespaces (ns)
+      + ctx ns: app
+      + ctx ns: request
+      + Name Convention
+
 ## 1.20.1
 
 ### Patch Changes
