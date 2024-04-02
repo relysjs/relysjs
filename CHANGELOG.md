@@ -1,5 +1,15 @@
 # relysjs
 
+## 1.19.4
+
+### Patch Changes
+
+- memo_T: private prop types: readonly unknown types for cleaner typescript messages
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@7.0.2
+  - rebuildjs@0.68.3
+
 ## 1.19.3
 
 ### Patch Changes
