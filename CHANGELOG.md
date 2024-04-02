@@ -1,5 +1,21 @@
 # relysjs
 
+## 1.20.0
+
+### Minor Changes
+
+- minor:
+
+      + id_be
+      + ns_be
+      + ns_id_be
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@7.1.0
+  - rebuildjs@0.69.0
+
 ## 1.19.7
 
 ### Patch Changes

@@ -2,7 +2,9 @@
 /// <reference types="./index.d.ts" />
 import { file_exists__waitfor } from 'ctx-core/fs'
 import {
+	calling,
 	Cancel,
+	ns_id_be,
 	ns_id_be_memo_pair_,
 	ns_id_be_sig_triple_,
 	nullish__none_,
@@ -16,7 +18,6 @@ import { join } from 'node:path'
 import {
 	app_ctx,
 	app_path_,
-	be,
 	build_id_,
 	memo_,
 	metafile__build_id_,
@@ -110,11 +111,12 @@ export function relysjs_plugin_(config) {
 		setup.relysjs__link$ = relysjs__link$_()
 		return setup
 		function relysjs__link$_() {
-			return be(app_ctx, ctx=>
-				run(memo_(relysjs__link$=>{
-					r()
-					return relysjs__link$
-					function r() {
+			return ns_id_be(
+				app_ctx,
+				'app',
+				'relysjs__link$',
+				ctx=>
+					calling(memo_(()=>{
 						if (!rebuildjs__esbuild__done_(ctx)) return
 						nullish__none_([
 							build_id_(ctx),
@@ -200,14 +202,12 @@ export function relysjs_plugin_(config) {
 							function cancel_() {
 								return (
 									build_id_(ctx) !== build_id
-										|| server_entry__output__path_(ctx) !== server_entry__output__path
-										|| server_entry__output__link__path_(ctx) !== server_entry__output__link__path
+									|| server_entry__output__path_(ctx) !== server_entry__output__path
+									|| server_entry__output__link__path_(ctx) !== server_entry__output__link__path
 								)
 							}
 						})
-					}
-				})),
-			{ id: 'relysjs__link$', ns: 'app' })()
+					})))
 		}
 	}
 }
