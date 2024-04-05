@@ -1,5 +1,12 @@
 # relysjs
 
+## 1.20.5
+
+### Patch Changes
+
+- Updated dependencies
+  - rebuildjs@0.69.3
+
 ## 1.20.4
 
 ### Patch Changes
