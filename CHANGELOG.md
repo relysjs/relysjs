@@ -1,5 +1,14 @@
 # relysjs
 
+## 1.20.12
+
+### Patch Changes
+
+- bun-types: ^1.1.3 -> ^1.1.4
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.69.8
+
 ## 1.20.11
 
 ### Patch Changes
