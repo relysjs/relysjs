@@ -1,5 +1,18 @@
 # relysjs
 
+## 1.21.0
+
+### Minor Changes
+
+- - ref\_\_bind
+
+### Patch Changes
+
+- relysjs__link$: fix: race condition: missing build file crashes dev server
+- Updated dependencies
+  - ctx-core@7.2.0
+  - rebuildjs@0.70.0
+
 ## 1.20.13
 
 ### Patch Changes

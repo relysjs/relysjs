@@ -169,9 +169,12 @@ export function relysjs_plugin_(config) {
 										try {
 											await cmd(relysjs__ready__wait(30_000))
 											await cmd(file_exists__waitfor(server_entry__output__link__path))
-											app.use(
-												await cmd(import(server_entry__output__link__path))
-													.then(mod=>mod.default()))
+											await cmd(file_exists__waitfor(async ()=>{
+												app.use(
+													await cmd(import(server_entry__output__link__path))
+														.then(mod=>mod.default()))
+												return true
+											}))
 											await cmd(app__start(app))
 											stall__resolve()
 										} finally {
