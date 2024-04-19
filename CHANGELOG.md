@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.1
+
+### Patch Changes
+
+- app**attach: fix: race condition with missing output js file: + ∋ file_exists**waitfor: server**output**relative_path:
+
 ## 1.21.0
 
 ### Minor Changes
@@ -8,7 +14,7 @@
 
 ### Patch Changes
 
-- relysjs__link$: fix: race condition: missing build file crashes dev server
+- relysjs\_\_link$: fix: race condition: missing build file crashes dev server
 - Updated dependencies
   - ctx-core@7.2.0
   - rebuildjs@0.70.0
