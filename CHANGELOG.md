@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.2
+
+### Patch Changes
+
+- @sinclair/typebox: ^0.32.21 -> ^0.32.22
+
 ## 1.21.1
 
 ### Patch Changes
