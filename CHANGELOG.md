@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.5
+
+### Patch Changes
+
+- fix: error: Cannot find module...: + ∋ file*exists*(path) before import(path)
+
 ## 1.21.4
 
 ### Patch Changes

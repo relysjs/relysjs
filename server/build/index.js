@@ -1,6 +1,6 @@
 /// <reference types="esbuild" />
 /// <reference types="./index.d.ts" />
-import { file_exists__waitfor } from 'ctx-core/fs'
+import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
 import {
 	calling,
 	Cancel,
@@ -170,6 +170,9 @@ export function relysjs_plugin_(config) {
 											await cmd(relysjs__ready__wait(30_000))
 											await cmd(file_exists__waitfor(server_entry__output__link__path))
 											await cmd(file_exists__waitfor(async ()=>{
+												if (!await file_exists_(server_entry__output__link__path)) {
+													return false
+												}
 												app.use(
 													await cmd(import(server_entry__output__link__path))
 														.then(mod=>mod.default()))

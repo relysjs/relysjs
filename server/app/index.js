@@ -1,4 +1,4 @@
-import { file_exists__waitfor } from 'ctx-core/fs'
+import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
 import { ns_id_be_memo_pair_, ns_id_be_sig_triple_, nullish__none_, rmemo__wait, tup } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
 import { dirname, join } from 'node:path'
@@ -81,8 +81,12 @@ export async function app__attach(app) {
 		const output = server__output_(middleware_ctx)
 		if (output.entryPoint !== server_entry__relative_path_(app_ctx)) {
 			await file_exists__waitfor(async ()=>{
+				const path = join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx))
+				if (!await file_exists_(path)) {
+					return false
+				}
 				const server__middleware =
-					await import(join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx)))
+					await import(path)
 						.then(mod=>mod.default)
 				app.use(server__middleware(middleware_ctx))
 				return true
