@@ -99,6 +99,9 @@ export async function app__attach(app) {
 				const middleware_ctx of server__output__relative_path_M_middleware_ctx.values()
 				) {
 				const output = server__output_(middleware_ctx)
+				if (!output) {
+					return
+				}
 				if (output.entryPoint !== server_entry__relative_path_(app_ctx)) {
 					await file_exists__waitfor(async ()=>{
 						const path = join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx))

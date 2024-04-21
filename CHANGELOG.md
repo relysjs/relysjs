@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.9
+
+### Patch Changes
+
+- app**attach: fix: transision state race condition: crashes instance: when server**output is falsy
+
 ## 1.21.8
 
 ### Patch Changes
