@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.8
+
+### Patch Changes
+
+- app\_\_attach: - console.debug
+
 ## 1.21.7
 
 ### Patch Changes

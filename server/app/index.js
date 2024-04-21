@@ -117,7 +117,6 @@ export async function app__attach(app) {
 			}
 			app$.set(app)
 		}).catch(err=>{
-			console.debug('catch|debug|1', { err })
 			if (err instanceof Cancel) return
 			console.error(err)
 		})
