@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.6
+
+### Patch Changes
+
+- app\_\_attach: fix: timeout error: + cancel logic
+
 ## 1.21.5
 
 ### Patch Changes

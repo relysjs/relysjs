@@ -10,6 +10,7 @@ import {
 	nullish__none_,
 	promise__cancel,
 	promise__cancel__throw,
+	ref__bind,
 	run
 } from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
@@ -108,7 +109,7 @@ export function relysjs_plugin_(config) {
 				}
 			})
 		}
-		setup.relysjs__link$ = relysjs__link$_()
+		ref__bind(setup, relysjs__link$_())
 		return setup
 		function relysjs__link$_() {
 			return ns_id_be(
@@ -194,13 +195,12 @@ export function relysjs_plugin_(config) {
 							async function cmd(promise) {
 								if (cancel_()) promise__cancel__throw(promise)
 								if (!promise) return promise
-								promise.relysjs_cancel$ = run(memo_(relysjs_cancel$=>{
+								ref__bind(promise, calling(memo_(relysjs_cancel$=>{
 									if (cancel_()) {
 										promise__cancel(promise)
 										off(relysjs_cancel$)
 									}
-									return relysjs_cancel$
-								}))
+								})))
 								const ret = await promise
 								if (cancel_()) promise__cancel__throw(promise)
 								return ret

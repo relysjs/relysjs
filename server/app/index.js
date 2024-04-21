@@ -1,11 +1,26 @@
 import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
-import { ns_id_be_memo_pair_, ns_id_be_sig_triple_, nullish__none_, rmemo__wait, tup } from 'ctx-core/rmemo'
+import {
+	calling,
+	Cancel,
+	memo_,
+	ns_id_be_memo_pair_,
+	ns_id_be_sig_triple_,
+	nullish__none_,
+	off,
+	promise__cancel,
+	promise__cancel__throw,
+	ref__bind,
+	rmemo__wait,
+	run,
+	tup
+} from 'ctx-core/rmemo'
 import { Elysia } from 'elysia'
 import { dirname, join } from 'node:path'
 import {
 	app__relative_path_,
 	app_ctx,
 	browser__metafile$_,
+	build_id_,
 	cwd_,
 	metafile__wait,
 	port_,
@@ -73,27 +88,61 @@ export async function app__attach(app) {
 	await metafile__wait(app_ctx)
 	const neq_undefined = val=>val !== undefined
 	await rmemo__wait(browser__metafile$_(app_ctx), neq_undefined)
-	app ??= new Elysia()
-	app._relysjs = 1
-	for (
-		const middleware_ctx of server__output__relative_path_M_middleware_ctx_(app_ctx).values()
-	) {
-		const output = server__output_(middleware_ctx)
-		if (output.entryPoint !== server_entry__relative_path_(app_ctx)) {
-			await file_exists__waitfor(async ()=>{
-				const path = join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx))
-				if (!await file_exists_(path)) {
-					return false
+	const app$ = calling(memo_(app$=>{
+		app ??= new Elysia()
+		app._relysjs = 1
+		const build_id = build_id_(app_ctx)
+		const server__output__relative_path_M_middleware_ctx = server__output__relative_path_M_middleware_ctx_(app_ctx)
+		const middleware_a1 = []
+		run(async ()=>{
+			for (
+				const middleware_ctx of server__output__relative_path_M_middleware_ctx.values()
+				) {
+				const output = server__output_(middleware_ctx)
+				if (output.entryPoint !== server_entry__relative_path_(app_ctx)) {
+					await file_exists__waitfor(async ()=>{
+						const path = join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx))
+						if (!await cmd(file_exists_(path))) {
+							return false
+						}
+						const server__middleware_ =
+							await cmd(import(path).then(mod=>mod.default))
+						middleware_a1.push(server__middleware_(middleware_ctx))
+						return true
+					})
 				}
-				const server__middleware =
-					await import(path)
-						.then(mod=>mod.default)
-				app.use(server__middleware(middleware_ctx))
-				return true
-			})
+			}
+			for (const middleware of middleware_a1) {
+				app.use(middleware)
+			}
+			app$.set(app)
+		}).catch(err=>{
+			console.debug('catch|debug|1', { err })
+			if (err instanceof Cancel) return
+			console.error(err)
+		})
+		return app$.val
+		async function cmd(promise) {
+			if (cancel_()) promise__cancel__throw(promise)
+			if (!promise) return promise
+			ref__bind(promise, calling(memo_(relysjs_cancel$=>{
+				if (cancel_()) {
+					promise__cancel(promise)
+					off(relysjs_cancel$)
+				}
+			})))
+			const ret = await promise
+			if (cancel_()) promise__cancel__throw(promise)
+			return ret
 		}
-	}
-	return app
+		function cancel_() {
+			return (
+				build_id_(app_ctx) !== build_id
+				|| server__output__relative_path_M_middleware_ctx_(app_ctx) !== server__output__relative_path_M_middleware_ctx
+			)
+		}
+	}))
+	return rmemo__wait(app$, app=>app, 10_000)
 }
 /**
  * @param {Elysia}[app]

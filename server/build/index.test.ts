@@ -93,7 +93,7 @@ test('relysjs__ready__wait|timeout', async ()=>{
 	}
 	equal(err!.message, 'Timeout 0ms')
 })
-test.only('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
+test('browser__build|server__build|relysjs_plugin_|metafile', async ()=>{
 	const test_dir = dirname(new URL(import.meta.url).pathname)
 	const cwd = join(test_dir, '../../_fixtures')
 	cwd__set(app_ctx, cwd)
