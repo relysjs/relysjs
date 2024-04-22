@@ -88,63 +88,70 @@ export async function app__attach(app) {
 	await metafile__wait(app_ctx)
 	const neq_undefined = val=>val !== undefined
 	await rmemo__wait(browser__metafile$_(app_ctx), neq_undefined)
-	const app$ = calling(memo_(app$=>{
-		app ??= new Elysia()
-		app._relysjs = 1
-		const build_id = build_id_(app_ctx)
-		const server__output__relative_path_M_middleware_ctx = server__output__relative_path_M_middleware_ctx_(app_ctx)
-		const middleware_a1 = []
-		run(async ()=>{
-			for (
-				const middleware_ctx of server__output__relative_path_M_middleware_ctx.values()
-				) {
-				const output = server__output_(middleware_ctx)
-				if (!output) {
-					return
-				}
-				if (output.entryPoint !== server_entry__relative_path_(app_ctx)) {
-					await file_exists__waitfor(async ()=>{
-						const path = join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx))
-						if (!await cmd(file_exists_(path))) {
-							return false
-						}
-						const server__middleware_ =
-							await cmd(import(path).then(mod=>mod.default))
-						middleware_a1.push(server__middleware_(middleware_ctx))
-						return true
-					})
-				}
-			}
-			for (const middleware of middleware_a1) {
-				app.use(middleware)
-			}
-			app$.set(app)
-		}).catch(err=>{
-			if (err instanceof Cancel) return
-			console.error(err)
-		})
-		return app$.val
-		async function cmd(promise) {
-			if (cancel_()) promise__cancel__throw(promise)
-			if (!promise) return promise
-			ref__bind(promise, calling(memo_(relysjs_cancel$=>{
-				if (cancel_()) {
-					promise__cancel(promise)
-					off(relysjs_cancel$)
-				}
-			})))
-			const ret = await promise
-			if (cancel_()) promise__cancel__throw(promise)
-			return ret
-		}
-		function cancel_() {
-			return (
-				build_id_(app_ctx) !== build_id
-				|| server__output__relative_path_M_middleware_ctx_(app_ctx) !== server__output__relative_path_M_middleware_ctx
-			)
-		}
-	}))
-	return rmemo__wait(app$, app=>app, 10_000)
+	const app$ = app$__new()
+	const val = await rmemo__wait(app$, app=>app, 10_000)
+	if (val instanceof Error) {
+		/** @see {import('../build/index.js').relysjs_plugin_} */
+		throw val
+	}
+	return val
+	function app$__new() {
+	  return calling(memo_(app$=>{
+		  app ??= new Elysia()
+		  app._relysjs = 1
+		  const build_id = build_id_(app_ctx)
+		  const server__output__relative_path_M_middleware_ctx = server__output__relative_path_M_middleware_ctx_(app_ctx)
+		  const middleware_a1 = []
+		  run(async ()=>{
+			  for (
+				  const middleware_ctx of server__output__relative_path_M_middleware_ctx.values()
+				  ) {
+				  const output = server__output_(middleware_ctx)
+				  if (!output) {
+					  return
+				  }
+				  if (output.entryPoint !== server_entry__relative_path_(app_ctx)) {
+					  await file_exists__waitfor(async ()=>{
+						  const path = join(cwd_(app_ctx), server__output__relative_path_(middleware_ctx))
+						  if (!await cmd(file_exists_(path))) {
+							  return false
+						  }
+						  const server__middleware_ =
+							  await cmd(import(path).then(mod=>mod.default))
+						  middleware_a1.push(server__middleware_(middleware_ctx))
+						  return true
+					  })
+				  }
+			  }
+			  for (const middleware of middleware_a1) {
+				  app.use(middleware)
+			  }
+			  app$.set(app)
+		  }).catch(err=>{
+			  app$.set(err)
+		  })
+		  return app$.val
+		  async function cmd(promise) {
+			  if (cancel_()) promise__cancel__throw(promise)
+			  if (!promise) return promise
+			  ref__bind(promise, calling(memo_(relysjs_cancel$=>{
+				  if (cancel_()) {
+					  promise__cancel(promise)
+					  off(relysjs_cancel$)
+				  }
+			  })))
+			  const ret = await promise
+			  if (cancel_()) promise__cancel__throw(promise)
+			  return ret
+		  }
+		  function cancel_() {
+			  return (
+				  build_id_(app_ctx) !== build_id
+				  || server__output__relative_path_M_middleware_ctx_(app_ctx) !== server__output__relative_path_M_middleware_ctx
+			  )
+		  }
+	  }))
+	}
 }
 /**
  * @param {Elysia}[app]

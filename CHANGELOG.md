@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.10
+
+### Patch Changes
+
+- app\_\_attach: fix: dev server crash after an app start is Canceled
+
 ## 1.21.9
 
 ### Patch Changes
