@@ -1,7 +1,6 @@
 import { file_exists_, file_exists__waitfor } from 'ctx-core/fs'
 import {
 	calling,
-	Cancel,
 	memo_,
 	ns_id_be_memo_pair_,
 	ns_id_be_sig_triple_,
