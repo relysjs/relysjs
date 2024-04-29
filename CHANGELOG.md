@@ -1,5 +1,15 @@
 # relysjs
 
+## 1.21.14
+
+### Patch Changes
+
+- bun-types: ^1.1.4 -> ^1.1.6
+- elysia: ^1.0.14 -> ^1.0.15
+- @sinclair/typebox: ^0.32.25 -> ^0.32.27
+- Updated dependencies
+  - rebuildjs@0.70.5
+
 ## 1.21.13
 
 ### Patch Changes
