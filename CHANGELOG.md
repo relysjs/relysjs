@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.15
+
+### Patch Changes
+
+- ./server: app\_\_attach: middleware module does not export a function: fix: crash: console.warn instead of crash
+
 ## 1.21.14
 
 ### Patch Changes

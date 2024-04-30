@@ -117,7 +117,11 @@ export async function app__attach(app) {
 						  }
 						  const server__middleware_ =
 							  await cmd(import(path).then(mod=>mod.default))
-						  middleware_a1.push(server__middleware_(middleware_ctx))
+						  if (server__middleware_) {
+						    middleware_a1.push(server__middleware_(middleware_ctx))
+						  } else {
+								console.warn('module ' + path + ' does not export a default function')
+						  }
 						  return true
 					  })
 				  }
