@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.17
+
+### Patch Changes
+
+- ./server: app\_\_attach: module ... does not export a default function error: fix: Not Found error: retry
+
 ## 1.21.16
 
 ### Patch Changes
