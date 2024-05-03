@@ -1,5 +1,12 @@
 # relysjs
 
+## 1.21.19
+
+### Patch Changes
+
+- @sinclair/typebox: ^0.32.27 -> ^0.32.28
+- bun-types: ^1.1.6 -> ^1.1.7
+
 ## 1.21.18
 
 ### Patch Changes
