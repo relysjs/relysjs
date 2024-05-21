@@ -1,5 +1,13 @@
 # relysjs
 
+## 1.21.31
+
+### Patch Changes
+
+- elysia: ^1.0.20 -> ^1.0.21
+- Updated dependencies
+  - rebuildjs@0.70.17
+
 ## 1.21.30
 
 ### Patch Changes
