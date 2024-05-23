@@ -1,5 +1,11 @@
 # relysjs
 
+## 1.21.34
+
+### Patch Changes
+
+- ./server: fix: type export syntax error
+
 ## 1.21.33
 
 ### Patch Changes
