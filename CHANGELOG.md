@@ -1,5 +1,13 @@
 # relysjs
 
+## 1.21.39
+
+### Patch Changes
+
+- bun-types: ^1.1.10 -> ^1.1.12
+- Updated dependencies
+  - ctx-core@7.2.13
+
 ## 1.21.38
 
 ### Patch Changes
