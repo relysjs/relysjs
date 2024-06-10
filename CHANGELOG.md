@@ -1,5 +1,16 @@
 # relysjs
 
+## 1.21.46
+
+### Patch Changes
+
+- esbuild: ^0.21.4 -> ^0.21.5
+- elysia: ^1.0.22 -> ^1.0.23
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@7.2.18
+  - rebuildjs@0.70.27
+
 ## 1.21.45
 
 ### Patch Changes
