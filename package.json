@@ -78,7 +78,7 @@
 	"devDependencies": {
 		"@sinclair/typebox": "^0.32.31",
 		"bun-types": "^1.1.12",
-		"c8": "^9.1.0",
+		"c8": "^10.0.0",
 		"check-dts": "^0.8.0",
 		"tsx": "^4.15.1",
 		"typescript": "next",
