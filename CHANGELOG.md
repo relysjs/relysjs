@@ -1,5 +1,13 @@
 # relysjs
 
+## 1.21.57
+
+### Patch Changes
+
+- @sinclair/typebox: ^0.32.33 -> ^0.32.34
+- Updated dependencies
+  - ctx-core@7.2.24
+
 ## 1.21.56
 
 ### Patch Changes
