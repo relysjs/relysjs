@@ -1,5 +1,16 @@
 # relysjs
 
+## 1.21.62
+
+### Patch Changes
+
+- bun-types: ^1.1.17 -> ^1.1.18
+- elysia: ^1.0.26 -> ^1.0.27
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.70.36
+  - ctx-core@7.2.27
+
 ## 1.21.61
 
 ### Patch Changes
