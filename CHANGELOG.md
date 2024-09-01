@@ -1,5 +1,15 @@
 # relysjs
 
+## 1.21.73
+
+### Patch Changes
+
+- elysia: ^1.1.9 -> ^1.1.11
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@7.2.32
+  - rebuildjs@0.70.43
+
 ## 1.21.72
 
 ### Patch Changes
