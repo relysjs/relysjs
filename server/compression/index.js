@@ -2,7 +2,7 @@
 // Fork of https://github.com/Gusb3ll/elysia-compression
 import { deflateSync, gzipSync } from 'bun'
 import compressible from 'compressible'
-import { Elysia, mapResponse } from 'elysia'
+import { Elysia } from 'elysia'
 import { createDeflate, createDeflateRaw, createGzip } from 'node:zlib'
 /**
  * @param {compression_middleware_config_T}[config]
@@ -21,9 +21,14 @@ export function compression_middleware_(config) {
 	}
 	app.onAfterHandle(context=>{
 		context.set.headers['Content-Encoding'] = type
-		const res = mapResponse(context.response, {
-			headers: {},
-		})
+		const res = context.response instanceof Response
+			? context.response
+			: new Response(
+				typeof context.response === 'object'
+					? JSON.stringify(context.response)
+					: String(context.response ?? ''),
+				{ headers: {} }
+			)
 		if (!res.headers.get('Content-Type')) {
 			res.headers.set('Content-Type', 'text/plain')
 		}

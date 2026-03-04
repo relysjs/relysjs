@@ -1,5 +1,35 @@
 # relysjs
 
+## 1.21.74
+
+### Patch Changes
+
+- c8: ^10.1.3 -> ^11.0.0
+- esbuild: ^0.23.1 -> ^0.27.3
+- elysia: ^1.4.15 -> ^1.4.27
+- bun-types: ^1.3.1 -> ^1.3.10
+- check-dts: ^0.8.2 -> ^0.9.0
+- tsx: ^4.20.6 -> ^4.21.0
+- @sinclair/typebox: ^0.33.22 -> ^0.34.48
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - rebuildjs@0.70.44
+  - ctx-core@7.2.33
+
 ## 1.21.73
 
 ### Patch Changes
@@ -1134,7 +1164,6 @@
 ### Minor Changes
 
 - ./server: default_loader:
-
   - .htm: file
   - .html: file
   - .xml: file
@@ -1298,7 +1327,6 @@
 ### Minor Changes
 
 - - ./any: use esbuild config publicPath instead:
-
     - asset*path*
     - asset*path_a*
 
@@ -3722,16 +3750,13 @@
 - - minor:
 
     rebuildjs\*\*plugin\_:
-
     - link all non .js,.mjs,.js.map,.mjs.map server outputs to browser
     - public\*\*cp: going to rely on asset file imports using esbuild
     - server\_\_input_path:
       - server\__input_path$_
       - server\__input_path_
       - server**input_path**set
-
     * server**output**relative_path\_\_set
-
     - browser\_\_input_path:
       - browser\__input_path$_
       - browser\__input_path_
@@ -3865,7 +3890,6 @@
       browser__relative_path
 
 - - server_entry_path:
-
     - server*entry_path$*
     - server*entry_path*
 
@@ -3941,7 +3965,6 @@
 ### Minor Changes
 
 - - server_entry_path:
-
     - server*entry_path$*
     - server*entry_path*
 
