@@ -62,7 +62,7 @@
 		"build": ":",
 		"clean": ":",
 		"exec": "$@",
-		"prepublishOnly": "bun clean && bun run build && bun test",
+		"prepublishOnly": "bun clean && bun run build && bun test && publint && attw --pack --ignore-rules cjs-resolves-to-esm",
 		"test": "bun test:unit && bun -c check-dts",
 		"test:unit": "bun -c node_modules/uvu/bin.js . '\\.test\\.(ts|js)$'",
 		"test:unit:coverage": "c8 bun -c test:unit"
@@ -72,8 +72,10 @@
 		"compressible": "^2.0.18",
 		"ctx-core": "*",
 		"elysia": "^1.4.27",
-		"esbuild": "^0.27.3",
 		"rebuildjs": "*"
+	},
+	"peerDependencies": {
+		"esbuild": "^0.27.3"
 	},
 	"devDependencies": {
 		"@sinclair/typebox": "^0.34.48",
