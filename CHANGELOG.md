@@ -1,5 +1,14 @@
 # relysjs
 
+## 1.21.75
+
+### Patch Changes
+
+- chore: migrate scripts from pnpm to bun
+- Updated dependencies
+  - ctx-core@7.2.34
+  - rebuildjs@0.70.45
+
 ## 1.21.74
 
 ### Patch Changes
