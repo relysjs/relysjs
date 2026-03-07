@@ -56,6 +56,16 @@
 			"default": "./server/index.js",
 			"module": "./server/index.js"
 		},
+		"./server/export": {
+			"types": "./server/export/index.d.ts",
+			"default": "./server/export/index.js",
+			"module": "./server/export/index.js"
+		},
+		"./server/export/cloudflare": {
+			"types": "./server/export/cloudflare/index.d.ts",
+			"default": "./server/export/cloudflare/index.js",
+			"module": "./server/export/cloudflare/index.js"
+		},
 		"./package.json": "./package.json"
 	},
 	"scripts": {
