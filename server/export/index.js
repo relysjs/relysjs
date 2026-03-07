@@ -26,17 +26,24 @@ export async function static_export_(config) {
 	const errors = []
 	let app = config.app
 	let we_started = false
+	let base_url = config.base_url
 	try {
-		// Start server if not provided
-		if (!app) {
+		if (base_url) {
+			// Connect to already-running external server
+			base_url = base_url.replace(/\/$/, '')
+			console.info(`[static_export] using external server: ${base_url}`)
+		} else if (!app) {
+			// Start server internally
 			const mod = await import(server_import)
 			app = typeof mod.default === 'function' ? await mod.default() : mod.default
 			await app__start(app)
 			we_started = true
+			base_url = `http://localhost:${port_(app_ctx)}`
+			console.info(`[static_export] server running on ${base_url}`)
+		} else {
+			base_url = `http://localhost:${port_(app_ctx)}`
+			console.info(`[static_export] using provided app on ${base_url}`)
 		}
-		const port = port_(app_ctx)
-		const base_url = `http://localhost:${port}`
-		console.info(`[static_export] server running on ${base_url}`)
 		console.info(`[static_export] site_url: ${site_origin}`)
 		// Clean output directory if requested
 		if (clean) {

@@ -10,6 +10,7 @@ export type static_export_config_T = {
 	routes?:string[]
 	site_url:string
 	out_dir?:string
+	base_url?:string
 	server_import?:string
 	app?:Elysia
 	sitemap?:boolean
