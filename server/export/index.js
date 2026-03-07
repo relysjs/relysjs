@@ -91,11 +91,12 @@ export async function static_export_(config) {
 					errors.push(route)
 					continue
 				}
+				const content_type = res.headers.get('content-type') ?? ''
 				let body = await res.text()
 				if (url_rewrite) {
 					body = body.replaceAll(base_url, site_origin)
 				}
-				const file_path = static_export__file_path_(route, out_dir)
+				const file_path = static_export__file_path_(route, out_dir, content_type)
 				// Incremental: skip if content unchanged
 				if (incremental) {
 					try {
@@ -147,11 +148,14 @@ export async function static_export_(config) {
 /**
  * @param {string} route
  * @param {string} out_dir
+ * @param {string} [content_type]
  * @returns {string}
  */
-export function static_export__file_path_(route, out_dir) {
+export function static_export__file_path_(route, out_dir, content_type) {
 	const ext = extname(route)
-	if (ext && ext !== '.html') {
+	// If the server responded with HTML content-type, treat as HTML page
+	const is_html = content_type ? content_type.includes('text/html') : !ext || ext === '.html'
+	if (ext && !is_html) {
 		// Raw file (robots.txt, sitemap.xml, rss.xml, etc.)
 		return join(out_dir, route)
 	}

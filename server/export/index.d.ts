@@ -4,7 +4,8 @@ export declare function static_export_(
 ):Promise<static_export_result_T>
 export declare function static_export__file_path_(
 	route:string,
-	out_dir:string
+	out_dir:string,
+	content_type?:string
 ):string
 export type static_export_config_T = {
 	routes?:string[]
