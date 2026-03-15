@@ -1,5 +1,13 @@
 # relysjs
 
+## 1.21.76
+
+### Patch Changes
+
+- Delegate route, static, and export modules to rebuildjs core; add API conformance tests
+- Updated dependencies
+  - rebuildjs@0.71.0
+
 ## 1.21.75
 
 ### Patch Changes
